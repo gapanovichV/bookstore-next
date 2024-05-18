@@ -20,6 +20,7 @@ module.exports = {
         "no-underscore-dangle": "off",
         "no-restricted-syntax": "off",
         "no-multi-assign": "off",
+        "prettier/prettier": "off",
         "promise/always-return": ["error", { ignoreLastCallback: true }]
       }
     }

@@ -1,0 +1,10 @@
+.header {
+  z-index: var(--header-z-index);
+  &__container {
+    padding-top: 28px !important;
+    padding-bottom: 28px !important;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+}

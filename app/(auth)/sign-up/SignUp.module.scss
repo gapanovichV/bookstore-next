@@ -1,0 +1,36 @@
+.auth {
+  min-height: 100vh;
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  &__left {
+    background-color: var(--color-style-primary-100);
+    position: relative;
+  }
+  &__text {
+    position: absolute;
+    bottom: 90px;
+    left: 50%;
+    transform: translate(-50%, -50%);
+
+    display: flex;
+    gap: 24px;
+    flex-direction: column;
+    &__main {
+      color: var(--color-style-primary-800);
+      font: var(--font-header-1);
+    }
+    &__descr {
+      color: var(--color-style-primary-600);
+      font: var(--font-bodytext-2);
+    }
+  }
+  &__right {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+  }
+  &__form {
+
+  }
+}

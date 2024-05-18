@@ -1,0 +1,20 @@
+.input {
+  color: var(--color-style-primary-700);
+  &::placeholder {
+    font: var(--font-line-bodytext-3);
+    color: var(--color-style-primary-300);
+  }
+  &__wrapper {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    padding: 16px 24px;
+    border: var(--border-line);
+    border-radius: var(--border-radius);
+  }
+
+  border: none;
+  &:focus {
+    outline: none;
+  }
+}

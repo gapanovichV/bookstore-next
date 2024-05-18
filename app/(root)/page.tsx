@@ -1,7 +1,7 @@
 import MainPage from "@/components/templates/MainPage/MainPage"
 
-const Home = () => {
+const HomePage = () => {
   return <MainPage />
 }
 
-export default Home
+export default HomePage

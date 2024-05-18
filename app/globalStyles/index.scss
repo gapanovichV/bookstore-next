@@ -1,5 +1,7 @@
 @import "reset";
 @import "variables/global";
+@import "themes/normal";
+@import "themes/dark";
 
 * {
   box-sizing: border-box;
@@ -7,10 +9,29 @@
 
 body {
   min-height: 100vh;
+  font: var(--font-subtitle-4)
+}
+
+body::-webkit-scrollbar-track {
+  background-color: transparent;
+}
+
+.btn-reset {
+  margin: 0;
+  padding: 0;
+  cursor: pointer;
+  background-color: transparent;
+  border: none;
+}
+
+.list-reset {
+  margin: 0;
+  padding: 0;
+  list-style-type: none;
 }
 
 .container {
-  max-width: 1535px;
   margin: 0 auto;
   padding: 0 15px;
 }
+

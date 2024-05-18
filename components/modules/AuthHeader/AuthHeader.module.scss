@@ -1,0 +1,12 @@
+.header {
+  position: absolute;
+  min-width: 100vw;
+  z-index: var(--header-z-index);
+  &__container {
+    padding-top: 30px !important;
+    padding-bottom: 30px !important;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+}
