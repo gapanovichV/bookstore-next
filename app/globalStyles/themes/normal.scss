@@ -1,0 +1,62 @@
+:root {
+  // Primary color
+  --color-style-primary-800: #1A1A1A;
+  --color-style-primary-700: #333333;
+  --color-style-primary-600: #4D4D4D;
+  --color-style-primary-500: #666666;
+  --color-style-primary-400: #999999;
+  --color-style-primary-300: #CCCCCC;
+  --color-style-primary-200: #E6E6E6;
+  --color-style-primary-100: #FAFAFA;
+
+  // Secondary color
+  --color-style-secondary-800: #254D5A;
+  --color-style-secondary-700: #346C7E;
+  --color-style-secondary-600: #438BA2;
+  --color-style-secondary-500: #5BA4BB;
+  --color-style-secondary-400: #81B9CB;
+  --color-style-secondary-300: #B0D3DE;
+  --color-style-secondary-200: #D4E7ED;
+  --color-style-secondary-100: #F8FBFC;
+
+  // Tersier color
+  --color-style-tersier-800: #9A5A0E;
+  --color-style-tersier-700: #C97513;
+  --color-style-tersier-600: #EB8F24;
+  --color-style-tersier-500: #EFA753;
+  --color-style-tersier-400: #F3BF81;
+  --color-style-tersier-300: #F7D7B0;
+  --color-style-tersier-200: #FCEFDF;
+  --color-style-tersier-100: #FEFAF6;
+
+  // Information color
+  --color-style-info-red-800: #8C0D0D;
+  --color-style-info-red-700: #BC1010;
+  --color-style-info-red-600: #EB1414;
+  --color-style-info-red-500: #EB1414;
+  --color-style-info-red-400: #EF4343;
+  --color-style-info-red-300: #F37272;
+  --color-style-info-red-200: #F7A1A1;
+  --color-style-info-red-100: #FDECEC;
+  --color-style-info-green-800: #106A23;
+  --color-style-info-green-700: #179632;
+  --color-style-info-green-600: #1EC341;
+  --color-style-info-green-500: #34E059;
+  --color-style-info-green-400: #60E67D;
+  --color-style-info-green-300: #8CEDA1;
+  --color-style-info-green-200: #B8F4C5;
+  --color-style-info-green-100: #E4FBE9;
+
+  // Shadow
+  --drop-shadow-hard: 0px 15px 40px 0px rgba(28, 26, 24, 0.25);
+  --drop-shadow-soft: 0px 10px 40px -5px rgba(51, 51, 51, 0.15);
+  --drop-shadow-soft-3: 15px 0px 40px 0px rgba(28, 26, 24, 0.25);
+  --inner-shadow: 0px 6px 10px 0px rgba(154, 90, 14, 0.20) inset;
+  --bg-blur: blur(5px);
+
+  // Background Color
+  @mixin --background-pop-up{
+    background: rgba(26, 26, 26, 0.60);
+    backdrop-filter: var(--bg-blur);
+  }
+}

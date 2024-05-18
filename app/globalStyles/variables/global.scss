@@ -1,10 +1,84 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Poppins:wght@400;600&display=swap');
 :root {
+  --font-family-main: 'Inter', serif;
+  --font-family-second: 'Poppins', serif;
+
+  // Header
+  --font-size-hero: 4.5rem;
+  --font-line-hero: 110%;
+  --font-weight-hero: 700;
+  --font-hero: var(--font-weight-hero) var(--font-size-hero) / var(--font-line-hero) var(--font-family-main);
+
+  --font-size-header-1: 4rem;
+  --font-line-header-1: 100%;
+  --font-weight-header-1: 700;
+  --font-header-1: var(--font-weight-header-1) var(--font-size-header-1) / var(--font-line-header-1) var(--font-family-main);
+
+  --font-size-header-2: 3rem;
+  --font-line-header-2: 110%;
+  --font-weight-header-2: 700;
+  --font-header-2: var(--font-weight-header-2) var(--font-size-header-2) / var(--font-line-header-2) var(--font-family-main);
+
+  --font-size-header-3: 2rem;
+  --font-line-header-3: 120%;
+  --font-weight-header-3: 700;
+  --font-header-3: var(--font-weight-header-3) var(--font-size-header-3) / var(--font-line-header-3) var(--font-family-main);
+
+  // Subtitle
+  --font-size-subtitle-1: 1.5rem;
+  --font-line-subtitle-1: 120%;
+  --font-weight-subtitle-1: 700;
+  --font-subtitle-1: var(--font-weight-subtitle-1) var(--font-size-subtitle-1) / var(--font-line-subtitle-1) var(--font-family-main);
+
+  --font-size-subtitle-2: 1.125rem;
+  --font-line-subtitle-2: 120%;
+  --font-weight-subtitle-2: 700;
+  --font-subtitle-2: var(--font-weight-subtitle-2) var(--font-size-subtitle-2) / var(--font-line-subtitle-2) var(--font-family-main);
+
+  --font-size-subtitle-3: 1rem;
+  --font-line-subtitle-3: 120%;
+  --font-weight-subtitle-3: 700;
+  --font-subtitle-3: var(--font-weight-subtitle-3) var(--font-size-subtitle-3) / var(--font-line-subtitle-3) var(--font-family-main);
+
+  --font-size-subtitle-4: 0.875rem;
+  --font-line-subtitle-4: 120%;
+  --font-weight-subtitle-4: 600;
+  --font-subtitle-4: var(--font-weight-subtitle-4) var(--font-size-subtitle-4) / var(--font-line-subtitle-4) var(--font-family-second);
+
+  // Bodytext
+  --font-size-bodytext-1: 1.5rem;
+  --font-line-bodytext-1: 150%;
+  --font-weight-bodytext-1: 400;
+  --font-bodytext-1: var(--font-weight-bodytext-1) var(--font-size-bodytext-1) / var(--font-line-bodytext-1) var(--font-family-second);
+
+  --font-size-bodytext-2: 1.125rem;
+  --font-line-bodytext-2: 150%;
+  --font-weight-bodytext-2: 400;
+  --font-bodytext-2: var(--font-weight-bodytext-2) var(--font-size-bodytext-2) / var(--font-line-bodytext-2) var(--font-family-second);
+
+  --font-size-bodytext-3: 1rem;
+  --font-line-bodytext-3: 120%;
+  --font-weight-bodytext-3: 400;
+  --font-bodytext-3: var(--font-weight-bodytext-3) var(--font-size-bodytext-3) / var(--font-line-bodytext-3) var(--font-family-second);
+
+  // Button
+  --font-size-button: 0.875rem;
+  --font-line-button: 120%;
+  --font-weight-button: 600;
+  --font-button: var(--font-weight-button) var(--font-size-button) / var(--font-line-button) var(--font-family-main);
+
+
+  // Z-index
+  --header-z-index: 3;
+  --modal-z-index: 10;
+
   // Радиус
-  --border-radius: 0.725rem;
+  --border-radius: 4px;
+
 
   // Border-line
-  --border-line: 2px solid black;
+  --border-line: 2px solid var(--color-style-primary-200);
 
-  // z-index
-  --header-z-index: 3;
+  //Цвета
+  --overlay-color: rgba(0 0 0 / 80%)
 }
