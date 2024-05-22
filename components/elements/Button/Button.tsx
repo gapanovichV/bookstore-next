@@ -13,7 +13,7 @@ interface ButtonProps extends React.ComponentProps<"button"> {
 
 export const Button = React.forwardRef(
   (
-    { loading, children, variant = "line", className, ...props }: ButtonProps,
+    { loading, children, variant = "fill", className, ...props }: ButtonProps,
     ref: React.ForwardedRef<HTMLButtonElement>
   ) => {
     return (
