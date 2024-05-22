@@ -1,0 +1,17 @@
+.form {
+  display: flex;
+  flex-direction: column;
+  width: 410px;
+  gap: 24px;
+}
+
+.text {
+  width: 100%;
+  font: var(--font-bodytext-3);
+  span {
+    font: var(--font-subtitle-3);
+  }
+}
+.center {
+  text-align: center;
+}

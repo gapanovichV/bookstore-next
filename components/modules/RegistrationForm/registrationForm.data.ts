@@ -1,6 +1,6 @@
-import type { FormSchema } from "@/components/modules/RegistrationForm/RegistrationForm"
+import type { FormRegistrationSchema } from "@/components/modules/RegistrationForm/RegistrationForm"
 
-export const registrationDefaultValue: FormSchema = {
+export const registrationDefaultValue: FormRegistrationSchema = {
   lastName: "",
   firstName: "",
   email: "",
