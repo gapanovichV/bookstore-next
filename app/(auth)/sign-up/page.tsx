@@ -1,4 +1,4 @@
-import Input from "@/components/elements/FormField/Input"
+import RegistrationForm from "@/components/modules/RegistrationForm/RegistrationForm"
 import AuthPage from "@/components/templates/AuthPage/AuthPage"
 
 const SingUpPage = () => {
@@ -7,7 +7,7 @@ const SingUpPage = () => {
       pageName="Sing Up"
       pageNameDescription="Are you looking for a great gift for a friend, family member or yourself? Have a look on our website to find the perfect book for you!"
     >
-      <Input />
+      <RegistrationForm />
     </AuthPage>
   )
 }

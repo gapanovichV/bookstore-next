@@ -5,13 +5,15 @@ export interface UserParams extends Document {
   _id: string
   email: string
   password: string
-  fullName: string
+  lastName: string
+  firstName: string
 }
 
 const userSchema = new Schema<UserParams>({
   email: { type: String, unique: true, required: true },
   password: { type: String, required: true },
-  fullName: { type: String, required: true }
+  lastName: { type: String, required: true },
+  firstName: { type: String, required: true }
 })
 
 const User = models.User || model("User", userSchema)

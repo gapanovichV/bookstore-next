@@ -5,8 +5,7 @@ import AuthHeader from "@/components/modules/AuthHeader/AuthHeader"
 
 import styles from "./AuthPage.module.scss"
 
-interface AuthPageProps {
-  className?: string
+interface AuthPageProps extends React.HTMLProps<HTMLDivElement> {
   children: React.ReactNode
   pageName: string
   pageNameDescription: string
