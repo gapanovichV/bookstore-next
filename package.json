@@ -11,6 +11,7 @@
     "format": "prettier --write **/*.{ts,tsx,css,mdx,cjs}"
   },
   "dependencies": {
+    "@hookform/resolvers": "^3.4.2",
     "clsx": "^2.1.1",
     "mongoose": "^8.4.0",
     "next": "14.2.3",

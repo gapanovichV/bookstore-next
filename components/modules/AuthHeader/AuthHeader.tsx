@@ -1,19 +1,21 @@
+"use client"
+
 import clsx from "clsx"
-import Link from "next/link"
+import { useRouter } from "next/navigation"
 
 import Logo from "@/components/elements/Logo/Logo"
-import { RouteEnum } from "@/types/route.type"
 
 import styles from "./AuthHeader.module.scss"
 
 const AuthHeader = () => {
+  const router = useRouter()
   return (
     <header className={clsx(styles.header)}>
       <div className={clsx("container", styles.header__container)}>
-        <Logo />
-        <Link href={RouteEnum.MAIN}>
+        <Logo logoIsIcon={false} />
+        <button className={clsx("btn-reset")} onClick={() => router.back()}>
           <img src="/img/closeCircle.svg" alt="Cloce circle" />
-        </Link>
+        </button>
       </div>
     </header>
   )
