@@ -63,7 +63,7 @@ const LoginForm = () => {
         loading={form.formState.isSubmitting}
         type="submit"
       >
-        Login
+        Register
       </Button>
       <p className={clsx(styles.text, styles.center)}>or</p>
       <p className={clsx(styles.text, styles.center)}>Don’t have an account? <Link href={RouteEnum.SIGN_UP}><span>Sign Up here</span></Link></p>
