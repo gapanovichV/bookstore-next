@@ -12,11 +12,12 @@ type InputProps<
   image?: string
   alt?: string
   isPassword?: boolean
+  isDirty: boolean
 } & React.ComponentProps<Component>
 
 export const Input = React.forwardRef(
   (
-    { label, className, error, image, type, isPassword, id: externalId, alt, ...props }: InputProps,
+    { label, className, error, image, type, isPassword, id: externalId, isDirty, alt, ...props }: InputProps,
     ref: React.ForwardedRef<HTMLInputElement>
   ) => {
     const [hide, setHide] = useState<boolean>(false)
@@ -28,10 +29,14 @@ export const Input = React.forwardRef(
     }
     return (
       <div className={clsx(styles.container)}>
-        <div className={clsx(styles.input__wrapper, { [styles.error__wrapper]: !!error })}>
+        <div className={clsx(styles.input__wrapper, { [styles.error__wrapper]: !!error})}>
           <img className={clsx(styles.input__img)} src={`img/${image}`} alt={alt ?? id} />
           <input
-            className={clsx(styles.input, className, { [styles.error__input]: !!error, [styles.input__password]: isPassword})}
+            className={clsx(styles.input, className, {
+              [styles.error__input]: !!error,
+              [styles.input__password]: isPassword,
+              [styles.input__dirty]: isDirty
+            })}
             id={id}
             type={type === "password" && !hide ? "password" : "text"}
             autoComplete="off"
