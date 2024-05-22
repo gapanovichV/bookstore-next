@@ -1,10 +1,10 @@
 import clsx from "clsx"
+import Link from "next/link"
 
 import Logo from "@/components/elements/Logo/Logo"
+import { RouteEnum } from "@/types/route.type"
 
 import styles from "./AuthHeader.module.scss"
-import Link from "next/link"
-import { RouteEnum } from "@/types/route.type"
 
 const AuthHeader = () => {
   return (
