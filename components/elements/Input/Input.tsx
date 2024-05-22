@@ -44,7 +44,7 @@ export const Input = React.forwardRef(
             ref={ref}
           />
           {isPassword && (
-            <div className={clsx(styles.password)} onClick={toggle}>
+            <div className={clsx(styles.icon)} onClick={toggle}>
               {hide ? (
                 <img src={`img/HidePass.svg`} alt="Hide password" />
               ) : (
@@ -53,7 +53,7 @@ export const Input = React.forwardRef(
             </div>
           )}
           {error && !isPassword && (
-            <div className={clsx(styles.password)}>
+            <div className={clsx(styles.icon)}>
               <img src={`img/InfoCircle.svg`} alt="Info circle" />
             </div>
           )}
