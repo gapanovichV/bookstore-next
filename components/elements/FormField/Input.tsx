@@ -1,4 +1,4 @@
-import React, { useRef } from "react"
+import React from "react"
 import clsx from "clsx"
 
 import styles from "./FormField.module.scss"
@@ -16,23 +16,26 @@ type InputProps<
 
 const Input = React.forwardRef(
   (
-    { label, className, error, image, type, id: externalId, alt, ...props }: InputProps<"input">,
+    { label, className, error, image, type, id: externalId, alt, ...props }: InputProps,
     ref: React.ForwardedRef<HTMLInputElement>
   ) => {
     const internalId = React.useId()
     const id = externalId ?? internalId
 
     return (
-        <div  className={clsx(styles.input__wrapper, className)}>
+      <div className={clsx(styles.container)}>
+        <div className={clsx(styles.input__wrapper, { [styles.error__wrapper]: !!error })}>
           <img src={`img/${image}`} alt={alt} />
           <input
-            className={clsx(styles.input)}
+            className={clsx(styles.input, className)}
             id={id}
             type={type}
             {...props}
             ref={ref}
           />
         </div>
+        {error && <span className={clsx(styles.error__text)}>{error}</span>}
+      </div>
     )
   }
 ) as <Component extends keyof JSX.IntrinsicElements | React.JSXElementConstructor<any> = "input">(

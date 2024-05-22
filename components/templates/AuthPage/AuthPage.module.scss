@@ -7,6 +7,7 @@
     position: relative;
   }
   &__text {
+    width: 60%;
     position: absolute;
     bottom: 90px;
     left: 50%;
@@ -32,5 +33,38 @@
   }
   &__form {
 
+  }
+}
+
+.login {
+  header {
+    div {
+      a {
+        svg {
+          rect {
+            fill: white;
+          }
+          path {
+            fill: white;
+            &:nth-child(2) {
+              fill: black;
+            }
+          }
+        }
+      }
+    }
+  }
+  .auth {
+    &__left {
+      background-color: var(--color-style-primary-800);
+    }
+    &__text {
+      &__main {
+        color: var(--color-style-primary-100);
+      }
+      &__descr {
+        color: var(--color-style-primary-300);
+      }
+    }
   }
 }
