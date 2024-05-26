@@ -17,7 +17,18 @@ type InputProps<
 
 export const Input = React.forwardRef(
   (
-    { label, className, error, image, type, isPassword, id: externalId, isDirty, alt, ...props }: InputProps,
+    {
+      label,
+      className,
+      error,
+      image,
+      type,
+      isPassword,
+      id: externalId,
+      isDirty,
+      alt,
+      ...props
+    }: InputProps,
     ref: React.ForwardedRef<HTMLInputElement>
   ) => {
     const [hide, setHide] = useState<boolean>(false)
@@ -29,7 +40,7 @@ export const Input = React.forwardRef(
     }
     return (
       <div className={clsx(styles.container)}>
-        <div className={clsx(styles.input__wrapper, { [styles.error__wrapper]: !!error})}>
+        <div className={clsx(styles.input__wrapper, { [styles.error__wrapper]: !!error })}>
           <img className={clsx(styles.input__img)} src={`img/${image}`} alt={alt ?? id} />
           <input
             className={clsx(styles.input, className, {
