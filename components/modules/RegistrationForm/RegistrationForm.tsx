@@ -10,6 +10,8 @@ import type { z } from "zod"
 import { Button } from "@/components/elements/Button/Button"
 import { Input } from "@/components/elements/Input/Input"
 import { registrationDefaultValue } from "@/components/modules/RegistrationForm/registrationForm.data"
+import { registrationUser } from "@/lib/actions/user.actions"
+import { handleError } from "@/lib/utils"
 import { RouteEnum } from "@/types/route.type"
 import { userRegistrationFormScheme } from "@/types/z.type"
 
@@ -23,8 +25,13 @@ const RegistrationForm = () => {
     defaultValues: registrationDefaultValue
   })
 
-  const onSubmit: SubmitHandler<FormRegistrationSchema> = (data) => {
-    console.log(data)
+  const onSubmit: SubmitHandler<FormRegistrationSchema> = async (data) => {
+    try {
+      const registration = await registrationUser(data)
+      if (registration) form.reset()
+    } catch (error) {
+      handleError(error)
+    }
   }
 
   return (
@@ -86,7 +93,9 @@ const RegistrationForm = () => {
           />
         )}
       />
-      <p className={clsx(styles.text)}>By registering, I agree <span>Terms and Conditions</span> and <span>Privacy Policy</span></p>
+      <p className={clsx(styles.text)}>
+        By registering, I agree <span>Terms and Conditions</span> and <span>Privacy Policy</span>
+      </p>
       <Button
         disabled={!form.formState.isDirty && !form.formState.isValid}
         loading={form.formState.isSubmitting}
@@ -95,7 +104,12 @@ const RegistrationForm = () => {
         Register
       </Button>
       <p className={clsx(styles.text, styles.center)}>or</p>
-      <p className={clsx(styles.text, styles.center)}>Already have an account? <Link href={RouteEnum.SIGN_IN}><span>Login here</span></Link></p>
+      <p className={clsx(styles.text, styles.center)}>
+        Already have an account?{" "}
+        <Link href={RouteEnum.SIGN_IN}>
+          <span>Login here</span>
+        </Link>
+      </p>
     </form>
   )
 }
