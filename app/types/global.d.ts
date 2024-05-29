@@ -8,4 +8,4 @@ declare module "*.svg" {
   export default SVG
 }
 
-declare module 'bcrypt';
+declare module "bcrypt"

@@ -24,11 +24,15 @@ const RegistrationForm = () => {
     resolver: zodResolver(userRegistrationFormScheme),
     defaultValues: registrationDefaultValue
   })
-
   const onSubmit: SubmitHandler<FormRegistrationSchema> = async (data) => {
     try {
       const registration = await registrationUser(data)
-      if (registration) form.reset()
+      if (registration) {
+        form.reset()
+      }
+      if (registration) {
+        console.log(registration.error)
+      }
     } catch (error) {
       handleError(error)
     }

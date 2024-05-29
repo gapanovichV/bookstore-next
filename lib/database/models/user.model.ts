@@ -3,7 +3,7 @@ import { model, models, Schema } from "mongoose"
 
 export enum UserRole {
   ADMIN = "admin",
-  USER = "user",
+  USER = "user"
 }
 
 export interface UserParams extends Document {
@@ -15,15 +15,13 @@ export interface UserParams extends Document {
   role: UserRole
 }
 
-const userSchema = new Schema<UserParams>(
-  {
-    email: { type: String, unique: true, required: true },
-    password: { type: String, required: true },
-    lastName: { type: String, required: true },
-    firstName: { type: String, required: true },
-    role: { type: String, enum: UserRole, default: UserRole.USER },
-  }
-)
+const userSchema = new Schema<UserParams>({
+  email: { type: String, unique: true, required: true },
+  password: { type: String, required: true },
+  lastName: { type: String, required: true },
+  firstName: { type: String, required: true },
+  role: { type: String, enum: UserRole, default: UserRole.USER }
+})
 const User = models.User || model("User", userSchema)
 
 export default User
