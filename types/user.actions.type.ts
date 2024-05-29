@@ -2,7 +2,8 @@ import type { UserRole } from "@/lib/database/models/user.model"
 
 export interface StatusResponse {
   status: "success" | "error"
-  error?: string
+  errorMessage?: string
+  user?: string
 }
 
 export interface RegistrationUserParams {

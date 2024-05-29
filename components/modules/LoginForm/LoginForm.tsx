@@ -10,6 +10,8 @@ import type { z } from "zod"
 import { Button } from "@/components/elements/Button/Button"
 import { Input } from "@/components/elements/Input/Input"
 import { loginDefaultValue } from "@/components/modules/LoginForm/loginForm.data"
+import { loginUser } from "@/lib/actions/user.actions"
+import { handleError } from "@/lib/utils"
 import { RouteEnum } from "@/types/route.type"
 import { userLoginFormScheme } from "@/types/z.type"
 
@@ -17,14 +19,24 @@ import styles from "./LoginForm.module.scss"
 
 export type FormLoginSchema = z.infer<typeof userLoginFormScheme>
 
+const LOCAL_STORAGE: string = "user_token"
+
 const LoginForm = () => {
   const form = useForm<FormLoginSchema>({
     resolver: zodResolver(userLoginFormScheme),
     defaultValues: loginDefaultValue
   })
 
-  const onSubmit: SubmitHandler<FormLoginSchema> = (data) => {
-    console.log(data)
+  const onSubmit: SubmitHandler<FormLoginSchema> = async (data) => {
+    try {
+      const login = await loginUser(data)
+      
+      if (login.status === "success") {
+        localStorage.setItem(LOCAL_STORAGE, login.user as string)
+      }
+    } catch (error) {
+      handleError(error)
+    }
   }
 
   return (

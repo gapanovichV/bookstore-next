@@ -31,7 +31,7 @@ const RegistrationForm = () => {
         form.reset()
       }
       if (registration) {
-        console.log(registration.error)
+        console.log(registration.errorMessage)
       }
     } catch (error) {
       handleError(error)
