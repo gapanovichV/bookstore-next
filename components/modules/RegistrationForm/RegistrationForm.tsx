@@ -2,9 +2,11 @@
 
 import type { SubmitHandler } from "react-hook-form"
 import { Controller, useForm } from "react-hook-form"
+import toast from "react-hot-toast"
 import { zodResolver } from "@hookform/resolvers/zod"
 import clsx from "clsx"
 import Link from "next/link"
+import { useRouter } from "next/navigation"
 import type { z } from "zod"
 
 import { Button } from "@/components/elements/Button/Button"
@@ -16,23 +18,31 @@ import { RouteEnum } from "@/types/route.type"
 import { userRegistrationFormScheme } from "@/types/z.type"
 
 import styles from "./RegistrationForm.module.scss"
+import { LOCAL_STORAGE_KEY } from "@/constants"
+import { Status } from "@/types/response.type"
 
 export type FormRegistrationSchema = z.infer<typeof userRegistrationFormScheme>
 
 const RegistrationForm = () => {
+  const router = useRouter()
   const form = useForm<FormRegistrationSchema>({
     resolver: zodResolver(userRegistrationFormScheme),
     defaultValues: registrationDefaultValue
   })
   const onSubmit: SubmitHandler<FormRegistrationSchema> = async (data) => {
     try {
-      const registration = await registrationUser(data)
-      if (registration) {
-        form.reset()
+      const response = await registrationUser(data)
+
+      if (response.status === Status.SuccessOK) {
+        toast.success(response.message)
+        localStorage.setItem(LOCAL_STORAGE_KEY, JSON.stringify(response.user_token))
+        router.push(RouteEnum.MAIN)
       }
-      if (registration) {
-        console.log(registration.errorMessage)
+
+      if (response.status === Status.ClientErrorBadRequest) {
+        toast.error(response.message)
       }
+      form.reset()
     } catch (error) {
       handleError(error)
     }

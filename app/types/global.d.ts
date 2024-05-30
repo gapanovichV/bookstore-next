@@ -9,3 +9,4 @@ declare module "*.svg" {
 }
 
 declare module "bcrypt"
+declare module "jsonwebtoken"
