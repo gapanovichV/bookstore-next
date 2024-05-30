@@ -9,12 +9,13 @@ import Link from "next/link"
 import { useRouter } from "next/navigation"
 import type { z } from "zod"
 
+import api from "@/api/apiInstance"
 import { Button } from "@/components/elements/Button/Button"
 import { Input } from "@/components/elements/Input/Input"
 import { loginDefaultValue } from "@/components/modules/LoginForm/loginForm.data"
 import { LOCAL_STORAGE_KEY } from "@/constants"
-import { loginUser } from "@/lib/actions/user.actions"
-import { handleError } from "@/lib/utils"
+import { storeToken } from "@/lib/storeToken"
+import { handleError } from "@/lib/utils/error"
 import { Status } from "@/types/response.type"
 import { RouteEnum } from "@/types/route.type"
 import { userLoginFormScheme } from "@/types/z.type"
@@ -30,19 +31,17 @@ const LoginForm = () => {
     defaultValues: loginDefaultValue
   })
 
-  const onSubmit: SubmitHandler<FormLoginSchema> = async (data) => {
+  const onSubmit: SubmitHandler<FormLoginSchema> = async (value) => {
     try {
-      const response = await loginUser(data)
-
-      if (response.status === Status.SuccessOK) {
-        toast.success(response.message)
-        localStorage.setItem(LOCAL_STORAGE_KEY, JSON.stringify(response.user_token))
-
+      const { data } = await api.post("/api/users/login", value)
+      if (data.status === Status.Success) {
+        toast.success(data.message)
+        await storeToken(data.user_token)
+        localStorage.setItem(LOCAL_STORAGE_KEY, JSON.stringify(data.user_token))
         router.push(RouteEnum.MAIN)
       }
-
-      if (response.status === Status.ClientErrorBadRequest) {
-        toast.error(response.message)
+      if (data.status === Status.Error) {
+        toast.error(data.message)
       }
     } catch (error) {
       handleError(error)
