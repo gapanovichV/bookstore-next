@@ -1,4 +1,5 @@
 export const handleError = (error: unknown) => {
+  if (error instanceof Error) return error.message
   console.error(error)
-  throw new Error(typeof error === "string" ? error : JSON.stringify(error))
+  return String(error)
 }
