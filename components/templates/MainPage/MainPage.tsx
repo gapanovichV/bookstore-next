@@ -9,7 +9,7 @@ import { RouteEnum } from "@/types/route.type"
 
 const MainPage = () => {
   const router = useRouter()
-  const handleLogout  = useUserLogout()
+  const handleLogout = useUserLogout()
   const text = () => {
     toast.error("Error")
   }

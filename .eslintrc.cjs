@@ -21,6 +21,7 @@ module.exports = {
         "no-restricted-syntax": "off",
         "no-multi-assign": "off",
         "prettier/prettier": "off",
+        "@typescript-eslint/require-await": "off",
         "promise/always-return": ["error", { ignoreLastCallback: true }]
       }
     }

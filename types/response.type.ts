@@ -8,7 +8,6 @@ export interface StatusResponse {
 }
 
 export enum Status {
-  SuccessOK = 200,
-  ClientErrorUnauthorized = 401,
-  ClientErrorBadRequest = 400
+  Success = "success",
+  Error = "error"
 }
