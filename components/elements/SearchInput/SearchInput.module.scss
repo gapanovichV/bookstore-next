@@ -1,0 +1,29 @@
+.input__wrapper {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  position: relative;
+}
+
+.input {
+  width: 100%;
+  padding: 13px calc(20px + 16px * 2) 13px 16px;
+  font: var(--font-bodytext-3);
+  color: var(--color-style-primary-700);
+  border: var(--border-line);
+  border-radius: var(--border-radius);
+  background: none;
+  &::placeholder {
+    color: var(--color-style-primary-300);
+  }
+  &:focus {
+    outline: none;
+  }
+}
+
+.icon {
+  cursor: pointer;
+  position: absolute;
+  padding: 0 16px;
+  right: 0;
+}
