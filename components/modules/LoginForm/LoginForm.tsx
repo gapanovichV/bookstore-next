@@ -21,6 +21,7 @@ import { RouteEnum } from "@/types/route.type"
 import { userLoginFormScheme } from "@/types/z.type"
 
 import styles from "./LoginForm.module.scss"
+import { useSubmitHandler } from "@/hooks/useSubmitHandler"
 
 export type FormLoginSchema = z.infer<typeof userLoginFormScheme>
 
@@ -32,20 +33,7 @@ const LoginForm = () => {
   })
 
   const onSubmit: SubmitHandler<FormLoginSchema> = async (value) => {
-    try {
-      const { data } = await api.post("/api/users/login", value)
-      if (data.status === Status.Success) {
-        toast.success(data.message)
-        await storeToken(data.user_token)
-        localStorage.setItem(LOCAL_STORAGE_KEY, JSON.stringify(data.user_token))
-        router.push(RouteEnum.MAIN)
-      }
-      if (data.status === Status.Error) {
-        toast.error(data.message)
-      }
-    } catch (error) {
-      handleError(error)
-    }
+    await useSubmitHandler({ path: "/api/users/login", value })
   }
 
   return (

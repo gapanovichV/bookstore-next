@@ -5,7 +5,6 @@
   cursor: pointer;
   border-radius: var(--border-radius);
   padding: 12px 0;
-
   &:disabled {
     cursor: auto;
   }
@@ -53,4 +52,21 @@
   &:disabled:not(.loading) {
     box-shadow: none;
   }
+}
+
+
+.small {
+  width: 137px;
+}
+
+.medium {
+  width: 202px;
+}
+
+.large {
+  width: 302px;
+}
+
+.none {
+  width: 0;
 }
