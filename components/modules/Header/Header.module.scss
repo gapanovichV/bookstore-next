@@ -1,9 +1,10 @@
 .header {
-  background-color: var(--color-style-primary-100);
+  background: var(--color-style-primary-100);
+  border-bottom: var(--border-line);
   z-index: var(--header-z-index);
   &__container {
-    padding-top: 28px !important;
-    padding-bottom: 28px !important;
+    padding-top: 20px !important;
+    padding-bottom: 20px !important;
     display: flex;
     justify-content: space-between;
     align-items: center;
