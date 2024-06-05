@@ -1,4 +1,5 @@
 .header {
+  background-color: var(--color-style-primary-100);
   z-index: var(--header-z-index);
   &__container {
     padding-top: 28px !important;
@@ -7,8 +8,10 @@
     justify-content: space-between;
     align-items: center;
   }
-  &__btn {
+  &__logined {
     display: flex;
+    align-items: center;
+    gap: 32px;
   }
 }
 

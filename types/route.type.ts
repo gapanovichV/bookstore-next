@@ -3,5 +3,6 @@ export enum RouteEnum {
   PROFILE = "/profile",
   SIGN_IN = "/sign-in",
   SIGN_UP = "/sign-up",
-  CATALOG = "/catalog"
+  CATALOG = "/catalog",
+  CART = "/cart"
 }
