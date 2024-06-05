@@ -14,6 +14,7 @@ import { Button } from "@/components/elements/Button/Button"
 import { Input } from "@/components/elements/Input/Input"
 import { loginDefaultValue } from "@/components/modules/LoginForm/loginForm.data"
 import { LOCAL_STORAGE_KEY } from "@/constants"
+import { useSubmitHandler } from "@/hooks/useSubmitHandler"
 import { storeToken } from "@/lib/storeToken"
 import { handleError } from "@/lib/utils/error"
 import { Status } from "@/types/response.type"
@@ -21,7 +22,6 @@ import { RouteEnum } from "@/types/route.type"
 import { userLoginFormScheme } from "@/types/z.type"
 
 import styles from "./LoginForm.module.scss"
-import { useSubmitHandler } from "@/hooks/useSubmitHandler"
 
 export type FormLoginSchema = z.infer<typeof userLoginFormScheme>
 
