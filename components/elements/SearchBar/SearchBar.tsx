@@ -3,11 +3,14 @@
 import { useEffect, useState } from "react"
 import clsx from "clsx"
 
-import { SearchInput } from "@/components/elements/SearchInput/SearchInput"
+import { Input } from "@/components/elements/Input/Input"
 
-import styles from "./SearchResults.module.scss"
+import styles from "./SearchBar.module.scss"
 
-export const SearchResults = () => {
+interface SearchBarProps {
+  className?: string
+}
+export const SearchBar = ({ className }: SearchBarProps) => {
   const [searchText, setSearchText] = useState<string>("")
   const [results, setResults] = useState([])
   const [showResults, setShowResults] = useState<boolean>(false)
@@ -20,8 +23,15 @@ export const SearchResults = () => {
   }, [results])
 
   return (
-    <div className={clsx(styles.results__container)}>
-      <SearchInput value={searchText} setSearchText={setSearchText} />
+    <div className={clsx(styles.results__container, className)}>
+      <Input
+        image={{ right: "Search.svg" }}
+        type="text"
+        autoComplete="off"
+        placeholder="What book are you looking for?"
+        value={searchText}
+        setValue={setSearchText}
+      />
       {showResults && (
         <div className={clsx(styles.dropdown)}>
           <div className={clsx(styles.dropdown__line)}></div>

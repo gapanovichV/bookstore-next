@@ -6,7 +6,7 @@ import Link from "next/link"
 import { usePathname, useRouter } from "next/navigation"
 
 import { Button } from "@/components/elements/Button/Button"
-import { SearchResults } from "@/components/elements/SearchResults/SearchResults"
+import { SearchBar } from "@/components/elements/SearchBar/SearchBar"
 import { RouteEnum } from "@/types/route.type"
 
 import styles from "./Header.module.scss"
@@ -20,17 +20,33 @@ const Header = () => {
     <header className={clsx(styles.header)}>
       <div className={clsx("container", styles.header__container)}>
         <Link href={RouteEnum.MAIN}>
-          <img src="/img/Logo.svg" alt="Logo" />
+          <img className={clsx(styles.header__logo)} src="/img/Logo.svg" alt="Logo" />
+          <img
+            className={clsx(styles.header__logo__small)}
+            src="/img/LogoIcon.svg"
+            alt="Small Logo"
+          />
         </Link>
-        <SearchResults />
+        <SearchBar className={clsx(styles.header__search)} />
         {pathName === RouteEnum.CATALOG || (
-          <Button size="small" variant="ghost" onClick={() => router.push(RouteEnum.CATALOG)}>
+          <Button
+            className={clsx(styles.header__btn)}
+            type="button"
+            size="small"
+            variant="ghost"
+            onClick={() => router.push(RouteEnum.CATALOG)}
+          >
             Discover
           </Button>
         )}
         {!isLogin ? (
           <>
-            <Button size="medium" variant="fill" onClick={() => router.push(RouteEnum.SIGN_IN)}>
+            <Button
+              type="button"
+              size="medium"
+              variant="fill"
+              onClick={() => router.push(RouteEnum.SIGN_IN)}
+            >
               Login
             </Button>
           </>

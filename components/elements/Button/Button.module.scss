@@ -1,8 +1,8 @@
 .button {
+  display: inline-block !important;
   width: 100%;
   font: var(--font-button);
   text-transform: uppercase;
-  cursor: pointer;
   border-radius: var(--border-radius);
   padding: 12px 0;
   &:disabled {
