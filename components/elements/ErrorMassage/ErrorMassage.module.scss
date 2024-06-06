@@ -1,0 +1,14 @@
+.error {
+  &__wrapper {
+    color: var(--color-style-info-red-400);
+  }
+  &__input {
+    padding-right: calc(var(--input-img-width) + var(--input-img-padding) * 2);
+    border-color: var(--color-style-info-red-400);
+  }
+  &__text {
+    font: var(--font-bodytext-3);
+    color: var(--color-style-info-red-400);
+    margin-top: 8px;
+  }
+}

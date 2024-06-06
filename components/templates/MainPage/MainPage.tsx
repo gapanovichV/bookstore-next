@@ -6,6 +6,7 @@ import { useRouter } from "next/navigation"
 
 import { useUserLogout } from "@/hooks/useUserLogout"
 import { RouteEnum } from "@/types/route.type"
+import { TextBox } from "@/components/elements/TextBox/TextBox"
 
 const MainPage = () => {
   const router = useRouter()

@@ -9,10 +9,15 @@ type InputProps<
   label?: string
   error?: string
   type?: string | number
-  image?: string
+  image?: {
+    right?: string
+    left?: string
+  }
   alt?: string
   isPassword?: boolean
-  isDirty: boolean
+  isDirty?: boolean
+  value?: string
+  setValue?: (value: string) => void
 } & React.ComponentProps<Component>
 
 export const Input = React.forwardRef(
@@ -27,6 +32,8 @@ export const Input = React.forwardRef(
       id: externalId,
       isDirty,
       alt,
+      value,
+      setValue,
       ...props
     }: InputProps,
     ref: React.ForwardedRef<HTMLInputElement>
@@ -38,38 +45,47 @@ export const Input = React.forwardRef(
     const toggle = () => {
       setHide((prev) => !prev)
     }
+
     return (
-      <div className={clsx(styles.container)}>
-        <div className={clsx(styles.input__wrapper, { [styles.error__wrapper]: !!error })}>
-          <img className={clsx(styles.input__img)} src={`img/${image}`} alt={alt ?? id} />
-          <input
-            className={clsx(styles.input, className, {
-              [styles.error__input]: !!error,
-              [styles.input__password]: isPassword,
-              [styles.input__dirty]: isDirty
-            })}
-            id={id}
-            type={type === "password" && !hide ? "password" : "text"}
-            autoComplete="off"
-            {...props}
-            ref={ref}
-          />
-          {isPassword && (
-            <div className={clsx(styles.icon)} onClick={toggle}>
-              {hide ? (
-                <img src={`img/HidePass.svg`} alt="Hide password" />
-              ) : (
-                <img src={`img/ShowPass.svg`} alt="Show password" />
-              )}
-            </div>
-          )}
-          {error && !isPassword && (
-            <div className={clsx(styles.icon)}>
-              <img src={`img/InfoCircle.svg`} alt="Info circle" />
-            </div>
-          )}
-        </div>
-        {error && <span className={clsx(styles.error__text)}>{error}</span>}
+      <div className={clsx(styles.input__wrapper, { [styles.error__wrapper]: !!error })}>
+        {image?.left && (
+          <img className={clsx(styles.input__img)} src={`img/${image?.left}`} alt={alt ?? id} />
+        )}
+        <input
+          className={clsx(styles.input, className, {
+            [styles.error__input]: !!error,
+            [styles.input__password]: isPassword,
+            [styles.input__icon_right]: !!image?.right,
+            [styles.input__icon_left]: !image?.left,
+            [styles.input__dirty]: isDirty
+          })}
+          id={id}
+          value={value}
+          onChange={(e) => setValue && setValue(e.target.value)}
+          type={type === "password" && !hide ? "password" : "text"}
+          autoComplete="off"
+          {...props}
+          ref={ref}
+        />
+        {isPassword && (
+          <div className={clsx(styles.icon)} onClick={toggle}>
+            {hide ? (
+              <img src={`img/HidePass.svg`} alt="Hide password" />
+            ) : (
+              <img src={`img/ShowPass.svg`} alt="Show password" />
+            )}
+          </div>
+        )}
+        {error && !isPassword && (
+          <div className={clsx(styles.icon)}>
+            <img src={`img/InfoCircle.svg`} alt="Info circle" />
+          </div>
+        )}
+        {image?.right && (
+          <div className={clsx(styles.icon)}>
+            <img src={`img/${image?.right}`} alt="Info circle" />
+          </div>
+        )}
       </div>
     )
   }

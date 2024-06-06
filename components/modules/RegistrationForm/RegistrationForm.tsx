@@ -11,6 +11,7 @@ import type { z } from "zod"
 
 import api from "@/api/apiInstance"
 import { Button } from "@/components/elements/Button/Button"
+import { ErrorMassage } from "@/components/elements/ErrorMassage/ErrorMassage"
 import { Input } from "@/components/elements/Input/Input"
 import { registrationDefaultValue } from "@/components/modules/RegistrationForm/registrationForm.data"
 import { LOCAL_STORAGE_KEY } from "@/constants"
@@ -54,57 +55,69 @@ const RegistrationForm = () => {
         name="lastName"
         control={form.control}
         render={({ field, fieldState }) => (
-          <Input
-            {...field}
-            isDirty={fieldState.isDirty}
-            image="Profile.svg"
-            placeholder="Last Name"
-            type="text"
-            {...(fieldState.error && { error: fieldState.error.message })}
-          />
+          <div>
+            <Input
+              {...field}
+              isDirty={fieldState.isDirty}
+              image={{ left: "Profile.svg" }}
+              placeholder="Last Name"
+              type="text"
+              {...(fieldState.error && { error: fieldState.error.message })}
+            />
+            <ErrorMassage {...(fieldState.error && { error: fieldState.error.message })} />
+          </div>
         )}
       />
       <Controller
         name="firstName"
         control={form.control}
         render={({ field, fieldState }) => (
-          <Input
-            {...field}
-            isDirty={fieldState.isDirty}
-            image="Profile.svg"
-            placeholder="First Name"
-            type="text"
-            {...(fieldState.error && { error: fieldState.error.message })}
-          />
+          <div>
+            <Input
+              {...field}
+              isDirty={fieldState.isDirty}
+              image={{ left: "Profile.svg" }}
+              placeholder="First Name"
+              type="text"
+              {...(fieldState.error && { error: fieldState.error.message })}
+            />
+            <ErrorMassage {...(fieldState.error && { error: fieldState.error.message })} />
+          </div>
         )}
       />
       <Controller
         name="email"
         control={form.control}
         render={({ field, fieldState }) => (
-          <Input
-            {...field}
-            isDirty={fieldState.isDirty}
-            image="Email.svg"
-            placeholder="Email"
-            type="email"
-            {...(fieldState.error && { error: fieldState.error.message })}
-          />
+          <div>
+            <Input
+              {...field}
+              isDirty={fieldState.isDirty}
+              image={{ left: "Email.svg" }}
+              placeholder="Email"
+              type="email"
+              {...(fieldState.error && { error: fieldState.error.message })}
+            />
+            <ErrorMassage {...(fieldState.error && { error: fieldState.error.message })} />
+          </div>
         )}
       />
       <Controller
         name="password"
         control={form.control}
         render={({ field, fieldState }) => (
-          <Input
-            {...field}
-            isDirty={fieldState.isDirty}
-            image="Password.svg"
-            placeholder="Password"
-            type="password"
-            isPassword={true}
-            {...(fieldState.error && { error: fieldState.error.message })}
-          />
+          <div>
+            <Input
+              {...field}
+              isDirty={fieldState.isDirty}
+              image={{ left: "Password.svg" }}
+              placeholder="Password"
+              type="password"
+              isPassword={true}
+              {...(fieldState.error && { error: fieldState.error.message })}
+            />
+            <ErrorMassage {...(fieldState.error && { error: fieldState.error.message })} />
+          </div>
         )}
       />
       <p className={clsx(styles.text)}>

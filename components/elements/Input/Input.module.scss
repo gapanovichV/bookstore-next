@@ -1,11 +1,3 @@
-$imgWidth: 20px;
-$imgPadding: 16px;
-
-.container {
-  display: flex;
-  flex-direction: column;
-}
-
 .input__wrapper {
   display: flex;
   align-items: center;
@@ -14,8 +6,7 @@ $imgPadding: 16px;
 
 .input {
   width: 100%;
-  height: 56px;
-  padding: 0 16px 0 calc($imgWidth + $imgPadding * 2);
+  padding: 13px 16px 13px calc(var(--input-img-width) + var(--input-img-padding) * 2);
   border: none;
   font: var(--font-bodytext-3);
   color: var(--color-style-primary-700);
@@ -34,20 +25,26 @@ $imgPadding: 16px;
   }
   &__img {
     position: absolute;
-    padding: 0 $imgPadding;
+    padding: 0 var(--input-img-padding);
   }
   &__password {
-    padding-right: calc($imgWidth + $imgPadding * 2)
+    padding-right: calc(var(--input-img-width) + var(--input-img-padding) * 2);
   }
   &__dirty {
     border-color: var(--color-style-primary-700);
+  }
+  &__icon_left {
+    padding-left: 16px;
+  }
+  &__icon_right {
+    padding-right: calc(var(--input-img-width) + var(--input-img-padding) * 2);
   }
 }
 
 .icon {
   cursor: pointer;
   position: absolute;
-  padding: 0 $imgPadding;
+  padding: 0 var(--input-img-padding);
   right: 0;
 }
 
@@ -57,7 +54,7 @@ $imgPadding: 16px;
     color: var(--color-style-info-red-400);
   }
   &__input {
-    padding-right: calc($imgWidth + $imgPadding * 2);
+    padding-right: calc(var(--input-img-width) + var(--input-img-padding) * 2);
     border-color: var(--color-style-info-red-400);
   }
   &__text {
