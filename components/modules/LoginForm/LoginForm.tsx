@@ -68,6 +68,7 @@ const LoginForm = () => {
         )}
       />
       <Button
+        size="max"
         disabled={!form.formState.isDirty && !form.formState.isValid}
         loading={form.formState.isSubmitting}
         type="submit"

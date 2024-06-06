@@ -7,7 +7,10 @@ import { SearchInput } from "@/components/elements/SearchInput/SearchInput"
 
 import styles from "./SearchResults.module.scss"
 
-export const SearchResults = () => {
+interface SearchResultsProps {
+  className?: string
+}
+export const SearchResults = ({className}: SearchResultsProps) => {
   const [searchText, setSearchText] = useState<string>("")
   const [results, setResults] = useState([])
   const [showResults, setShowResults] = useState<boolean>(false)
@@ -20,7 +23,7 @@ export const SearchResults = () => {
   }, [results])
 
   return (
-    <div className={clsx(styles.results__container)}>
+    <div className={clsx(styles.results__container, className)}>
       <SearchInput value={searchText} setSearchText={setSearchText} />
       {showResults && (
         <div className={clsx(styles.dropdown)}>

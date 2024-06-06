@@ -111,6 +111,7 @@ const RegistrationForm = () => {
         By registering, I agree <span>Terms and Conditions</span> and <span>Privacy Policy</span>
       </p>
       <Button
+        size="max"
         disabled={!form.formState.isDirty && !form.formState.isValid}
         loading={form.formState.isSubmitting}
         type="submit"

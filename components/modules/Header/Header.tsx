@@ -20,11 +20,12 @@ const Header = () => {
     <header className={clsx(styles.header)}>
       <div className={clsx("container", styles.header__container)}>
         <Link href={RouteEnum.MAIN}>
-          <img src="/img/Logo.svg" alt="Logo" />
+          <img className={clsx(styles.header__logo)} src="/img/Logo.svg" alt="Logo" />
+          <img className={clsx(styles.header__logo__small)} src="/img/LogoIcon.svg" alt="Small Logo" />
         </Link>
-        <SearchResults />
+        <SearchResults className={clsx(styles.header__search)} />
         {pathName === RouteEnum.CATALOG || (
-          <Button size="small" variant="ghost" onClick={() => router.push(RouteEnum.CATALOG)}>
+          <Button className={clsx(styles.header__btn)} size="small" variant="ghost" onClick={() => router.push(RouteEnum.CATALOG)}>
             Discover
           </Button>
         )}
