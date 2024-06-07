@@ -38,3 +38,9 @@ p {
 }
 
 
+.test {
+  margin-top: 1.5rem;
+  display: grid;
+  grid-template-columns: repeat(7, 1fr);
+  gap: 2.5rem 1.5rem;
+}

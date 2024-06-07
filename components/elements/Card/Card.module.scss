@@ -1,0 +1,131 @@
+.card {
+  display: flex;
+  flex-direction: column;
+  cursor: pointer;
+  width: 260px;
+  z-index: 1;
+  &__img {
+    background-color: var(--color-style-primary-100);
+    padding: 9px 25px;
+    img {
+      width: 100%;
+    }
+  }
+  &__info {
+    &__title {
+      color: var(--color-style-primary-700);
+      font: var(--font-subtitle-1);
+      width: 100%;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      white-space: normal;
+    }
+    &__line {
+      margin: 8px 0;
+      height: 2px;
+      align-self: stretch;
+      background: var(--color-style-primary-200);
+    }
+    &__book {
+      &_top {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        font: var(--font-subtitle-4);
+        color: var(--color-style-primary-400);
+      }
+      &_down {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        font: var(--font-subtitle-2);
+        color: var(--color-style-primary-700);
+        margin-top: 8px;
+      }
+      &_author {
+        overflow: hidden;
+        text-overflow: ellipsis;
+        white-space: nowrap;
+      }
+      &_price {
+        display: flex;
+        gap: 8px;
+        &_discont {
+          text-decoration: line-through;
+          color: var(--color-style-info-red-400);
+        }
+      }
+    }
+  }
+}
+
+.medium,
+.small,
+.large {
+  &:hover {
+    transform: scale(1.15);
+    padding: 18px;
+    z-index: var(--card-z-index);
+    box-shadow: var(--drop-shadow-hard);
+    border-radius: 8px;
+    background-color: white;
+  }
+}
+
+.large {
+  width: 322px;
+}
+
+.small {
+  width: 150px;
+  .card {
+    &__img {
+      padding: 7px 17px;
+    }
+    &__info {
+      &__title {
+        font: var(--font-subtitle-4);
+        text-align: center;
+      }
+      &__line {
+        display: none;
+      }
+      &__book {
+        display: none;
+      }
+    }
+  }
+  &:hover {
+    padding: 8px;
+    box-shadow: var(--drop-shadow-soft);
+  }
+}
+.mobile {
+  width: 160px;
+  .card {
+    &__img {
+      padding: 6px 20px 5.12px;
+    }
+    &__info {
+      &__title {
+        font: var(--font-subtitle-3);
+      }
+      &__book {
+        &_top {
+          display: none;
+        }
+        &_down {
+          display: block;
+          font: var(--font-subtitle-4);
+        }
+        &_price {
+          span {
+            order: 2;
+          }
+        }
+      }
+    }
+  }
+}
+
+
