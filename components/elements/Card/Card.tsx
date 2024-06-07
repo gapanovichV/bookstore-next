@@ -1,15 +1,15 @@
 import clsx from "clsx"
 
-import styles from  "./Card.module.scss"
+import styles from "./Card.module.scss"
 
-type CardSize = 'small' | 'medium' | 'large' | 'mobile'
+type CardSize = "small" | "medium" | "large" | "mobile"
 
 interface CardProps {
-  className?: string;
-  size?: CardSize
+  className?: string
+  size: CardSize
 }
 
-export const Card = ({className, size = 'mobile'}: CardProps) => {
+export const Card = ({ className, size }: CardProps) => {
   return (
     <div className={clsx(styles.card, styles[size], className)}>
       <div className={clsx(styles.card__img)}>
@@ -31,7 +31,6 @@ export const Card = ({className, size = 'mobile'}: CardProps) => {
           </div>
         </div>
       </div>
-
     </div>
   )
 }

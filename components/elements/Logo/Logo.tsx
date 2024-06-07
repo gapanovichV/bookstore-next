@@ -9,7 +9,7 @@ interface LogoProps {
   logoIsIcon: boolean
 }
 
-const Logo = ({ logoIsIcon }: LogoProps) => (
+export const Logo = ({ logoIsIcon }: LogoProps) => (
   <Link className={clsx(styles.logo)} href={RouteEnum.MAIN}>
     {logoIsIcon ? (
       <svg
@@ -78,5 +78,3 @@ const Logo = ({ logoIsIcon }: LogoProps) => (
     )}
   </Link>
 )
-
-export default Logo
