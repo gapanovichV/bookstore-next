@@ -1,0 +1,23 @@
+.tag {
+  padding: 4px 8px;
+  color: var(--color-style-primary-100);
+  background: var(--color-style-primary-800);
+  border-radius: var(--border-tag-radius);
+}
+
+.red {
+  background: var(--color-style-info-red-400);
+}
+
+.green {
+  background: var(--color-style-info-green-600);
+}
+
+.yellow {
+  background: var(--color-style-tersier-600);
+}
+
+.status {
+  color: var(--color-style-primary-800);
+  background: var(--color-style-primary-200);
+}

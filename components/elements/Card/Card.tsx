@@ -9,7 +9,7 @@ interface CardProps {
   size: CardSize
 }
 
-export const Card = ({ className, size}: CardProps) => {
+export const Card = ({ className, size }: CardProps) => {
   return (
     <div className={clsx(styles.card, styles[size], className)}>
       <div className={clsx(styles.card__img)}>
