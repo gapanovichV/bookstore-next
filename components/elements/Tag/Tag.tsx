@@ -15,7 +15,7 @@ interface TagProps {
 export const Tag = ({ children, status, color = "default", className }: TagProps) => {
   return (
     <div className={clsx(styles.tag,  styles[color], { [styles.status]: !status },  className)}>
-      {children}
+      {children.toUpperCase()}
     </div>
   )
 }

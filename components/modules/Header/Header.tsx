@@ -10,11 +10,12 @@ import { SearchBar } from "@/components/elements/SearchBar/SearchBar"
 import { RouteEnum } from "@/types/route.type"
 
 import styles from "./Header.module.scss"
+import { ProfilePic } from "@/components/elements/ProfilePic/ProfilePic"
 
 const Header = () => {
   const router = useRouter()
   const pathName = usePathname()
-  const [isLogin, setIsLogin] = useState(false)
+  const [isLogin, setIsLogin] = useState(true)
 
   return (
     <header className={clsx(styles.header)}>
@@ -57,7 +58,7 @@ const Header = () => {
               <img src="/img/Cart.svg" alt="Cart Icon" />
             </Link>
             <Link href={RouteEnum.PROFILE}>
-              <img src="/img/ProfileTEST.png" alt="Profile picture" />
+              <ProfilePic size='small' />
             </Link>
           </div>
         )}
