@@ -3,7 +3,7 @@
 import clsx from "clsx"
 import { useRouter } from "next/navigation"
 
-import Logo from "@/components/elements/Logo/Logo"
+import { Logo } from "@/components/elements/Logo/Logo"
 
 import styles from "./AuthHeader.module.scss"
 

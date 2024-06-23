@@ -6,6 +6,7 @@ import Link from "next/link"
 import { usePathname, useRouter } from "next/navigation"
 
 import { Button } from "@/components/elements/Button/Button"
+import { ProfilePicture } from "@/components/elements/ProfilePicture/ProfilePicture"
 import { SearchBar } from "@/components/elements/SearchBar/SearchBar"
 import { RouteEnum } from "@/types/route.type"
 
@@ -14,7 +15,7 @@ import styles from "./Header.module.scss"
 const Header = () => {
   const router = useRouter()
   const pathName = usePathname()
-  const [isLogin, setIsLogin] = useState(false)
+  const [isLogin, setIsLogin] = useState(true)
 
   return (
     <header className={clsx(styles.header)}>
@@ -57,7 +58,7 @@ const Header = () => {
               <img src="/img/Cart.svg" alt="Cart Icon" />
             </Link>
             <Link href={RouteEnum.PROFILE}>
-              <img src="/img/ProfileTEST.png" alt="Profile picture" />
+              <ProfilePicture size="small" />
             </Link>
           </div>
         )}
