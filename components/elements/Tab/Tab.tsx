@@ -1,34 +1,29 @@
-import React from "react"
+import React, { type Dispatch, type SetStateAction } from "react"
 import clsx from "clsx"
 
 import styles from "./Tab.module.scss"
 
 type TabPosition = "horizontal" | "vertical"
 
-interface TabText {
-  id: string | number
-  label?: string
-}
 interface TabProps {
   className?: string
   position: TabPosition
-  tabs: TabText[]
-  onClick: (e: React.MouseEvent, id: string | number) => void
-  selectedTabId: string | number
-
+  tabs: { label: string }[]
+  currentItem: { label: string }
+  changeItem: Dispatch<SetStateAction<number>>
 }
-export const Tab = ({ position, className, tabs, selectedTabId, onClick }: TabProps) => {
+export const Tab = ({ position, className, tabs, currentItem, changeItem }: TabProps) => {
   return (
-    <div
-      className={clsx(styles.tab, styles[position], className)}
-    >
-      {
-        tabs && tabs.map((elem: TabText) => (
-          <div key={elem.id} onClick={(e) => onClick(e, elem.id)}>
-            <div>{elem.label}</div>
-          </div>
-        ))
-      }
+    <div className={clsx(styles.tab, styles[position], className)}>
+      {tabs.map((tab, index) => (
+        <div
+          key={index}
+          className={clsx(styles.tab__label, { [styles.active]: currentItem.label === tab.label })}
+          onClick={() => changeItem(index)}
+        >
+          {tab.label}
+        </div>
+      ))}
     </div>
   )
 }

@@ -1,6 +1,6 @@
 "use client"
 
-import { useState } from "react"
+import React, { useState } from "react"
 import toast from "react-hot-toast"
 import clsx from "clsx"
 import { useRouter } from "next/navigation"
@@ -9,6 +9,7 @@ import { Card } from "@/components/elements/Card/Card"
 import { PurchaseCard } from "@/components/elements/PurchaseCard/PurchaseCard"
 import { Tab } from "@/components/elements/Tab/Tab"
 import { Tag } from "@/components/elements/Tag/Tag"
+import { useTab } from "@/hooks/useTab"
 import { useUserLogout } from "@/hooks/useUserLogout"
 import { RouteEnum } from "@/types/route.type"
 
@@ -16,18 +17,8 @@ const MainPage = () => {
   const router = useRouter()
   const handleLogout = useUserLogout()
 
-
-  const tabs = [
-    { id: 1, label: "All Books" },
-    { id: 2, label: "What’s new" },
-    { id: 3, label: "Popular" }
-  ]
-  const [selectedTabId, setSelectedTabId] = useState<string | number>(tabs[0].id)
-
-  const handleTabClick = (e: React.MouseEvent, id: number | string) => {
-    e.stopPropagation()
-    setSelectedTabId(id)
-  }
+  const tabs = [{ label: "All Books" }, { label: "What’s new" }, { label: "Popular" }]
+  const { currentItem, changeItem } = useTab(0, tabs)
 
   const text = () => {
     toast.error("Error")
@@ -66,7 +57,12 @@ const MainPage = () => {
         <PurchaseCard />
 
         <div className={"test-tab"}>
-          <Tab position="horizontal" tabs={tabs} onClick={(e, id ) => handleTabClick(e, id)} selectedTabId={selectedTabId}/>
+          <Tab
+            position="horizontal"
+            tabs={tabs}
+            currentItem={currentItem}
+            changeItem={changeItem}
+          />
         </div>
       </div>
     </main>

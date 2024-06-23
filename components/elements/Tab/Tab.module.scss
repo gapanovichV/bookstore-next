@@ -1,5 +1,8 @@
 .tab {
 
+  &__label {
+
+  }
 }
 
 .horizontal {
@@ -8,4 +11,8 @@
 
 .vertical {
 
+}
+
+.active {
+  color: red;
 }
