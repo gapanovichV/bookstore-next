@@ -6,11 +6,11 @@ import Link from "next/link"
 import { usePathname, useRouter } from "next/navigation"
 
 import { Button } from "@/components/elements/Button/Button"
+import { ProfilePicture } from "@/components/elements/ProfilePicture/ProfilePicture"
 import { SearchBar } from "@/components/elements/SearchBar/SearchBar"
 import { RouteEnum } from "@/types/route.type"
 
 import styles from "./Header.module.scss"
-import { ProfilePic } from "@/components/elements/ProfilePic/ProfilePic"
 
 const Header = () => {
   const router = useRouter()
@@ -58,7 +58,7 @@ const Header = () => {
               <img src="/img/Cart.svg" alt="Cart Icon" />
             </Link>
             <Link href={RouteEnum.PROFILE}>
-              <ProfilePic size='small' />
+              <ProfilePicture size="small" />
             </Link>
           </div>
         )}
