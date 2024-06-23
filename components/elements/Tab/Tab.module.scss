@@ -1,18 +1,35 @@
 .tab {
-
+  display: flex;
+  gap: 24px;
   &__label {
-
+    cursor: pointer;
+    font: var(--font-subtitle-2);
+    color: var(--color-style-primary-500);
   }
+}
+.active {
+  color: var(--color-style-primary-800);
 }
 
 .horizontal {
-
+  flex-direction: row;
+  align-items: center;
+  .active {
+    position: relative;
+    &::after {
+      content: '';
+      position: absolute;
+      left: 0;
+      bottom: -16px;
+      width: 100%;
+      height: 4px;
+      border-radius: 2px;
+      background: var(--color-style-primary-800);
+    }
+  }
 }
 
 .vertical {
-
-}
-
-.active {
-  color: red;
+  flex-direction: column;
+  gap: 16px;
 }
