@@ -31,5 +31,23 @@
 
 .vertical {
   flex-direction: column;
-  gap: 16px;
+  .active {
+    position: relative;
+    &::after {
+      content: '';
+      position: absolute;
+      left: -16px;
+      bottom: 0;
+      width: 4px;
+      height: 100%;
+      border-radius: 2px;
+      background: var(--color-style-primary-800);
+    }
+  }
+}
+
+.line {
+  &::before, &::after{
+    display: none;
+  }
 }
