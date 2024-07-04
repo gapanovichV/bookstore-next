@@ -5,17 +5,17 @@ import { useTab } from "@/hooks/useTab"
 
 import styles from "./Sidebar.module.scss"
 
-interface SidebarProps {
-  className?: string
+interface ITab {
+  label: string
 }
 
-export const Sidebar = ({ className }: SidebarProps) => {
-  const tabs = [
-    { label: "Fiction & Literature" },
-    { label: "Non Fiction" },
-    { label: "Comic" },
-    { label: "Children Book" }
-  ]
+interface SidebarProps {
+  className?: string
+  tabs: ITab[]
+}
+
+export const Sidebar = ({ className, tabs}: SidebarProps) => {
+
   const { currentItem, changeItem } = useTab(0, tabs)
 
   return (
