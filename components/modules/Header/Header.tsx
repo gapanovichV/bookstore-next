@@ -11,6 +11,7 @@ import { SearchBar } from "@/components/elements/SearchBar/SearchBar"
 import { RouteEnum } from "@/types/route.type"
 
 import styles from "./Header.module.scss"
+import { Notification } from "@/components/elements/Notification/Notification"
 
 const Header = () => {
   const router = useRouter()
@@ -53,7 +54,7 @@ const Header = () => {
           </>
         ) : (
           <div className={clsx(styles.header__logined)}>
-            <img src="/img/Notification.svg" alt="Notification icon" />
+            <Notification />
             <Link href={RouteEnum.CART}>
               <img src="/img/Cart.svg" alt="Cart Icon" />
             </Link>
