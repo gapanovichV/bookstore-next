@@ -1,17 +1,21 @@
 "use client"
 
+import type { ChangeEvent} from "react";
 import React, { useState } from "react"
 import toast from "react-hot-toast"
 import clsx from "clsx"
 import { useRouter } from "next/navigation"
 
 import { Card } from "@/components/elements/Card/Card"
+import { CheckList } from "@/components/elements/CheckList/CheckList"
 import { PurchaseCard } from "@/components/elements/PurchaseCard/PurchaseCard"
 import { Tab } from "@/components/elements/Tab/Tab"
 import { Tag } from "@/components/elements/Tag/Tag"
 import { useTab } from "@/hooks/useTab"
 import { useUserLogout } from "@/hooks/useUserLogout"
 import { RouteEnum } from "@/types/route.type"
+
+type TParams = Record<string, any>;
 
 const MainPage = () => {
   const router = useRouter()
@@ -23,7 +27,16 @@ const MainPage = () => {
   const text = () => {
     toast.error("Error")
   }
-
+  const ITEMS = [
+    {
+      id: 1,
+      name: "Cake"
+    },
+    {
+      id: 2,
+      name: "Ice-cream"
+    }
+  ];
   return (
     <main className={clsx("container")}>
       Main page
@@ -63,6 +76,9 @@ const MainPage = () => {
             currentItem={currentItem}
             changeItem={changeItem}
           />
+        </div>
+        <div className={"checkList"}>
+          <CheckList label="Select" />
         </div>
       </div>
     </main>
