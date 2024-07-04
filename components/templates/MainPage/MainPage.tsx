@@ -1,6 +1,6 @@
 "use client"
 
-import type { ChangeEvent} from "react";
+import type { ChangeEvent } from "react"
 import React, { useState } from "react"
 import toast from "react-hot-toast"
 import clsx from "clsx"
@@ -15,8 +15,6 @@ import { useTab } from "@/hooks/useTab"
 import { useUserLogout } from "@/hooks/useUserLogout"
 import { RouteEnum } from "@/types/route.type"
 
-type TParams = Record<string, any>;
-
 const MainPage = () => {
   const router = useRouter()
   const handleLogout = useUserLogout()
@@ -27,16 +25,7 @@ const MainPage = () => {
   const text = () => {
     toast.error("Error")
   }
-  const ITEMS = [
-    {
-      id: 1,
-      name: "Cake"
-    },
-    {
-      id: 2,
-      name: "Ice-cream"
-    }
-  ];
+
   return (
     <main className={clsx("container")}>
       Main page

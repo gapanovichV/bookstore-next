@@ -8,22 +8,17 @@ type CheckListProps<
   Component extends keyof JSX.IntrinsicElements | React.JSXElementConstructor<any> = "input"
 > = {
   className?: string
-  label: string,
+  label: string
   children?: ReactNode
 } & React.ComponentProps<Component>
 
 export const CheckList = React.forwardRef(
   (
-    {
-      className,
-      label,
-      id: externalId,
-    }: CheckListProps,
+    { className, label, id: externalId }: CheckListProps,
     ref: React.ForwardedRef<HTMLInputElement>
   ) => {
     const internalId = React.useId()
     const id = externalId ?? internalId
-
 
     return (
       <label htmlFor={id} className={clsx(styles.checkbox_container, className)}>
