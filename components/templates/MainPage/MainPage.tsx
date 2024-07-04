@@ -14,6 +14,7 @@ import { Tag } from "@/components/elements/Tag/Tag"
 import { useTab } from "@/hooks/useTab"
 import { useUserLogout } from "@/hooks/useUserLogout"
 import { RouteEnum } from "@/types/route.type"
+import { Dropdown } from "@/components/elements/Dropdown/Dropdown"
 
 const MainPage = () => {
   const router = useRouter()
@@ -68,6 +69,9 @@ const MainPage = () => {
         </div>
         <div className={"checkList"}>
           <CheckList label="Select" />
+        </div>
+        <div className={"dropdown"}>
+          <Dropdown />
         </div>
       </div>
     </main>

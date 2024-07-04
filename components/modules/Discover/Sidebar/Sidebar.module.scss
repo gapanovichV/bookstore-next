@@ -1,0 +1,10 @@
+.sidebar {
+  padding: 32px 24px 0 0;
+  border-right: var(--border-line);
+}
+
+@media (max-width: 796px) {
+  .sidebar {
+    display: none;
+  }
+}

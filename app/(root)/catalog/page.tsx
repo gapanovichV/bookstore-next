@@ -1,5 +1,7 @@
+import DiscoverPage from "@/components/templates/DiscoverPage/DiscoverPage"
+
 const CatalogPage = () => {
-  return <div>Catalog</div>
+  return <DiscoverPage />
 }
 
 export default CatalogPage

@@ -1,0 +1,12 @@
+.tab {
+  padding: 16px 0 14px;
+  background: var(--color-style-primary-100);
+  border-bottom: var(--border-line);
+}
+
+.content {
+  width: 100%;
+  height: 100vh;
+  display: inline-grid;
+  grid-template-columns: 1fr 5fr;
+}
