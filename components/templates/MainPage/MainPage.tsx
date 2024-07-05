@@ -1,20 +1,19 @@
 "use client"
 
-import type { ChangeEvent } from "react"
-import React, { useState } from "react"
+import React from "react"
 import toast from "react-hot-toast"
 import clsx from "clsx"
 import { useRouter } from "next/navigation"
 
 import { Card } from "@/components/elements/Card/Card"
 import { CheckList } from "@/components/elements/CheckList/CheckList"
+import { Dropdown } from "@/components/elements/Dropdown/Dropdown"
 import { PurchaseCard } from "@/components/elements/PurchaseCard/PurchaseCard"
 import { Tab } from "@/components/elements/Tab/Tab"
 import { Tag } from "@/components/elements/Tag/Tag"
 import { useTab } from "@/hooks/useTab"
 import { useUserLogout } from "@/hooks/useUserLogout"
 import { RouteEnum } from "@/types/route.type"
-import { Dropdown } from "@/components/elements/Dropdown/Dropdown"
 
 const MainPage = () => {
   const router = useRouter()

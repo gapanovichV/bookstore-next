@@ -16,6 +16,7 @@ export const SearchBar = ({ className }: SearchBarProps) => {
   const [showResults, setShowResults] = useState<boolean>(false)
 
   // TODO: Получекние книг по название
+  // TODO: DropDown поиск книг
 
   useEffect(() => {
     if (results.length > 0 && !showResults) setShowResults(true)

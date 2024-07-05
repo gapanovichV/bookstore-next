@@ -9,7 +9,7 @@ interface DropdownProps {
 export const Dropdown = ({ className }: DropdownProps) => {
   return (
     <>
-      <div className={clsx(styles.dropdown_container)}></div>
+      <div className={clsx(styles.dropdown_container, className)}></div>
     </>
   )
 }
