@@ -1,5 +1,5 @@
-import type { ChangeEvent, ReactNode } from "react"
-import React, { useState } from "react"
+import type { ReactNode } from "react"
+import React from "react"
 import clsx from "clsx"
 
 import styles from "./CheckList.module.scss"
@@ -22,7 +22,7 @@ export const CheckList = React.forwardRef(
 
     return (
       <label htmlFor={id} className={clsx(styles.checkbox_container, className)}>
-        <input className={clsx(styles.checkbox)} type="checkbox" checked={true} />
+        <input className={clsx(styles.checkbox)} type="checkbox" defaultChecked />
         <span className={clsx(styles.custom_checkbox)} />
         <span className={clsx(styles.label)}>{label}</span>
         <span className={clsx(styles.custom_checkbox)} />

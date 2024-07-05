@@ -14,8 +14,7 @@ interface SidebarProps {
   tabs: ITab[]
 }
 
-export const Sidebar = ({ className, tabs}: SidebarProps) => {
-
+export const Sidebar = ({ className, tabs }: SidebarProps) => {
   const { currentItem, changeItem } = useTab(0, tabs)
 
   return (
