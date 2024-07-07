@@ -14,6 +14,7 @@ import { Tag } from "@/components/elements/Tag/Tag"
 import { useTab } from "@/hooks/useTab"
 import { useUserLogout } from "@/hooks/useUserLogout"
 import { RouteEnum } from "@/types/route.type"
+import { ReviewCard } from "@/components/elements/ReviewCard/ReviewCard"
 
 const MainPage = () => {
   const router = useRouter()
@@ -58,7 +59,7 @@ const MainPage = () => {
         </div>
         <PurchaseCard />
 
-        <div className={"test-tab"}>
+        <div className={"test"}>
           <Tab
             position="horizontal"
             tabs={tabs}
@@ -66,11 +67,14 @@ const MainPage = () => {
             changeItem={changeItem}
           />
         </div>
-        <div className={"checkList"}>
+        <div className={"test"}>
           <CheckList label="Select" />
         </div>
-        <div className={"dropdown"}>
+        <div className={"test"}>
           <Dropdown />
+        </div>
+        <div className={"test"}>
+          <ReviewCard />
         </div>
       </div>
     </main>

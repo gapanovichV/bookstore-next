@@ -22,7 +22,7 @@ export const CheckList = React.forwardRef(
 
     return (
       <label htmlFor={id} className={clsx(styles.checkbox_container, className)}>
-        <input className={clsx(styles.checkbox)} type="checkbox" defaultChecked />
+        <input className={clsx(styles.checkbox)} type="checkbox" defaultChecked={true} />
         <span className={clsx(styles.custom_checkbox)} />
         <span className={clsx(styles.label)}>{label}</span>
         <span className={clsx(styles.custom_checkbox)} />

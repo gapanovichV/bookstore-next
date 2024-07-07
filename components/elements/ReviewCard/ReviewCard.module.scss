@@ -1,0 +1,49 @@
+.review {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  padding: 16px;
+  background-color: var(--color-style-primary-100);
+  &_content {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+  .pic {
+    padding: 8px 30px;
+  }
+  .detail {
+    &_top {
+      display: flex;
+      gap: 16px;
+      margin-bottom: 16px;
+    }
+    &_info {
+      &_date {
+        font: var(--font-bodytext-3);
+      }
+      &_title {
+        font: var(--font-subtitle-2);
+      }
+    }
+    &_estimate {
+      &_question {
+        font: var(--font-bodytext-3);
+        color: var(--color-style-primary-500);
+        margin-bottom: 16px;
+      }
+    }
+    &_fillbox {
+      width: 100%;
+      p {
+        font: var(--font-bodytext-3);
+        color: var(--color-style-primary-500);
+        margin-bottom: 16px
+      }
+    }
+  }
+  &_btn {
+    display: flex;
+    justify-content: flex-end;
+  }
+}

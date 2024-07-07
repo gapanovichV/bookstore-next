@@ -17,7 +17,6 @@ const Header = () => {
   const router = useRouter()
   const pathName = usePathname()
   const [isLogin, setIsLogin] = useState(true)
-
   return (
     <header className={clsx(styles.header)}>
       <div className={clsx("container", styles.header__container)}>

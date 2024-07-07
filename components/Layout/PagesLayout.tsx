@@ -6,7 +6,7 @@ import { AuthProvider } from "@/context/AuthProvider"
 const PagesLayout = ({ children }: { children: React.ReactNode }) => {
   return (
     <html lang="en">
-      <body>
+      <body suppressHydrationWarning={true}>
         <AuthProvider>
           {children}
           <Toaster position="top-center" reverseOrder={false} />
