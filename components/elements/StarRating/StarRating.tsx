@@ -62,8 +62,7 @@ const message = ["Bad", "Average", "Ok", "Good", "Very good"]
 
 export const StarRating = ({ defaultRating = 0, onSetRating, className }: StarRatingProps) => {
   const [rating, setRating] = useState(defaultRating)
-  const [tempRating, setTempRating] = useState(0)
-
+  const [hover, setHover] = useState(0)
 
   const handleRating = (rating: number) => {
     setRating(rating)
@@ -77,16 +76,14 @@ export const StarRating = ({ defaultRating = 0, onSetRating, className }: StarRa
         {[...Array(5)].map((_, i) => (
           <Star
             key={i}
-            filled={tempRating ? tempRating >= i + 1 : rating >= i + 1}
+            filled={hover ? hover >= i + 1 : rating >= i + 1}
             onClick={() => handleRating(i + 1)}
-            onMouseEnter={() => setTempRating(i + 1)}
-            onMouseLeave={() => setTempRating(0)}
+            onMouseEnter={() => setHover(i + 1)}
+            onMouseLeave={() => setHover(0)}
           />
         ))}
       </div>
-      <p>
-        {message.length === 5 && message[tempRating ? tempRating - 1 : rating - 1]}
-      </p>
+      <p>{message.length === 5 && message[hover ? hover - 1 : rating - 1]}</p>
     </div>
   )
 }
