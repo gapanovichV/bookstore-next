@@ -1,9 +1,9 @@
 import clsx from "clsx"
 
 import { Button } from "@/components/elements/Button/Button"
+import { Input } from "@/components/elements/Input/Input"
 
 import styles from "./ReviewCard.module.scss"
-import { Input } from "@/components/elements/Input/Input"
 
 interface ReviewCardProps {
   className?: string

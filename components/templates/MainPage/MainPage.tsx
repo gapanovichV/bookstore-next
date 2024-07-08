@@ -73,7 +73,9 @@ const MainPage = () => {
         <div className={"test"}>
           <Dropdown />
         </div>
-        <div className={"test"}>
+        <div className={"test test_col"}>
+          <ReviewCard />
+          <ReviewCard />
           <ReviewCard />
         </div>
       </div>
