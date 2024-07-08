@@ -51,8 +51,7 @@ const MainPage = () => {
           </Tag>
         </div>
 
-        <div className={"test"}>
-        </div>
+        <div className={"test"}></div>
         <PurchaseCard />
 
         <div className={"test"}>

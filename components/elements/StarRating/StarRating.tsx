@@ -58,9 +58,13 @@ const Star = ({ filled, onClick, onMouseEnter, onMouseLeave }: StarProps) => {
   )
 }
 
+const message = ["Bad", "Average", "Ok", "Good", "Very good"]
+
 export const StarRating = ({ defaultRating = 0, onSetRating, className }: StarRatingProps) => {
   const [rating, setRating] = useState(defaultRating)
   const [tempRating, setTempRating] = useState(0)
+
+
   const handleRating = (rating: number) => {
     setRating(rating)
     if (onSetRating) {
@@ -68,16 +72,21 @@ export const StarRating = ({ defaultRating = 0, onSetRating, className }: StarRa
     }
   }
   return (
-    <div className={clsx(styles.rating, className)}>
-      {[...Array(5)].map((_, i) => (
-        <Star
-          key={i}
-          filled={tempRating ? tempRating >= i + 1 : rating >= i + 1}
-          onClick={() => handleRating(i + 1)}
-          onMouseEnter={() => setTempRating(i + 1)}
-          onMouseLeave={() => setTempRating(0)}
-        />
-      ))}
+    <div className={clsx(styles.rating)}>
+      <div className={clsx(styles.rating_star, className)}>
+        {[...Array(5)].map((_, i) => (
+          <Star
+            key={i}
+            filled={tempRating ? tempRating >= i + 1 : rating >= i + 1}
+            onClick={() => handleRating(i + 1)}
+            onMouseEnter={() => setTempRating(i + 1)}
+            onMouseLeave={() => setTempRating(0)}
+          />
+        ))}
+      </div>
+      <p>
+        {message.length === 5 && message[tempRating ? tempRating - 1 : rating - 1]}
+      </p>
     </div>
   )
 }
