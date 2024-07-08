@@ -1,6 +1,6 @@
 "use client"
 
-import React from "react"
+import React, { useState } from "react"
 import toast from "react-hot-toast"
 import clsx from "clsx"
 import { useRouter } from "next/navigation"
@@ -9,17 +9,18 @@ import { Card } from "@/components/elements/Card/Card"
 import { CheckList } from "@/components/elements/CheckList/CheckList"
 import { Dropdown } from "@/components/elements/Dropdown/Dropdown"
 import { PurchaseCard } from "@/components/elements/PurchaseCard/PurchaseCard"
+import { ReviewCard } from "@/components/elements/ReviewCard/ReviewCard"
+import { StarRating } from "@/components/elements/StarRating/StarRating"
 import { Tab } from "@/components/elements/Tab/Tab"
 import { Tag } from "@/components/elements/Tag/Tag"
 import { useTab } from "@/hooks/useTab"
 import { useUserLogout } from "@/hooks/useUserLogout"
 import { RouteEnum } from "@/types/route.type"
-import { ReviewCard } from "@/components/elements/ReviewCard/ReviewCard"
 
 const MainPage = () => {
   const router = useRouter()
   const handleLogout = useUserLogout()
-
+  const [exportedRating, setExportedRating] = useState(0)
   const tabs = [{ label: "All Books" }, { label: "What’s new" }, { label: "Popular" }]
   const { currentItem, changeItem } = useTab(0, tabs)
 
@@ -51,11 +52,6 @@ const MainPage = () => {
         </div>
 
         <div className={"test"}>
-          <Card size="medium" />
-          <Card size="medium" />
-          <Card size="medium" />
-          <Card size="medium" />
-          <Card size="medium" />
         </div>
         <PurchaseCard />
 
@@ -75,8 +71,10 @@ const MainPage = () => {
         </div>
         <div className={"test test_col"}>
           <ReviewCard />
-          <ReviewCard />
-          <ReviewCard />
+        </div>
+        <div className={"test"}>
+          <StarRating defaultRating={0} onSetRating={setExportedRating} />
+          <span style={{ fontWeight: "700", color: "blue" }}>{exportedRating}</span>
         </div>
       </div>
     </main>
