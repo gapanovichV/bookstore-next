@@ -3,6 +3,7 @@ import clsx from "clsx"
 
 import { Button } from "@/components/elements/Button/Button"
 import { Input } from "@/components/elements/Input/Input"
+import { StarRating } from "@/components/elements/StarRating/StarRating"
 
 import styles from "./ReviewCard.module.scss"
 
@@ -11,7 +12,7 @@ interface ReviewCardProps {
 }
 export const ReviewCard = ({ className }: ReviewCardProps) => {
   const [reviewText, setReviewText] = useState<string>("")
-  const [reviewLeft, setReviewLeft] = useState<boolean>(true)
+  const [reviewLeft, setReviewLeft] = useState<boolean>(false)
   return (
     <div className={clsx(styles.review, className)}>
       <div className={clsx(styles.review_content)}>
@@ -33,7 +34,7 @@ export const ReviewCard = ({ className }: ReviewCardProps) => {
                   <p className={clsx(styles.detail_estimate_question)}>
                     How is the overall quality of this product?
                   </p>
-                  <img src="/img/Star.svg" alt="stars" />
+                  <StarRating />
                 </>
               ) : (
                 <div className={clsx(styles.detail_estimate_star)}>
