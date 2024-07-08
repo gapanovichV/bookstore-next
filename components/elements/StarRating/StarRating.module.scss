@@ -8,5 +8,12 @@
 
 .rating {
   display: flex;
-  gap: 8px;
+  align-items: center;
+  gap: 16px;
+  font: var(--font-bodytext-3);
+  color: var(--color-style-primary-500);
+  &_star {
+    display: flex;
+    gap: 8px;
+  }
 }
