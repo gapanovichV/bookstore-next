@@ -36,6 +36,13 @@
         color: var(--color-style-primary-500);
         margin-bottom: 16px;
       }
+      &_star {
+        display: flex;
+        align-items: center;
+        gap: 8px;
+        font: var(--font-subtitle-3);
+        color: var(--color-style-primary-700);
+      }
     }
     &_fillbox {
       width: 100%;
@@ -44,10 +51,17 @@
         color: var(--color-style-primary-500);
         margin-bottom: 16px
       }
+      &_review {
+        font: var(--font-bodytext-2);
+      }
     }
   }
   &_btn {
     display: flex;
     justify-content: flex-end;
   }
+}
+
+.reviewLeft {
+  display: none;
 }
