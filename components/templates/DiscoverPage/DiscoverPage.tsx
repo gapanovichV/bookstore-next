@@ -50,7 +50,6 @@ const DiscoverPage = () => {
       const { data } = await api.post("/api/books/addBook", value)
       if (data.status === Status.Success) {
         toast.success(data.message)
-        console.log(data)
       }
     } catch (error) {
       handleError(error)

@@ -1,4 +1,5 @@
 import { useState } from "react"
+import toast from "react-hot-toast"
 import clsx from "clsx"
 
 import { Button } from "@/components/elements/Button/Button"
@@ -13,6 +14,23 @@ interface ReviewCardProps {
 export const ReviewCard = ({ className }: ReviewCardProps) => {
   const [reviewText, setReviewText] = useState<string>("")
   const [reviewLeft, setReviewLeft] = useState<boolean>(false)
+  const [rating, setRating] = useState<number>(0)
+
+  const handleClickSendReview = () => {
+    if (reviewText === "") {
+      toast.error("Please enter a review text")
+      return
+    }
+    if (rating === 0) {
+      toast.error("Please enter a rating product")
+      return
+    }
+    setReviewLeft(true)
+  }
+  const handleClickCancelReview = () => {
+    setReviewText("")
+  }
+
   return (
     <div className={clsx(styles.review, className)}>
       <div className={clsx(styles.review_content)}>
@@ -34,12 +52,12 @@ export const ReviewCard = ({ className }: ReviewCardProps) => {
                   <p className={clsx(styles.detail_estimate_question)}>
                     How is the overall quality of this product?
                   </p>
-                  <StarRating />
+                  <StarRating onSetRating={setRating} />
                 </>
               ) : (
                 <div className={clsx(styles.detail_estimate_star)}>
                   <img src="/img/starFill.svg" alt="star" />
-                  <p>5.0</p>
+                  <p>{rating}.0</p>
                 </div>
               )}
             </div>
@@ -55,19 +73,16 @@ export const ReviewCard = ({ className }: ReviewCardProps) => {
                 />
               </>
             ) : (
-              <p className={clsx(styles.detail_fillbox_review)}>
-                The author is very smart in conveying the story so that it touches the heart of the
-                reader explicitly
-              </p>
+              <p className={clsx(styles.detail_fillbox_review)}>{reviewText}</p>
             )}
           </div>
         </div>
       </div>
       <div className={clsx(styles.review_btn, { [styles.reviewLeft]: reviewLeft })}>
-        <Button variant="ghost" size="small" onClick={() => setReviewText("")}>
+        <Button variant="ghost" size="small" onClick={handleClickCancelReview}>
           Cancel
         </Button>
-        <Button variant="fill" size="small">
+        <Button onClick={handleClickSendReview} variant="fill" size="small">
           Send
         </Button>
       </div>

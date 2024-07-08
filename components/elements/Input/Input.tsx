@@ -1,3 +1,4 @@
+import type { JSX } from "react"
 import React, { useState } from "react"
 import clsx from "clsx"
 
@@ -18,6 +19,7 @@ type InputProps<
   isDirty?: boolean
   value?: string
   setValue?: (value: string) => void
+  component?: Component
 } & React.ComponentProps<Component>
 
 export const Input = React.forwardRef(
@@ -34,6 +36,7 @@ export const Input = React.forwardRef(
       alt,
       value,
       setValue,
+      component,
       ...props
     }: InputProps,
     ref: React.ForwardedRef<HTMLInputElement>
@@ -46,12 +49,14 @@ export const Input = React.forwardRef(
       setHide((prev) => !prev)
     }
 
+    const Component = component || "input"
+
     return (
       <div className={clsx(styles.input__wrapper, { [styles.error__wrapper]: !!error })}>
         {image?.left && (
           <img className={clsx(styles.input__img)} src={`img/${image?.left}`} alt={alt ?? id} />
         )}
-        <input
+        <Component
           className={clsx(styles.input, className, {
             [styles.error__input]: !!error,
             [styles.input__password]: isPassword,
