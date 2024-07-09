@@ -33,36 +33,36 @@ export const ReviewCard = ({ className }: ReviewCardProps) => {
 
   return (
     <div className={clsx(styles.review, className)}>
-      <div className={clsx(styles.review_content)}>
+      <div className={clsx(styles.review__content)}>
         <div className={clsx(styles.pic)}>
-          <img src="/img/testReview.png" alt="review icon" />
+          <img src="/img/testReview.png" alt="Book сover" />
         </div>
         <div className={clsx(styles.detail)}>
-          <div className={clsx(styles.detail_top)}>
-            <div className={clsx(styles.detail_info)}>
-              <p className={clsx(styles.detail_info_date)}>2022, 12 Sept</p>{" "}
+          <div className={clsx(styles.detail__top)}>
+            <div className={clsx(styles.detail__info)}>
+              <p className={clsx(styles.detail__info__date)}>2022, 12 Sept</p>{" "}
               {/* TODO: Дата заказа */}
-              <h2 className={clsx(styles.detail_info_title)}>
+              <h2 className={clsx(styles.detail__info__title)}>
                 The Stories of Choo Choo: You're Not as Alone as You Think
               </h2>
             </div>
-            <div className={clsx(styles.detail_estimate)}>
+            <div className={clsx(styles.detail__estimate)}>
               {!reviewLeft ? (
                 <>
-                  <p className={clsx(styles.detail_estimate_question)}>
+                  <p className={clsx(styles.detail__estimate__question)}>
                     How is the overall quality of this product?
                   </p>
                   <StarRating onSetRating={setRating} />
                 </>
               ) : (
-                <div className={clsx(styles.detail_estimate_star)}>
+                <div className={clsx(styles.detail__estimate__star)}>
                   <img src="/img/starFill.svg" alt="star" />
                   <p>{rating}.0</p>
                 </div>
               )}
             </div>
           </div>
-          <div className={clsx(styles.detail_fillbox)}>
+          <div className={clsx(styles.detail__fillbox)}>
             {!reviewLeft ? (
               <>
                 <p>Leave a review for this product</p>
@@ -73,12 +73,12 @@ export const ReviewCard = ({ className }: ReviewCardProps) => {
                 />
               </>
             ) : (
-              <p className={clsx(styles.detail_fillbox_review)}>{reviewText}</p>
+              <p className={clsx(styles.detail__fillbox__review)}>{reviewText}</p>
             )}
           </div>
         </div>
       </div>
-      <div className={clsx(styles.review_btn, { [styles.reviewLeft]: reviewLeft })}>
+      <div className={clsx(styles.review__btn, { [styles.reviewLeft]: reviewLeft })}>
         <Button variant="ghost" size="small" onClick={handleClickCancelReview}>
           Cancel
         </Button>

@@ -14,6 +14,7 @@ import { Tag } from "@/components/elements/Tag/Tag"
 import { useTab } from "@/hooks/useTab"
 import { useUserLogout } from "@/hooks/useUserLogout"
 import { RouteEnum } from "@/types/route.type"
+import { Card } from "@/components/elements/Card/Card"
 
 const MainPage = () => {
   const router = useRouter()
@@ -47,8 +48,10 @@ const MainPage = () => {
             SHIPPED
           </Tag>
         </div>
-        <div className={"test"}></div>
-        <PurchaseCard />
+        <div className={"test"}>
+          <Card size="medium" />
+          <Card size="medium" />
+        </div>
         <div className={"test"}>
           <Tab
             position="horizontal"
@@ -65,6 +68,9 @@ const MainPage = () => {
         </div>
         <div className={"test test_col"}>
           <ReviewCard />
+        </div>
+        <div className={"test test_col"}>
+          <PurchaseCard />
         </div>
       </div>
     </main>
