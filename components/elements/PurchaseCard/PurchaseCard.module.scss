@@ -1,3 +1,41 @@
-.card {
+.purchase {
+  padding: 16px 24px;
+  width: 100%;
+  border: var(--border-line);
+}
 
+.small_info {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  &__info {
+    font: var(--font-bodytext-2);
+    color: var(--color-style-primary-500);
+  }
+}
+
+.content {
+  &__info {
+
+  }
+  &__section {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    &__price {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      font: var(--font-bodytext-2);
+      color: var(--color-style-primary-500);
+      span {
+        font: var(--font-subtitle-1);
+        color: var(--color-style-primary-800);
+      }
+    }
+    &__btn {
+      display: flex;
+      gap: 16px;
+    }
+  }
 }

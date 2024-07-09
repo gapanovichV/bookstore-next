@@ -5,7 +5,8 @@
   padding: 16px;
   background-color: var(--color-style-primary-100);
   width: 100%;
-  &_content {
+  border-radius: var(--border-radius);
+  &__content {
     display: flex;
     align-items: center;
     gap: 8px;
@@ -15,28 +16,28 @@
   }
   .detail {
     width: 100%;
-    &_top {
+    &__top {
       display: flex;
       gap: 16px;
       margin-bottom: 16px;
       justify-content: space-between;
     }
-    &_info {
-      &_date {
+    &__info {
+      &__date {
         font: var(--font-bodytext-3);
         margin-bottom: 4px;
       }
-      &_title {
+      &__title {
         font: var(--font-subtitle-2);
       }
     }
-    &_estimate {
-      &_question {
+    &__estimate {
+      &__question {
         font: var(--font-bodytext-3);
         color: var(--color-style-primary-500);
         margin-bottom: 16px;
       }
-      &_star {
+      &__star {
         display: flex;
         align-items: center;
         gap: 8px;
@@ -44,19 +45,19 @@
         color: var(--color-style-primary-700);
       }
     }
-    &_fillbox {
+    &__fillbox {
       width: 100%;
       p {
         font: var(--font-bodytext-3);
         color: var(--color-style-primary-500);
         margin-bottom: 16px
       }
-      &_review {
+      &__review {
         font: var(--font-bodytext-2);
       }
     }
   }
-  &_btn {
+  &__btn {
     display: flex;
     justify-content: flex-end;
   }
