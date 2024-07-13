@@ -1,6 +1,6 @@
 export interface StatusResponse {
   status: Status
-  message: string
+  message?: string
   user_token?: {
     accessToken: string
     refreshToken: string
