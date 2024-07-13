@@ -15,6 +15,7 @@ import { useTab } from "@/hooks/useTab"
 import { useUserLogout } from "@/hooks/useUserLogout"
 import { RouteEnum } from "@/types/route.type"
 import { Card } from "@/components/elements/Card/Card"
+import { InfoIllustration } from "@/components/elements/InfoCard/InfoIllustration"
 
 const MainPage = () => {
   const router = useRouter()
@@ -71,6 +72,14 @@ const MainPage = () => {
         </div>
         <div className={"test test_col"}>
           <PurchaseCard />
+        </div>
+        <div className={"test"}>
+          <InfoIllustration
+            nameImage="empty"
+            title="Success Transaction"
+            description="Congrats your order has been successfull. keep an eye on your order process on the transaction page!"
+            btnText="Transaction"
+          />
         </div>
       </div>
     </main>
