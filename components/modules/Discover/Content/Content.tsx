@@ -30,8 +30,8 @@ export const Content = ({ className }: ContentProps) => {
         handleError(error)
       }
     }
-    fetchData().catch(console.error);
-  }, []);
+    fetchData().catch(console.error)
+  }, [])
 
   return (
     <div className={clsx(styles.content, className)}>
@@ -41,11 +41,9 @@ export const Content = ({ className }: ContentProps) => {
       </div>
       {books?.status === "success" ? (
         <div className={clsx(styles.book__list)}>
-          {
-            books.books.map((elm: BookParams) => (
-              <Card key={elm._id} size='large'/>
-            ))
-          }
+          {books.books.map((book: BookParams) => (
+            <Card key={book._id} size="large" book={book} />
+          ))}
         </div>
       ) : (
         <InfoIllustration

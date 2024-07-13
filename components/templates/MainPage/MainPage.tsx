@@ -50,10 +50,6 @@ const MainPage = () => {
           </Tag>
         </div>
         <div className={"test"}>
-          <Card size="medium" />
-          <Card size="medium" />
-        </div>
-        <div className={"test"}>
           <Tab
             position="horizontal"
             tabs={tabs}

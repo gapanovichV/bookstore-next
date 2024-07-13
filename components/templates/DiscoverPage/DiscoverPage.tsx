@@ -5,7 +5,6 @@ import toast from "react-hot-toast"
 import clsx from "clsx"
 
 import api from "@/api/apiInstance"
-import { Button } from "@/components/elements/Button/Button"
 import { Content } from "@/components/modules/Discover/Content/Content"
 import { Topbar } from "@/components/modules/Discover/Topbar/Topbar"
 import { Sidebar } from "@/components/modules/Sidebar/Sidebar"
@@ -60,12 +59,6 @@ const DiscoverPage = () => {
       <div className={clsx(styles.tab)}>
         <div className={clsx("container")}>
           <Topbar />
-          <Button size="large" onClick={testPOSTbook}>
-            testPOST
-          </Button>
-          <Button size="large" onClick={() => testGetOneBook("6687ea26422b5c28ec70c104")}>
-            testGet
-          </Button>
         </div>
       </div>
       <div className={clsx("container")}>
