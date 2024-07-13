@@ -1,7 +1,7 @@
 import clsx from "clsx"
 
 import { Button } from "@/components/elements/Button/Button"
-import type { ImageOptions} from "@/hooks/useImage";
+import type { ImageOptions } from "@/hooks/useImage"
 import { useImage } from "@/hooks/useImage"
 
 import styles from "./InfoIllustration.module.scss"
