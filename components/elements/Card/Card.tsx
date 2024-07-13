@@ -1,5 +1,7 @@
 import clsx from "clsx"
 
+import type { BookParams } from "@/lib/database/models/book.model"
+
 import styles from "./Card.module.scss"
 
 type CardSize = "small" | "medium" | "large" | "mobile"
@@ -7,16 +9,17 @@ type CardSize = "small" | "medium" | "large" | "mobile"
 interface CardProps {
   className?: string
   size: CardSize
+  book: BookParams
 }
 
-export const Card = ({ className, size }: CardProps) => {
+export const Card = ({ className, size, book }: CardProps) => {
   return (
     <div className={clsx(styles.card, styles[size], className)}>
       <div className={clsx(styles.card__img)}>
-        <img src="/img/PicCardTEST.png" alt="Pic Card" />
+        <img src={book.imageUrl} alt="Picture Card" />
       </div>
       <div className={clsx(styles.card__info)}>
-        <p className={clsx(styles.card__info__title)}>The Miracles of the Namiya General Store</p>
+        <p className={clsx(styles.card__info__title)}>{book.title}</p>
         <div className={clsx(styles.card__info__line)}></div>
         <div className={clsx(styles.card__info__book)}>
           <div className={clsx(styles.card__info__book_top)}>
@@ -24,9 +27,14 @@ export const Card = ({ className, size }: CardProps) => {
             <p>Buy now</p>
           </div>
           <div className={clsx(styles.card__info__book_down)}>
-            <p className={clsx(styles.card__info__book_author)}>Keigo Higashino</p>
+            <p className={clsx(styles.card__info__book_author)}>{book.authors[0]}</p>
             <div className={clsx(styles.card__info__book_price)}>
-              <span className={clsx(styles.card__info__book_price_discont)}>$23.5</span>$19.0
+              {book.oldPrice && (
+                <span className={clsx(styles.card__info__book_price_discont)}>
+                  ${book.oldPrice}
+                </span>
+              )}
+              ${book.price}
             </div>
           </div>
         </div>
