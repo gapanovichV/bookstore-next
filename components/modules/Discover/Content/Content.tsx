@@ -12,13 +12,14 @@ import type { allGetBooksParams } from "@/types/books.type"
 import { Status } from "@/types/response.type"
 
 import styles from "./Content.module.scss"
+import { CardSkeleton } from "@/components/elements/Card/CardSkeleton"
 
 interface ContentProps {
   className?: string
 }
 
 export const Content = ({ className }: ContentProps) => {
-  const [books, seBooks] = useState<allGetBooksParams>({
+  const [data, setData] = useState<allGetBooksParams>({
     status: Status.Loading,
     books: []
   })
@@ -28,7 +29,7 @@ export const Content = ({ className }: ContentProps) => {
       try {
         const { data } = await api.get("/api/books/allBooks")
         if (data.status === Status.Success) {
-          seBooks(data)
+          setData(data)
         }
       } catch (error) {
         handleError(error)
@@ -37,21 +38,21 @@ export const Content = ({ className }: ContentProps) => {
     fetchBooks().catch(console.error)
   }, [])
 
+  const skeleton = [...new Array(9)].map((_, index) => <CardSkeleton key={index} />)
+
+  const books = data.books.map((book: BookParams) => (
+    <Link href={`/catalog/book/${book._id}`} key={book._id}>
+      <Card key={book._id} size="large" book={book} />
+    </Link>
+  ))
+  
   return (
     <div className={clsx(styles.content, className)}>
       <div className={clsx(styles.header)}>
         Showing 1 - 10 items out of a total of ? million books
         <Dropdown text="Sort By" />
       </div>
-      {books?.status === "success" ? (
-        <div className={clsx(styles.book__list)}>
-          {books.books.map((book: BookParams) => (
-            <Link href={`/catalog/book/${book._id}`} key={book._id}>
-              <Card key={book._id} size="large" book={book} />
-            </Link>
-          ))}
-        </div>
-      ) : (
+      {data.status === Status.Error ? (
         <InfoIllustration
           className={clsx(styles.book__info)}
           nameImage="empty"
@@ -59,6 +60,10 @@ export const Content = ({ className }: ContentProps) => {
           title="Ups... empty stock!"
           description="The book you are looking for is still not ready stock!"
         />
+      ) : (
+        <div className={clsx(styles.book__list)}>
+          {data.status === Status.Loading ? skeleton : books}
+        </div>
       )}
     </div>
   )
