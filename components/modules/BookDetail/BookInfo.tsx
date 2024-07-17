@@ -13,7 +13,7 @@ interface BookInfoProps {
 export const BookInfo = ({ book }: BookInfoProps) => {
   return (
     <div className={clsx(styles.info)}>
-      <div className={clsx(styles.info__authors)}>{book.authors}</div>
+      <div className={clsx(styles.info__authors)}>{book.authors[0]}</div>
       <h2 className={clsx(styles.info__title)}>{book.title}</h2>
       <div className={clsx(styles.info__price)}>
         {book.oldPrice && <span>${book.oldPrice}</span>}${book.price}

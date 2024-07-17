@@ -19,9 +19,16 @@
     content: "";
     background: var(--color-style-primary-200);
     width: 1px;
-    min-height: 100%;
+    height: 100%;
     top: -32px;
     right: 0;
     position: absolute;
   }
+}
+
+.loader {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 70vh;
 }
