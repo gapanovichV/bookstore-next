@@ -51,7 +51,6 @@ export const BookDetail = ({ className, bookId }: BookDetailProps) => {
                 <ReviewCard /> {/* TODO: тест ревью карточки нужно сделать другую */}
               </div>
             </div>
-
             <div className={clsx(styles.line)}></div>
             <BookInfo book={data.book} />
           </>
