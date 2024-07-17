@@ -1,0 +1,13 @@
+.info {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  &__value {
+    font: var(--font-subtitle-2);
+    color: var(--color-style-primary-700);
+  }
+  .label {
+    font: var(--font-subtitle-4);
+    color: var(--color-style-primary-500);
+  }
+}

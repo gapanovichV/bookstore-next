@@ -5,3 +5,8 @@ export interface allGetBooksParams {
   status: Status
   books: BookParams[]
 }
+
+export interface oneGetBookParams {
+  status: Status
+  book: BookParams | Record<string, never>
+}

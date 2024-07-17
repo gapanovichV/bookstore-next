@@ -1,0 +1,27 @@
+.book {
+  padding: 32px 0;
+  &__container {
+    display: grid;
+    grid-template-columns: 1fr 1px 1fr;
+  }
+  &__left {
+    display: flex;
+    flex-direction: column;
+    gap: 40px;
+    margin-right: 24px;
+  }
+}
+
+.line {
+  position: relative;
+  display: inline-block;
+  &:after {
+    content: "";
+    background: var(--color-style-primary-200);
+    width: 1px;
+    min-height: 100%;
+    top: -32px;
+    right: 0;
+    position: absolute;
+  }
+}

@@ -54,7 +54,7 @@ export const Input = React.forwardRef(
     return (
       <div className={clsx(styles.input__wrapper, { [styles.error__wrapper]: !!error })}>
         {image?.left && (
-          <img className={clsx(styles.input__img)} src={`img/${image?.left}`} alt={alt ?? id} />
+          <img className={clsx(styles.input__img)} src={`/img/${image?.left}`} alt={alt ?? id} />
         )}
         <Component
           className={clsx(styles.input, className, {
@@ -75,20 +75,20 @@ export const Input = React.forwardRef(
         {isPassword && (
           <div className={clsx(styles.icon)} onClick={toggle}>
             {hide ? (
-              <img src={`img/HidePass.svg`} alt="Hide password" />
+              <img src={`/img/HidePass.svg`} alt="Hide password" />
             ) : (
-              <img src={`img/ShowPass.svg`} alt="Show password" />
+              <img src={`/img/ShowPass.svg`} alt="Show password" />
             )}
           </div>
         )}
         {error && !isPassword && (
           <div className={clsx(styles.icon)}>
-            <img src={`img/InfoCircle.svg`} alt="Info circle" />
+            <img src={`/img/InfoCircle.svg`} alt="Info circle" />
           </div>
         )}
         {image?.right && (
           <div className={clsx(styles.icon)}>
-            <img src={`img/${image?.right}`} alt="Info circle" />
+            <img src={`/img/${image?.right}`} alt="Info circle" />
           </div>
         )}
       </div>
