@@ -14,6 +14,8 @@ export interface BookParams extends Document {
   language: string
   price: number
   oldPrice: number
+  isbn: number
+  stock: number
 }
 
 const bookSchema = new Schema<BookParams>({
@@ -27,7 +29,9 @@ const bookSchema = new Schema<BookParams>({
   imageUrl: { type: String },
   language: { type: String },
   price: { type: Number },
-  oldPrice: { type: Number }
+  oldPrice: { type: Number },
+  isbn: { type: Number },
+  stock: { type: Number }
 })
 
 const Book = models.Book || model("Book", bookSchema)

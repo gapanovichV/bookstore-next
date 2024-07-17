@@ -1,0 +1,70 @@
+.cover {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  &__img {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 40px;
+    background-color: var(--color-style-primary-100);
+    img {
+      width: 430px;
+      height: 528px;
+    }
+  }
+}
+
+
+.info {
+  padding-left: 24px;
+  &__authors {
+    font: var(--font-subtitle-2);
+    color: var(--color-style-primary-500);
+  }
+  &__title {
+    margin-top: 16px;
+    font: var(--font-header-2);
+    color: var(--color-style-primary-700);
+  }
+  &__price {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    margin-top: 16px;
+    justify-content: flex-end;
+    font: var(--font-header-3);
+    color: var(--color-style-primary-700);
+    span {
+      text-decoration: line-through;
+      color: var(--color-style-info-red-400);
+    }
+  }
+  &__line {
+    margin-top: 24px;
+    border-top: var(--border-line);
+    border-width: 2px;
+  }
+  &__info_product {
+    margin-top: 24px;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 24px 11.5px;
+  }
+  &__catagories {
+    margin-top: 24px;
+  }
+}
+
+
+.summary {
+  &__title {
+    font: var(--font-header-3);
+    color: var(--color-style-primary-700);
+  }
+  &__descr {
+    margin-top: 16px;
+    font: var(--font-bodytext-2);
+    color: var(--color-style-primary-700);
+  }
+}

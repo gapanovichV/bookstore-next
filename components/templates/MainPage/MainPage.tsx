@@ -7,6 +7,7 @@ import { useRouter } from "next/navigation"
 
 import { CheckList } from "@/components/elements/CheckList/CheckList"
 import { Dropdown } from "@/components/elements/Dropdown/Dropdown"
+import { InfoIllustration } from "@/components/elements/InfoCard/InfoIllustration"
 import { PurchaseCard } from "@/components/elements/PurchaseCard/PurchaseCard"
 import { ReviewCard } from "@/components/elements/ReviewCard/ReviewCard"
 import { Tab } from "@/components/elements/Tab/Tab"
@@ -14,8 +15,6 @@ import { Tag } from "@/components/elements/Tag/Tag"
 import { useTab } from "@/hooks/useTab"
 import { useUserLogout } from "@/hooks/useUserLogout"
 import { RouteEnum } from "@/types/route.type"
-import { Card } from "@/components/elements/Card/Card"
-import { InfoIllustration } from "@/components/elements/InfoCard/InfoIllustration"
 
 const MainPage = () => {
   const router = useRouter()

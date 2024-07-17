@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react"
 import clsx from "clsx"
+import Link from "next/link"
 
 import api from "@/api/apiInstance"
 import { Card } from "@/components/elements/Card/Card"
@@ -17,10 +18,13 @@ interface ContentProps {
 }
 
 export const Content = ({ className }: ContentProps) => {
-  const [books, seBooks] = useState<allGetBooksParams>()
+  const [books, seBooks] = useState<allGetBooksParams>({
+    status: Status.Loading,
+    books: []
+  })
 
   useEffect(() => {
-    const fetchData = async () => {
+    const fetchBooks = async () => {
       try {
         const { data } = await api.get("/api/books/allBooks")
         if (data.status === Status.Success) {
@@ -30,19 +34,21 @@ export const Content = ({ className }: ContentProps) => {
         handleError(error)
       }
     }
-    fetchData().catch(console.error)
+    fetchBooks().catch(console.error)
   }, [])
 
   return (
     <div className={clsx(styles.content, className)}>
       <div className={clsx(styles.header)}>
         Showing 1 - 10 items out of a total of ? million books
-        <Dropdown />
+        <Dropdown text="Sort By" />
       </div>
       {books?.status === "success" ? (
         <div className={clsx(styles.book__list)}>
           {books.books.map((book: BookParams) => (
-            <Card key={book._id} size="large" book={book} />
+            <Link href={`/catalog/book/${book._id}`} key={book._id}>
+              <Card key={book._id} size="large" book={book} />
+            </Link>
           ))}
         </div>
       ) : (

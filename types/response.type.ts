@@ -9,5 +9,6 @@ export interface StatusResponse {
 
 export enum Status {
   Success = "success",
-  Error = "error"
+  Error = "error",
+  Loading = "loading"
 }
