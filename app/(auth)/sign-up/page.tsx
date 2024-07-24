@@ -1,4 +1,4 @@
-import RegistrationForm from "@/components/modules/RegistrationForm/RegistrationForm"
+import { RegistrationForm } from "@/components/modules"
 import AuthPage from "@/components/templates/AuthPage/AuthPage"
 
 const SingUpPage = () => {

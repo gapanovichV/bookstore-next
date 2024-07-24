@@ -10,9 +10,7 @@ import { useRouter } from "next/navigation"
 import type { z } from "zod"
 
 import api from "@/api/apiInstance"
-import { Button } from "@/components/elements/Button/Button"
-import { ErrorMassage } from "@/components/elements/ErrorMassage/ErrorMassage"
-import { Input } from "@/components/elements/Input/Input"
+import { Button, ErrorMessage, Input } from "@/components/elements"
 import { registrationDefaultValue } from "@/components/modules/RegistrationForm/registrationForm.data"
 import { LOCAL_STORAGE_KEY } from "@/constants"
 import { storeToken } from "@/lib/storeToken"
@@ -25,7 +23,7 @@ import styles from "./RegistrationForm.module.scss"
 
 export type FormRegistrationSchema = z.infer<typeof userRegistrationFormScheme>
 
-const RegistrationForm = () => {
+export const RegistrationForm = () => {
   const router = useRouter()
   const form = useForm<FormRegistrationSchema>({
     resolver: zodResolver(userRegistrationFormScheme),
@@ -64,7 +62,7 @@ const RegistrationForm = () => {
               type="text"
               {...(fieldState.error && { error: fieldState.error.message })}
             />
-            <ErrorMassage {...(fieldState.error && { error: fieldState.error.message })} />
+            <ErrorMessage {...(fieldState.error && { error: fieldState.error.message })} />
           </div>
         )}
       />
@@ -81,7 +79,7 @@ const RegistrationForm = () => {
               type="text"
               {...(fieldState.error && { error: fieldState.error.message })}
             />
-            <ErrorMassage {...(fieldState.error && { error: fieldState.error.message })} />
+            <ErrorMessage {...(fieldState.error && { error: fieldState.error.message })} />
           </div>
         )}
       />
@@ -98,7 +96,7 @@ const RegistrationForm = () => {
               type="email"
               {...(fieldState.error && { error: fieldState.error.message })}
             />
-            <ErrorMassage {...(fieldState.error && { error: fieldState.error.message })} />
+            <ErrorMessage {...(fieldState.error && { error: fieldState.error.message })} />
           </div>
         )}
       />
@@ -116,7 +114,7 @@ const RegistrationForm = () => {
               isPassword={true}
               {...(fieldState.error && { error: fieldState.error.message })}
             />
-            <ErrorMassage {...(fieldState.error && { error: fieldState.error.message })} />
+            <ErrorMessage {...(fieldState.error && { error: fieldState.error.message })} />
           </div>
         )}
       />
