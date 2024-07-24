@@ -30,8 +30,8 @@
 }
 
 .line {
-  outline:  1.5px solid var(--color-style-primary-800);
-  outline-offset: -1.5px;
+  outline: 2px solid var(--color-style-primary-800);
+  outline-offset: -2px;
   &:hover {
     box-shadow: var(--drop-shadow-hard);
   }

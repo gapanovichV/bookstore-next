@@ -59,3 +59,26 @@ p {
   gap: 16px;
   margin-bottom: 50px;
 }
+
+::-webkit-scrollbar {
+  width: 4px;
+}
+
+::-webkit-scrollbar-track-piece {
+  border-radius: 6px;
+  background: var(--color-style-primary-100);
+}
+
+::-webkit-scrollbar-track {
+  border-radius: 6px;
+  background: var(--color-style-primary-100);
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--color-style-primary-600);
+  border-radius: 6px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: var(--color-style-primary-800);
+}

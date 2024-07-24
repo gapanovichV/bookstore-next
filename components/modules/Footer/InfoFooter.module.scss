@@ -1,0 +1,15 @@
+.info {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+  &__text {
+    font: var(--font-bodytext-3);
+    color: var(--color-style-primary-600);
+    width: 420px;
+  }
+  &__btn {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+  }
+}
