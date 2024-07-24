@@ -16,8 +16,8 @@ interface CardProps {
 
 export const Card = ({ className, size, book, id }: CardProps) => {
   return (
-    <Link href={`/catalog/book/${id}`} key={id}>
-      <div className={clsx(styles.card, styles[size], className)}>
+    <div className={clsx(styles.card, styles[size], className)}>
+      <Link href={`/catalog/book/${id}`} key={id}>
         <div className={clsx(styles.card__img)}>
           <img src={book.imageUrl} alt="Picture Card" />
         </div>
@@ -42,7 +42,7 @@ export const Card = ({ className, size, book, id }: CardProps) => {
             </div>
           </div>
         </div>
-      </div>
-    </Link>
+      </Link>
+    </div>
   )
 }

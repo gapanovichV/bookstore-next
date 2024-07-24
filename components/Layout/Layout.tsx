@@ -1,7 +1,6 @@
 import React from "react"
 
-import { Header } from "@/components/modules"
-
+import { Footer, Header } from "@/components/modules"
 
 interface LayoutProps {
   children?: React.ReactNode
@@ -11,6 +10,7 @@ const Layout = ({ children }: LayoutProps) => {
     <>
       <Header />
       {children}
+      <Footer />
     </>
   )
 }

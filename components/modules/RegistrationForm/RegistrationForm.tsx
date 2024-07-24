@@ -6,7 +6,7 @@ import toast from "react-hot-toast"
 import { zodResolver } from "@hookform/resolvers/zod"
 import clsx from "clsx"
 import Link from "next/link"
-import { useRouter } from "next/navigation"
+import { redirect, useRouter } from "next/navigation"
 import type { z } from "zod"
 
 import api from "@/api/apiInstance"
