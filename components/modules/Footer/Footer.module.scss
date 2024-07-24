@@ -57,3 +57,17 @@
     }
   }
 }
+
+@media (max-width: 480px) {
+  .footer {
+    padding: 20px 10px;
+    &__nav {
+      &__title {
+        margin-bottom: 20px;
+      }
+      &__list {
+        gap: 20px;
+      }
+    }
+  }
+}

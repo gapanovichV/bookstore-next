@@ -16,12 +16,14 @@
 
 @media (max-width: 480px) {
   .info {
+    gap: 20px;
     &__text {
       max-width: 355px;
     }
     &__btn {
       flex-direction: column;
       align-items: flex-start;
+      gap: 8px;
     }
   }
 }
