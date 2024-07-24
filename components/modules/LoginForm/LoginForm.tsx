@@ -8,9 +8,7 @@ import Link from "next/link"
 import { useRouter } from "next/navigation"
 import type { z } from "zod"
 
-import { Button } from "@/components/elements/Button/Button"
-import { ErrorMassage } from "@/components/elements/ErrorMassage/ErrorMassage"
-import { Input } from "@/components/elements/Input/Input"
+import { Button, ErrorMessage, Input } from "@/components/elements"
 import { loginDefaultValue } from "@/components/modules/LoginForm/loginForm.data"
 import { useSubmitHandler } from "@/hooks/useSubmitHandler"
 import { RouteEnum } from "@/types/route.type"
@@ -20,7 +18,7 @@ import styles from "./LoginForm.module.scss"
 
 export type FormLoginSchema = z.infer<typeof userLoginFormScheme>
 
-const LoginForm = () => {
+export const LoginForm = () => {
   const router = useRouter()
   const form = useForm<FormLoginSchema>({
     resolver: zodResolver(userLoginFormScheme),
@@ -46,7 +44,7 @@ const LoginForm = () => {
               type="email"
               {...(fieldState.error && { error: fieldState.error.message })}
             />
-            <ErrorMassage {...(fieldState.error && { error: fieldState.error.message })} />
+            <ErrorMessage {...(fieldState.error && { error: fieldState.error.message })} />
           </div>
         )}
       />
@@ -64,7 +62,7 @@ const LoginForm = () => {
               isPassword={true}
               {...(fieldState.error && { error: fieldState.error.message })}
             />
-            <ErrorMassage {...(fieldState.error && { error: fieldState.error.message })} />
+            <ErrorMessage {...(fieldState.error && { error: fieldState.error.message })} />
           </div>
         )}
       />
@@ -86,5 +84,3 @@ const LoginForm = () => {
     </form>
   )
 }
-
-export default LoginForm

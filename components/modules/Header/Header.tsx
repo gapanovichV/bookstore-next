@@ -13,7 +13,7 @@ import { RouteEnum } from "@/types/route.type"
 
 import styles from "./Header.module.scss"
 
-const Header = () => {
+export const Header = () => {
   const router = useRouter()
   const pathName = usePathname()
   const [isLogin, setIsLogin] = useState(true)
@@ -66,5 +66,3 @@ const Header = () => {
     </header>
   )
 }
-
-export default Header

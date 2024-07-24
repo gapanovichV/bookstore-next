@@ -1,7 +1,7 @@
 import React from "react"
 import clsx from "clsx"
 
-import AuthHeader from "@/components/modules/AuthHeader/AuthHeader"
+import { AuthHeader } from "@/components/modules"
 
 import styles from "./AuthPage.module.scss"
 

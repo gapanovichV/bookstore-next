@@ -5,13 +5,15 @@ import toast from "react-hot-toast"
 import clsx from "clsx"
 import { useRouter } from "next/navigation"
 
-import { CheckList } from "@/components/elements/CheckList/CheckList"
-import { Dropdown } from "@/components/elements/Dropdown/Dropdown"
-import { InfoIllustration } from "@/components/elements/InfoCard/InfoIllustration"
-import { PurchaseCard } from "@/components/elements/PurchaseCard/PurchaseCard"
-import { ReviewCard } from "@/components/elements/ReviewCard/ReviewCard"
-import { Tab } from "@/components/elements/Tab/Tab"
-import { Tag } from "@/components/elements/Tag/Tag"
+import {
+  CheckList,
+  Dropdown,
+  InfoIllustration,
+  PurchaseCard,
+  ReviewCard,
+  Tab,
+  Tag
+} from "@/components/elements"
 import { useTab } from "@/hooks/useTab"
 import { useUserLogout } from "@/hooks/useUserLogout"
 import { RouteEnum } from "@/types/route.type"

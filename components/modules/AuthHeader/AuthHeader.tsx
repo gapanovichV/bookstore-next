@@ -7,7 +7,7 @@ import { Logo } from "@/components/elements/Logo/Logo"
 
 import styles from "./AuthHeader.module.scss"
 
-const AuthHeader = () => {
+export const AuthHeader = () => {
   const router = useRouter()
   return (
     <header className={clsx(styles.header)}>
@@ -50,5 +50,3 @@ const AuthHeader = () => {
     </header>
   )
 }
-
-export default AuthHeader

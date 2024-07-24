@@ -1,5 +1,6 @@
-import LoginForm from "@/components/modules/LoginForm/LoginForm"
+import { LoginForm } from "@/components/modules"
 import AuthPage from "@/components/templates/AuthPage/AuthPage"
+
 
 const SignInPage = () => {
   return (

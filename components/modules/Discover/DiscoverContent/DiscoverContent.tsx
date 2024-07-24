@@ -1,24 +1,23 @@
+"use client"
+
 import React, { useEffect, useState } from "react"
 import { MoonLoader } from "react-spinners"
 import clsx from "clsx"
-import Link from "next/link"
 
 import api from "@/api/apiInstance"
-import { Card } from "@/components/elements/Card/Card"
-import { Dropdown } from "@/components/elements/Dropdown/Dropdown"
-import { InfoIllustration } from "@/components/elements/InfoCard/InfoIllustration"
+import { Card, Dropdown, InfoIllustration } from "@/components/elements"
 import type { BookParams } from "@/lib/database/models/book.model"
 import { handleError } from "@/lib/utils/error"
 import type { allGetBooksParams } from "@/types/books.type"
 import { Status } from "@/types/response.type"
 
-import styles from "./Content.module.scss"
+import styles from "./DiscoverContent.module.scss"
 
 interface ContentProps {
   className?: string
 }
 
-export const Content = ({ className }: ContentProps) => {
+export const DiscoverContent = ({ className }: ContentProps) => {
   const [data, setData] = useState<allGetBooksParams>({
     status: Status.Loading,
     books: []
@@ -39,9 +38,7 @@ export const Content = ({ className }: ContentProps) => {
   }, [])
 
   const books = data.books.map((book: BookParams) => (
-    <Link href={`/catalog/book/${book._id}`} key={book._id}>
-      <Card key={book._id} size="large" book={book} />
-    </Link>
+    <Card key={book._id} size="large" book={book} id={book._id} />
   ))
 
   return (
