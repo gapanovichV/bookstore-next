@@ -5,11 +5,23 @@
   &__text {
     font: var(--font-bodytext-3);
     color: var(--color-style-primary-600);
-    width: 420px;
+    max-width: 420px;
   }
   &__btn {
     display: flex;
     align-items: center;
     gap: 16px;
+  }
+}
+
+@media (max-width: 480px) {
+  .info {
+    &__text {
+      max-width: 355px;
+    }
+    &__btn {
+      flex-direction: column;
+      align-items: flex-start;
+    }
   }
 }
