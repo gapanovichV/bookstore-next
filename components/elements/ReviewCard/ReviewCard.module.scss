@@ -6,17 +6,19 @@
   background-color: var(--color-style-primary-100);
   width: 100%;
   border-radius: var(--border-radius);
-  &__content {
-    display: flex;
-    align-items: center;
-    gap: 8px;
-  }
   .pic {
+    grid-area: pic;
     padding: 8px 30px;
   }
   .detail {
+    display: grid;
+    grid-template-columns: 170px auto;
+    grid-template-areas:
+    "pic top top"
+    "pic fillbox fillbox";
     width: 100%;
     &__top {
+      grid-area: top;
       display: flex;
       gap: 16px;
       margin-bottom: 16px;
@@ -25,7 +27,7 @@
     &__info {
       &__date {
         font: var(--font-bodytext-3);
-        margin-bottom: 4px;
+        margin-bottom: 8px;
       }
       &__title {
         font: var(--font-subtitle-2);
@@ -46,6 +48,7 @@
       }
     }
     &__fillbox {
+      grid-area: fillbox;
       width: 100%;
       p {
         font: var(--font-bodytext-3);
@@ -61,8 +64,77 @@
     display: flex;
     justify-content: flex-end;
   }
+
+
+  @media (max-width: 800px) {
+    .pic {
+      margin-bottom: 16px;
+    }
+    .detail {
+      grid-template-areas:
+    "pic top top"
+    "fillbox fillbox fillbox";
+      &__top {
+        flex-direction: column;
+        justify-content: normal;
+        margin-bottom: 8px;
+      }
+      &__info {
+        &__date {
+          white-space: nowrap;
+        }
+      }
+      &__estimate {
+        &__question {
+          margin-bottom: 8px;
+        }
+      }
+      &__fillbox {
+        p {
+          margin-bottom: 8px
+        }
+      }
+    }
+  }
+
+  @media (max-width: 480px) {
+    .pic {
+      margin: 0 auto;
+      align-items: center;
+    }
+    .detail {
+      display: flex;
+      flex-direction: column;
+      &__fillbox {
+        p {
+          margin-bottom: 0;
+        }
+      }
+    }
+  }
+
+  .reviewLeft__detail {
+    grid-template-rows: auto 1fr;
+    grid-template-areas:
+    "pic top top"
+    "pic fillbox fillbox";
+    .pic {
+
+      margin: 0 auto;
+    }
+    .detail {
+      &__top {
+        @media (max-width: 800px) {
+          flex-direction: row;
+        }
+      }
+    }
+
+  }
 }
 
 .reviewLeft {
   display: none;
 }
+
+

@@ -36,20 +36,6 @@ const MainPage = () => {
         <button onClick={() => router.push(RouteEnum.SIGN_UP)}>Registration</button>
         <button onClick={handleLogout}>Logout</button>
         <button onClick={text}>toast</button>
-        <div className={"test-tag"}>
-          <Tag status={false}>NEW!</Tag>
-          <Tag status={true}>NEW!</Tag>
-          <Tag status={false}>DONE</Tag>
-          <Tag status={true} color="green">
-            DONE
-          </Tag>
-          <Tag status={true} color="red">
-            Processed
-          </Tag>
-          <Tag status={true} color="yellow">
-            SHIPPED
-          </Tag>
-        </div>
         <div className={"test"}>
           <Tab
             position="horizontal"
@@ -69,14 +55,6 @@ const MainPage = () => {
         </div>
         <div className={"test test_col"}>
           <PurchaseCard />
-        </div>
-        <div className={"test"}>
-          <InfoIllustration
-            nameImage="empty"
-            title="Success Transaction"
-            description="Congrats your order has been successfull. keep an eye on your order process on the transaction page!"
-            btnText="Transaction"
-          />
         </div>
       </div>
     </main>

@@ -1,7 +1,8 @@
 import React from "react"
+import { Toaster } from "react-hot-toast"
 import type { Metadata } from "next"
 
-import PagesLayout from "@/components/Layout/PagesLayout"
+import { AuthProvider } from "@/context/AuthProvider"
 
 import "./globalStyles/index.scss"
 
@@ -15,5 +16,14 @@ export default function RootLayout({
 }: Readonly<{
   children: React.ReactNode
 }>) {
-  return <PagesLayout>{children}</PagesLayout>
+  return (
+    <html lang="en">
+      <body suppressHydrationWarning={true}>
+        <AuthProvider>
+          {children}
+          <Toaster position="top-center" reverseOrder={false} />
+        </AuthProvider>
+      </body>
+    </html>
+  )
 }

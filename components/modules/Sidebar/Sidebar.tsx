@@ -1,3 +1,5 @@
+"use client"
+
 import clsx from "clsx"
 
 import { Tab } from "@/components/elements/Tab/Tab"
