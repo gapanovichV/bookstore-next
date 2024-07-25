@@ -12,8 +12,13 @@
   gap: 16px;
   font: var(--font-bodytext-3);
   color: var(--color-style-primary-500);
-  &_star {
+  &__star {
     display: flex;
     gap: 8px;
+  }
+  @media (max-width: 480px) {
+    .rating__star {
+      gap: 4px;
+    }
   }
 }

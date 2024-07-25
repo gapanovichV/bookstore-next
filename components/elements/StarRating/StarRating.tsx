@@ -74,7 +74,7 @@ export const StarRating = ({ defaultRating = 0, onSetRating, className }: StarRa
   }
   return (
     <div className={clsx(styles.rating)}>
-      <div className={clsx(styles.rating_star, className)}>
+      <div className={clsx(styles.rating__star, className)}>
         {[...Array(5)].map((_, i) => (
           <Star
             key={i}
