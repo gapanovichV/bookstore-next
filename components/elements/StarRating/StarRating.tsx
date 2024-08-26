@@ -21,7 +21,7 @@ interface StarProps {
 const Star = ({ filled, onClick, onMouseEnter, onMouseLeave }: StarProps) => {
   return (
     <button
-      title="button star"
+      title="Star raiting"
       type="button"
       className={clsx("btn-reset", styles.star)}
       onClick={onClick}
@@ -60,8 +60,6 @@ const Star = ({ filled, onClick, onMouseEnter, onMouseLeave }: StarProps) => {
   )
 }
 
-const message = ["Bad", "Average", "Ok", "Good", "Very good"]
-
 export const StarRating = ({ defaultRating = 0, onSetRating, className }: StarRatingProps) => {
   const [rating, setRating] = useState(defaultRating)
   const [hover, setHover] = useState(0)
@@ -85,7 +83,6 @@ export const StarRating = ({ defaultRating = 0, onSetRating, className }: StarRa
           />
         ))}
       </div>
-      <p>{message.length === 5 && message[hover ? hover - 1 : rating - 1]}</p>
     </div>
   )
 }

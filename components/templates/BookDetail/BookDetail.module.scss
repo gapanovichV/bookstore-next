@@ -10,6 +10,19 @@
     gap: 40px;
     margin-right: 24px;
   }
+  &__review_book {
+    &__header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+    &__card {
+      margin-top: 24px;
+      display: flex;
+      flex-direction: column;
+      gap: 24px;
+    }
+  }
 }
 
 .line {
@@ -19,7 +32,7 @@
     content: "";
     background: var(--color-style-primary-200);
     width: 1px;
-    height: 100%;
+    height: calc(100% + 32px + 32px);
     top: -32px;
     right: 0;
     position: absolute;

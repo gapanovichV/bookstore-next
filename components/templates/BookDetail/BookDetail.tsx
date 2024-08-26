@@ -4,7 +4,8 @@ import { useEffect, useState } from "react"
 import clsx from "clsx"
 
 import api from "@/api/apiInstance"
-import { ReviewCard } from "@/components/elements"
+import { Button } from "@/components/elements"
+import { ReviewBookDetail } from "@/components/elements/ReviewBookDetail/ReviewBookDetail"
 import { BookCover, BookInfo, Summary } from "@/components/modules"
 import { handleError } from "@/lib/utils/error"
 import type { oneGetBookParams } from "@/types/books.type"
@@ -46,7 +47,14 @@ export const BookDetail = ({ className, bookId }: BookDetailProps) => {
               <BookCover imageUrl={data.book.imageUrl} />
               <Summary description={data.book.description} />
               <div className={clsx(styles.book__review_book)}>
-                <ReviewCard /> {/* TODO: тест ревью карточки нужно сделать другую */}
+                <div className={clsx(styles.book__review_book__header)}>
+                  <h3>Review</h3>
+                  <Button variant='ghost' size='small'>See all</Button>
+                </div>
+                <div  className={clsx(styles.book__review_book__card)}>
+                  <ReviewBookDetail />
+                  <ReviewBookDetail />
+                </div>
               </div>
             </div>
             <div className={clsx(styles.line)}></div>

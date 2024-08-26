@@ -1,0 +1,35 @@
+.review {
+  display: flex;
+  gap: 24px;
+  &__pic {
+    img {
+      width: 60px;
+      height: 60px;
+    }
+  }
+  &__detail {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    &__star {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      p {
+        font: var(--font-subtitle-3);
+        color: var(--color-style-primary-700);
+      }
+    }
+    &__text {
+      &__author {
+        font: var(--font-subtitle-3);
+        color: var(--color-style-primary-700);
+      }
+      &__review {
+        margin-top: 8px;
+        font: var(--font-bodytext-3);
+        color: var(--color-style-primary-700);
+      }
+    }
+  }
+}
