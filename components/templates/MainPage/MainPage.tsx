@@ -14,6 +14,7 @@ import {
   Tab,
   Tag
 } from "@/components/elements"
+import { ReviewBookDetail } from "@/components/elements/ReviewBookDetail/ReviewBookDetail"
 import { useTab } from "@/hooks/useTab"
 import { useUserLogout } from "@/hooks/useUserLogout"
 import { RouteEnum } from "@/types/route.type"
@@ -55,6 +56,9 @@ const MainPage = () => {
         </div>
         <div className={"test test_col"}>
           <PurchaseCard />
+        </div>
+        <div className={"test"}>
+          <ReviewBookDetail />
         </div>
       </div>
     </main>
