@@ -49,9 +49,11 @@ export const BookDetail = ({ className, bookId }: BookDetailProps) => {
               <div className={clsx(styles.book__review_book)}>
                 <div className={clsx(styles.book__review_book__header)}>
                   <h3>Review</h3>
-                  <Button variant='ghost' size='small'>See all</Button>
+                  <Button variant="ghost" size="small">
+                    See all
+                  </Button>
                 </div>
-                <div  className={clsx(styles.book__review_book__card)}>
+                <div className={clsx(styles.book__review_book__card)}>
                   <ReviewBookDetail />
                   <ReviewBookDetail />
                 </div>

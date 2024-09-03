@@ -3,7 +3,7 @@ import clsx from "clsx"
 import styles from "./ReviewBookDetail.module.scss"
 
 interface ReviewBookDetailProps {
-  className?: string;
+  className?: string
 }
 
 export const ReviewBookDetail = ({ className }: ReviewBookDetailProps) => {
@@ -19,8 +19,10 @@ export const ReviewBookDetail = ({ className }: ReviewBookDetailProps) => {
         </div>
         <div className={clsx(styles.review__detail__text)}>
           <p className={clsx(styles.review__detail__text__author)}>Jeremy Zucker</p>
-          <p className={clsx(styles.review__detail__text__review)}>The Stories of Choo Choo is a compilation of drawings created
-            by Citra Marina during her daily train ride on Jakarta Commuter Line.</p>
+          <p className={clsx(styles.review__detail__text__review)}>
+            The Stories of Choo Choo is a compilation of drawings created by Citra Marina during her
+            daily train ride on Jakarta Commuter Line.
+          </p>
         </div>
       </div>
     </div>
