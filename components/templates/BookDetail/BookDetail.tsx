@@ -4,8 +4,7 @@ import { useEffect, useState } from "react"
 import clsx from "clsx"
 
 import api from "@/api/apiInstance"
-import { Button } from "@/components/elements"
-import { ReviewBookDetail } from "@/components/elements/ReviewBookDetail/ReviewBookDetail"
+import { Button, ReviewBookDetail } from "@/components/elements"
 import { BookCover, BookInfo, Summary } from "@/components/modules"
 import { handleError } from "@/lib/utils/error"
 import type { oneGetBookParams } from "@/types/books.type"
@@ -49,9 +48,11 @@ export const BookDetail = ({ className, bookId }: BookDetailProps) => {
               <div className={clsx(styles.book__review_book)}>
                 <div className={clsx(styles.book__review_book__header)}>
                   <h3>Review</h3>
-                  <Button variant='ghost' size='small'>See all</Button>
+                  <Button variant="ghost" size="small">
+                    See all
+                  </Button>
                 </div>
-                <div  className={clsx(styles.book__review_book__card)}>
+                <div className={clsx(styles.book__review_book__card)}>
                   <ReviewBookDetail />
                   <ReviewBookDetail />
                 </div>

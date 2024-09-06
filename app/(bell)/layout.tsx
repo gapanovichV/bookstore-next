@@ -1,7 +1,7 @@
 import React from "react"
 
-import RootLayout from "@/components/Layout/RootLayout"
+import BellLayout from "@/components/Layout/BellLayout"
 
 export default function Layout({ children }: Readonly<{ children: React.ReactNode }>) {
-  return <RootLayout>{children}</RootLayout>
+  return <BellLayout>{children}</BellLayout>
 }

@@ -1,11 +1,11 @@
-import React, { Suspense } from "react"
+import React from "react"
 
 import { Footer, Header } from "@/components/modules"
 
 interface LayoutProps {
   children?: React.ReactNode
 }
-const Layout = ({ children }: LayoutProps) => {
+const RootLayout = ({ children }: LayoutProps) => {
   return (
     <>
       <Header />
@@ -15,4 +15,4 @@ const Layout = ({ children }: LayoutProps) => {
   )
 }
 
-export default Layout
+export default RootLayout

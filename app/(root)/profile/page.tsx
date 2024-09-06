@@ -1,5 +1,5 @@
-const ProfilePage = () => {
+const NotificationPage = () => {
   return <div>Profile</div>
 }
 
-export default ProfilePage
+export default NotificationPage
