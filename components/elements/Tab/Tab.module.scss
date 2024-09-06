@@ -1,6 +1,10 @@
 .tab {
   display: flex;
   gap: 24px;
+  &__text {
+    display: flex;
+    justify-content: space-between;
+  }
   &__label {
     cursor: pointer;
     font: var(--font-subtitle-2);
@@ -51,3 +55,8 @@
     display: none;
   }
 }
+
+.tag {
+    display: flex;
+    justify-content: space-between;
+  }

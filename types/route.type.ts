@@ -4,5 +4,8 @@ export enum RouteEnum {
   SIGN_IN = "/sign-in",
   SIGN_UP = "/sign-up",
   CATALOG = "/catalog",
-  CART = "/cart"
+  CART = "/cart",
+  NOTIFICATION = "/notification",
+  PURCHASE = "/purchase",
+  YOUR_REVIEW = "/your-review"
 }

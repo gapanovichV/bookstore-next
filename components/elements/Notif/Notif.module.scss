@@ -1,0 +1,21 @@
+.notif {
+  background-color: var(--color-style-primary-100);
+  padding: 16px 24px;
+  &__text {
+    &__upper {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      &__title {
+        font: var(--font-subtitle-2);
+        color: var(--color-style-primary-800);
+      }
+    }
+    &__descr {
+      margin-top: 8px;
+      font: var(--font-bodytext-3);
+      color: var(--color-style-primary-800);
+    }
+  }
+
+}

@@ -52,7 +52,9 @@ export const BookInfo = ({ book }: BookInfoProps) => {
           />
         </InfoProduct>
         <InfoProduct label="Total Price">
-          <p className={clsx(styles.info__quantity__label)}>${countProduct === 0 ? book.price : countProduct * book.price}</p>
+          <p className={clsx(styles.info__quantity__label)}>
+            ${countProduct === 0 ? book.price : countProduct * book.price}
+          </p>
         </InfoProduct>
       </div>
       <div className={clsx(styles.info__button_set)}>

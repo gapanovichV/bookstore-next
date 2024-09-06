@@ -1,4 +1,4 @@
-import type { ChangeEvent} from "react";
+import type { ChangeEvent } from "react"
 import clsx from "clsx"
 
 import styles from "./BookDetailComponents.module.scss"
@@ -31,7 +31,6 @@ export const BookStockCount = ({
     if (+value >= stockCount + 1) return
     setCountProduct(+value)
   }
-
 
   return (
     <div className={clsx(styles.count__wrapper, className)}>
