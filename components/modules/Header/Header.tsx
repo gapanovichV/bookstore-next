@@ -6,12 +6,12 @@ import Link from "next/link"
 import { usePathname, useRouter } from "next/navigation"
 
 import { Button } from "@/components/elements/Button/Button"
-import { Notification } from "@/components/elements/Notification/Notification"
 import { ProfilePicture } from "@/components/elements/ProfilePicture/ProfilePicture"
 import { SearchBar } from "@/components/elements/SearchBar/SearchBar"
 import { RouteEnum } from "@/types/route.type"
 
 import styles from "./Header.module.scss"
+import { NotificationButton } from "@/components/elements"
 
 export const Header = () => {
   const router = useRouter()
@@ -53,7 +53,7 @@ export const Header = () => {
           </>
         ) : (
           <div className={clsx(styles.header__logined)}>
-            <Notification />
+            <NotificationButton />
             <Link href={RouteEnum.CART}>
               <img src="/img/Cart.svg" alt="Cart Icon" />
             </Link>

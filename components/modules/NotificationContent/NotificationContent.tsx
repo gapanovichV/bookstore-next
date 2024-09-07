@@ -1,11 +1,11 @@
 import React from "react"
 
-import { Notif } from "@/components/elements"
+import { Notification } from "@/components/elements"
 
 interface ContentProps {
   className?: string
 }
 
 export const NotificationContent = ({ className }: ContentProps) => {
-  return <Notif className={className} />
+  return <Notification className={className} />
 }

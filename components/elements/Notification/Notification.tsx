@@ -1,23 +1,27 @@
-"use client"
-
 import clsx from "clsx"
-import { useRouter } from "next/navigation"
-
-import { RouteEnum } from "@/types/route.type"
 
 import styles from "./Notification.module.scss"
 
 interface NotificationProps {
   className?: string
 }
+
 export const Notification = ({ className }: NotificationProps) => {
-  const router = useRouter()
   return (
-    <div
-      onClick={() => router.push(RouteEnum.NOTIFICATION)}
-      className={clsx(styles.notification, className)}
-    >
-      <img src="/img/Notification.svg" alt="Notification icon" />
+    <div className={clsx(styles.notif, className)}>
+      <div className={clsx(styles.notif__text)}>
+        <div className={clsx(styles.notif__text__upper)}>
+          <img
+            className={clsx(styles.notif__text__upper__img)}
+            src="/img/discount.svg"
+            alt="discount"
+          />
+          <p className={clsx(styles.notif__text__upper__title)}>Promo</p>
+        </div>
+        <p className={clsx(styles.notif__text__descr)}>
+          Amet minim mollit non deserunt ullamco est sit aliqua dolor do amet sint.
+        </p>
+      </div>
     </div>
   )
 }
