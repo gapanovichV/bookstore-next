@@ -6,6 +6,4 @@ export enum RouteEnum {
   CATALOG = "/catalog",
   CART = "/cart",
   NOTIFICATION = "/notification",
-  PURCHASE = "/purchase",
-  YOUR_REVIEW = "/your-review"
 }

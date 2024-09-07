@@ -1,22 +1,20 @@
 "use client"
 
-import React, { useEffect } from "react"
+import type { ReactElement } from "react";
+import React from "react"
 import clsx from "clsx"
-import { useRouter } from "next/navigation"
 
 import type { ITab } from "@/components/elements/Tab/Tab"
-import { Header, Sidebar } from "@/components/modules"
+import { NotificationContent, PurchaseContent, Sidebar } from "@/components/modules"
 import { useTab } from "@/hooks/useTab"
-import { RouteEnum } from "@/types/route.type"
 
-import styles from "./BellLayout.module.scss"
+import styles from "./NotificationPage.module.scss"
 
-interface BellLayoutProps {
+interface NotificationPageProps {
+  className?: string
   children?: React.ReactNode
 }
-const BellLayout = ({ children }: BellLayoutProps) => {
-  const router = useRouter()
-
+const NotificationPage = ({ className }: NotificationPageProps) => {
   const SidebarTabs: ITab[] = [
     { id: 1, label: "Notification", tag: false },
     { id: 2, label: "Purchase", tag: false },
@@ -24,29 +22,25 @@ const BellLayout = ({ children }: BellLayoutProps) => {
   ]
   const { currentItem, changeItem } = useTab(0, SidebarTabs)
 
-  useEffect(() => {
+  const content = (): ReactElement => {
     switch (currentItem.id) {
       case 1:
-        router.push(RouteEnum.NOTIFICATION)
-        break
+        return <NotificationContent />
       case 2:
-        router.push(RouteEnum.PURCHASE)
-        break
+        return <PurchaseContent />
       case 3:
-        router.push(RouteEnum.YOUR_REVIEW)
-        break
+        return <div>555</div>
       default:
+        return <NotificationContent />
     }
-  }, [currentItem.id])
-
+  }
   return (
     <>
-      <Header />
-      <main>
+      <main className={clsx(className)}>
         <div className={clsx("container")}>
           <div className={clsx(styles.content)}>
             <Sidebar currentItem={currentItem} changeItem={changeItem} tabs={SidebarTabs} />
-            <div className={clsx(styles.content__wrapper)}>{children}</div>
+            <div className={clsx(styles.content__wrapper)}>{content()}</div>
           </div>
         </div>
       </main>
@@ -54,4 +48,4 @@ const BellLayout = ({ children }: BellLayoutProps) => {
   )
 }
 
-export default BellLayout
+export default NotificationPage
