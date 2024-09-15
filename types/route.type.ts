@@ -5,5 +5,5 @@ export enum RouteEnum {
   SIGN_UP = "/sign-up",
   CATALOG = "/catalog",
   CART = "/cart",
-  NOTIFICATION = "/notification",
+  NOTIFICATION = "/notification"
 }

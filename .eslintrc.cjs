@@ -22,6 +22,7 @@ module.exports = {
         "no-multi-assign": "off",
         "prettier/prettier": "off",
         "@typescript-eslint/require-await": "off",
+        "import/no-cycle": "off",
         "promise/always-return": ["error", { ignoreLastCallback: true }]
       }
     }

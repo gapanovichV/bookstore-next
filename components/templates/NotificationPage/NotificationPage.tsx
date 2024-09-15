@@ -1,6 +1,6 @@
 "use client"
 
-import type { ReactElement } from "react";
+import type { ReactElement } from "react"
 import React from "react"
 import clsx from "clsx"
 
