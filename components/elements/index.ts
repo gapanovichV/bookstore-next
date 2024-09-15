@@ -1,5 +1,6 @@
 export { Button } from "./Button/Button"
 export { Card } from "./Card/Card"
+export { CartCard } from "./CartCard/CartCard"
 export { CheckList } from "./CheckList/CheckList"
 export { Dropdown } from "./Dropdown/Dropdown"
 export { ErrorMessage } from "./ErrorMessage/ErrorMessage"

@@ -8,7 +8,7 @@ type CheckListProps<
   Component extends keyof JSX.IntrinsicElements | React.JSXElementConstructor<any> = "input"
 > = {
   className?: string
-  label: string
+  label?: string
   children?: ReactNode
 } & React.ComponentProps<Component>
 
