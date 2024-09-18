@@ -13,6 +13,7 @@
   },
   "dependencies": {
     "@hookform/resolvers": "^3.4.2",
+    "@prisma/client": "^5.19.1",
     "@types/dateformat": "^5.0.2",
     "axios": "^1.7.2",
     "bcrypt": "^5.1.1",
@@ -21,6 +22,7 @@
     "jsonwebtoken": "^9.0.2",
     "mongoose": "^8.4.0",
     "next": "14.2.3",
+    "prisma": "^5.19.1",
     "react": "^18",
     "react-dom": "^18",
     "react-hook-form": "^7.51.4",

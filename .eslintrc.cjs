@@ -23,6 +23,7 @@ module.exports = {
         "prettier/prettier": "off",
         "@typescript-eslint/require-await": "off",
         "import/no-cycle": "off",
+        "eslint-comments/no-unlimited-disable": "warn",
         "promise/always-return": ["error", { ignoreLastCallback: true }]
       }
     }
