@@ -9,7 +9,11 @@
     "start": "next start",
     "lint": "next lint",
     "lint:fix": "eslint . --ext ts,tsx --report-unused-disable-directives --max-warnings 0",
-    "format": "prettier --write **/*.{ts,tsx,css,mdx,cjs}"
+    "format": "prettier --write **/*.{ts,tsx,css,mdx,cjs}",
+    "prisma:push": "prisma db push",
+    "prisma:studio": "prisma studio",
+    "prisma:seed": "prisma db seed",
+    "postinstall": "prisma generate"
   },
   "dependencies": {
     "@hookform/resolvers": "^3.4.2",

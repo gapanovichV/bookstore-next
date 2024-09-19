@@ -5,13 +5,13 @@ import clsx from "clsx"
 import Link from "next/link"
 import { usePathname, useRouter } from "next/navigation"
 
+import { NotificationButton } from "@/components/elements"
 import { Button } from "@/components/elements/Button/Button"
 import { ProfilePicture } from "@/components/elements/ProfilePicture/ProfilePicture"
 import { SearchBar } from "@/components/elements/SearchBar/SearchBar"
 import { RouteEnum } from "@/types/route.type"
 
 import styles from "./Header.module.scss"
-import { NotificationButton } from "@/components/elements"
 
 export const Header = () => {
   const router = useRouter()

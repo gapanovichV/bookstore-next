@@ -1,19 +1,15 @@
 import bcrypt from "bcrypt"
-import { NextResponse } from "next/server"
+import { type NextRequest, NextResponse } from "next/server"
 
-import type { UserParams } from "@/lib/database/models/user.model"
 import { findUserByEmail, generateTokens } from "@/lib/utils/auth"
 import { handleError } from "@/lib/utils/error"
-import { getDbAndReqBody } from "@/lib/utils/getDbAndReqBody"
-import type { StatusResponse } from "@/types/response.type"
-import { Status } from "@/types/response.type"
+import { Status, type StatusResponse } from "@/types/response.type"
 import type { LoginUserParams } from "@/types/user.actions.type"
 
-export async function POST(req: Request): Promise<NextResponse<StatusResponse>> {
+export async function POST(req: NextRequest): Promise<NextResponse<StatusResponse>> {
   try {
-    const { reqBody } = await getDbAndReqBody(req)
-    const user = reqBody as LoginUserParams
-    const findUser: UserParams = await findUserByEmail(user.email)
+    const user: LoginUserParams = await req.json()
+    const findUser = await findUserByEmail(user.email)
 
     if (!findUser)
       return NextResponse.json({
@@ -22,6 +18,7 @@ export async function POST(req: Request): Promise<NextResponse<StatusResponse>> 
       })
 
     const isMatch = await bcrypt.compareSync(user.password, findUser.password)
+
     if (isMatch) {
       const token = await generateTokens(user.email, findUser.firstName)
       return NextResponse.json({

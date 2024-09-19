@@ -1,11 +1,9 @@
-import { ObjectId } from "mongodb"
+import { prisma } from "@/prisma/prisma-client"
 
-import Book from "@/lib/database/models/book.model"
-
-export const findBookById = async (bookId: string) => {
-  return Book.findOne({ _id: new ObjectId(bookId) })
+export const findBookById = async (bookId: number) => {
+  return prisma.book.findFirst({ where: { id: bookId } })
 }
 
 export const getAllBook = async () => {
-  return Book.find()
+  return prisma.book
 }
