@@ -1,7 +1,7 @@
 import { type NextRequest, NextResponse } from "next/server"
 
-import { createUserAndGenerateTokens, findUserByEmail } from "@/lib/utils/auth"
-import { handleError } from "@/lib/utils/error"
+import { createUserAndGenerateTokens, findUserByEmail } from "@/shared/lib/utils/auth"
+import { handleError } from "@/shared/lib/utils/error"
 import { Status, type StatusResponse } from "@/types/response.type"
 import type { RegistrationUserParams } from "@/types/user.actions.type"
 

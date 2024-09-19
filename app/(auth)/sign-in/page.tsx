@@ -1,5 +1,5 @@
-import { LoginForm } from "@/components/modules"
-import AuthPage from "@/components/templates/AuthPage/AuthPage"
+import { LoginForm } from "@/shared/components/modules"
+import AuthPage from "@/shared/components/templates/AuthPage/AuthPage"
 
 const SignInPage = () => {
   return (

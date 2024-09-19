@@ -1,5 +1,5 @@
-import { NotificationContent } from "@/components/modules"
-import NotificationPage from "@/components/templates/NotificationPage/NotificationPage"
+import { NotificationContent } from "@/shared/components/modules"
+import NotificationPage from "@/shared/components/templates/NotificationPage/NotificationPage"
 
 const Page = () => {
   return (

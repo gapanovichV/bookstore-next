@@ -1,12 +1,12 @@
 import toast from "react-hot-toast"
 import { useRouter } from "next/navigation"
 
-import api from "@/api/apiInstance"
-import type { FormLoginSchema } from "@/components/modules/LoginForm/LoginForm"
-import type { FormRegistrationSchema } from "@/components/modules/RegistrationForm/RegistrationForm"
-import { LOCAL_STORAGE_KEY } from "@/constants"
-import { storeToken } from "@/lib/storeToken"
-import { handleError } from "@/lib/utils/error"
+import type { FormLoginSchema } from "@/shared/components/modules/LoginForm/LoginForm"
+import type { FormRegistrationSchema } from "@/shared/components/modules/RegistrationForm/RegistrationForm"
+import { LOCAL_STORAGE_KEY } from "@/shared/constants"
+import { storeToken } from "@/shared/lib/storeToken"
+import { handleError } from "@/shared/lib/utils/error"
+import api from "@/shared/services/apiInstance"
 import { Status } from "@/types/response.type"
 import { RouteEnum } from "@/types/route.type"
 

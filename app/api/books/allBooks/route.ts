@@ -1,7 +1,7 @@
 import { NextResponse } from "next/server"
 
-import { getAllBook } from "@/lib/utils/book"
-import { handleError } from "@/lib/utils/error"
+import { getAllBook } from "@/shared/lib/utils/book"
+import { handleError } from "@/shared/lib/utils/error"
 import { Status, type StatusResponse } from "@/types/response.type"
 
 export async function GET(): Promise<NextResponse<StatusResponse>> {

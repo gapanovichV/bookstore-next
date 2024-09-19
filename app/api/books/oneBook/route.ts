@@ -1,7 +1,7 @@
 import { type NextRequest, NextResponse } from "next/server"
 
-import { findBookById } from "@/lib/utils/book"
-import { handleError } from "@/lib/utils/error"
+import { findBookById } from "@/shared/lib/utils/book"
+import { handleError } from "@/shared/lib/utils/error"
 import { Status, type StatusResponse } from "@/types/response.type"
 
 export async function POST(req: NextRequest): Promise<NextResponse<StatusResponse>> {
