@@ -6,7 +6,7 @@ import clsx from "clsx"
 import { Button, ReviewBookDetail } from "@/shared/components/elements"
 import { BookCover, BookInfo, Summary } from "@/shared/components/modules"
 import { handleError } from "@/shared/lib/utils/error"
-import api from "@/shared/services/apiInstance"
+import { Api } from "@/shared/services/api-client"
 import type { oneGetBookParams } from "@/types/books.type"
 import { Status } from "@/types/response.type"
 
@@ -26,11 +26,8 @@ export const BookDetail = ({ className, bookId }: BookDetailProps) => {
   useEffect(() => {
     const fetchBook = async (bookId: string) => {
       try {
-        const { data } = await api.post("/books/oneBook", { bookId })
-
-        if (data.status === Status.Success) {
-          setData(data)
-        }
+        const data = await Api.products.takeOneBook(Number(bookId))
+        console.log(data)
       } catch (error) {
         handleError(error)
       }

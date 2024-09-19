@@ -7,11 +7,12 @@ import clsx from "clsx"
 
 import { Card, Dropdown, InfoIllustration } from "@/shared/components/elements"
 import { handleError } from "@/shared/lib/utils/error"
-import api from "@/shared/services/apiInstance"
+import { Api } from "@/shared/services/api-client"
 import type { allGetBooksParams } from "@/types/books.type"
 import { Status } from "@/types/response.type"
 
 import styles from "./DiscoverContent.module.scss"
+import axiosInstance from "@/shared/services/instance"
 
 interface ContentProps {
   className?: string
@@ -26,16 +27,15 @@ export const DiscoverContent = ({ className }: ContentProps) => {
   useEffect(() => {
     const fetchBooks = async () => {
       try {
-        const { data } = await api.get("/books/allBooks")
-        if (data.status === Status.Success) {
-          setData(data)
-        }
+        const response = await Api.products.getAllBooks()
+        console.log(response)
       } catch (error) {
         handleError(error)
       }
     }
     fetchBooks().catch(console.error)
   }, [])
+
 
   const books = data.books.map((book: ProductItem) => (
     <Card key={book.id} size="large" book={book} id={book.id} />

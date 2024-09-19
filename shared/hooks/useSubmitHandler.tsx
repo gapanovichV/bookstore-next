@@ -6,7 +6,7 @@ import type { FormRegistrationSchema } from "@/shared/components/modules/Registr
 import { LOCAL_STORAGE_KEY } from "@/shared/constants"
 import { storeToken } from "@/shared/lib/storeToken"
 import { handleError } from "@/shared/lib/utils/error"
-import api from "@/shared/services/apiInstance"
+import api from "@/shared/services/instance"
 import { Status } from "@/types/response.type"
 import { RouteEnum } from "@/types/route.type"
 

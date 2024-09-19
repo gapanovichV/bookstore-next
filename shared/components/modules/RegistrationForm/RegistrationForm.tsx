@@ -14,7 +14,7 @@ import { registrationDefaultValue } from "@/shared/components/modules/Registrati
 import { LOCAL_STORAGE_KEY } from "@/shared/constants"
 import { storeToken } from "@/shared/lib/storeToken"
 import { handleError } from "@/shared/lib/utils/error"
-import api from "@/shared/services/apiInstance"
+import api from "@/shared/services/instance"
 import { Status } from "@/types/response.type"
 import { RouteEnum } from "@/types/route.type"
 import { userRegistrationFormScheme } from "@/types/z.type"

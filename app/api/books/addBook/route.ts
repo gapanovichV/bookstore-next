@@ -1,9 +1,9 @@
 import { type NextRequest, NextResponse } from "next/server"
 
 import { prisma } from "@/prisma/prisma-client"
-import { Status, type StatusResponse } from "@/types/response.type"
+import { handleError } from "@/shared/lib/utils/error"
 
-export async function POST(req: NextRequest): Promise<NextResponse<StatusResponse>> {
+export async function POST(req: NextRequest) {
   try {
     const body = await req.json()
 
@@ -13,11 +13,9 @@ export async function POST(req: NextRequest): Promise<NextResponse<StatusRespons
       }
     })
 
-    return NextResponse.json({
-      status: Status.Success,
-      message: "ADD successfully completed"
-    })
+    return NextResponse.json({ message: "Add successfully completed" })
   } catch (error) {
-    throw new Error((error as Error).message)
+    handleError(error)
+    NextResponse.json({ error: "Post failed" }, { status: 500 })
   }
 }

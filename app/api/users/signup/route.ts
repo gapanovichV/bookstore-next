@@ -2,29 +2,21 @@ import { type NextRequest, NextResponse } from "next/server"
 
 import { createUserAndGenerateTokens, findUserByEmail } from "@/shared/lib/utils/auth"
 import { handleError } from "@/shared/lib/utils/error"
-import { Status, type StatusResponse } from "@/types/response.type"
 import type { RegistrationUserParams } from "@/types/user.actions.type"
 
-export async function POST(req: NextRequest): Promise<NextResponse<StatusResponse>> {
+export async function POST(req: NextRequest) {
   try {
     const user: RegistrationUserParams = await req.json()
     const findUser = await findUserByEmail(user.email)
 
     if (findUser !== null)
-      return NextResponse.json({
-        status: Status.Error,
-        message: "This email address is already used by"
-      })
+      return NextResponse.json({ error: "This email address is already used by" }, { status: 500 })
 
     const token = await createUserAndGenerateTokens(user)
 
-    return NextResponse.json({
-      status: Status.Success,
-      message: "Registration successfully completed",
-      user_token: token
-    })
+    return NextResponse.json({ user_token: token })
   } catch (error) {
     handleError(error)
-    return NextResponse.json({ status: Status.Error, message: "User is not created" })
+    return NextResponse.json({ error: "User is not created" }, { status: 500 })
   }
 }
