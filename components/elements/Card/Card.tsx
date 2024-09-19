@@ -1,7 +1,6 @@
+import type { ProductItem } from "@prisma/client"
 import clsx from "clsx"
 import Link from "next/link"
-
-import type { BookParams } from "@/lib/database/models/book.model"
 
 import styles from "./Card.module.scss"
 
@@ -10,8 +9,8 @@ type CardSize = "small" | "medium" | "large" | "mobile"
 interface CardProps {
   className?: string
   size: CardSize
-  book: BookParams
-  id: string
+  book: ProductItem
+  id: number
 }
 
 export const Card = ({ className, size, book, id }: CardProps) => {

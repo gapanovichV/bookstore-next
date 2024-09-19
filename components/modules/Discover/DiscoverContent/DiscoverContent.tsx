@@ -2,11 +2,11 @@
 
 import React, { useEffect, useState } from "react"
 import { MoonLoader } from "react-spinners"
+import type { ProductItem } from "@prisma/client"
 import clsx from "clsx"
 
 import api from "@/api/apiInstance"
 import { Card, Dropdown, InfoIllustration } from "@/components/elements"
-import type { BookParams } from "@/lib/database/models/book.model"
 import { handleError } from "@/lib/utils/error"
 import type { allGetBooksParams } from "@/types/books.type"
 import { Status } from "@/types/response.type"
@@ -26,7 +26,7 @@ export const DiscoverContent = ({ className }: ContentProps) => {
   useEffect(() => {
     const fetchBooks = async () => {
       try {
-        const { data } = await api.get("/api/books/allBooks")
+        const { data } = await api.get("/books/allBooks")
         if (data.status === Status.Success) {
           setData(data)
         }
@@ -37,8 +37,8 @@ export const DiscoverContent = ({ className }: ContentProps) => {
     fetchBooks().catch(console.error)
   }, [])
 
-  const books = data.books.map((book: BookParams) => (
-    <Card key={book._id} size="large" book={book} id={book._id} />
+  const books = data.books.map((book: ProductItem) => (
+    <Card key={book.id} size="large" book={book} id={book.id} />
   ))
 
   return (

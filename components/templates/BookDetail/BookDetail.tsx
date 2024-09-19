@@ -26,7 +26,8 @@ export const BookDetail = ({ className, bookId }: BookDetailProps) => {
   useEffect(() => {
     const fetchBook = async (bookId: string) => {
       try {
-        const { data } = await api.post("/api/books/oneBook", { bookId })
+        const { data } = await api.post("/books/oneBook", { bookId })
+
         if (data.status === Status.Success) {
           setData(data)
         }

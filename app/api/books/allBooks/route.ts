@@ -2,7 +2,7 @@ import { NextResponse } from "next/server"
 
 import { getAllBook } from "@/lib/utils/book"
 import { handleError } from "@/lib/utils/error"
-import { Status,type StatusResponse } from "@/types/response.type"
+import { Status, type StatusResponse } from "@/types/response.type"
 
 export async function GET(): Promise<NextResponse<StatusResponse>> {
   try {
@@ -20,6 +20,6 @@ export async function GET(): Promise<NextResponse<StatusResponse>> {
     })
   } catch (error) {
     handleError(error)
-    return NextResponse.json({ status: Status.Error, message: "Books search error" })
+    return NextResponse.json({ status: Status.Error, error: "Server error" })
   }
 }

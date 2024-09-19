@@ -2,13 +2,13 @@ import { type NextRequest, NextResponse } from "next/server"
 
 import { findBookById } from "@/lib/utils/book"
 import { handleError } from "@/lib/utils/error"
-import { Status,type StatusResponse } from "@/types/response.type"
+import { Status, type StatusResponse } from "@/types/response.type"
 
 export async function POST(req: NextRequest): Promise<NextResponse<StatusResponse>> {
   try {
-    const { bookId } = await req.json()
+    const body = await req.json()
 
-    const foundBook = await findBookById(bookId)
+    const foundBook = await findBookById(body.bookId)
 
     if (!foundBook)
       return NextResponse.json({

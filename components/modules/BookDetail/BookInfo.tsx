@@ -1,7 +1,7 @@
 "use client"
 
 import { useState } from "react"
-import type { Book } from "@prisma/client"
+import type { ProductItem } from "@prisma/client"
 import clsx from "clsx"
 import dateFormat from "dateformat"
 
@@ -13,7 +13,7 @@ import { countries } from "@/lib/utils/countries"
 import styles from "./BookDetailComponents.module.scss"
 
 interface BookInfoProps {
-  book: Book | Record<string, never>
+  book: ProductItem | Record<string, never>
 }
 export const BookInfo = ({ book }: BookInfoProps) => {
   const [countProduct, setCountProduct] = useState<number>(1)
