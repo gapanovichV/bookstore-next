@@ -1,7 +1,7 @@
 import bcrypt from "bcrypt"
 import jwt from "jsonwebtoken"
 
-import User from "@/lib/database/models/user.model"
+import { prisma } from "@/prisma/prisma-client"
 import { Status } from "@/types/response.type"
 import type { RegistrationUserParams } from "@/types/user.actions.type"
 
@@ -9,7 +9,9 @@ const JWT_ACCESS_TOKEN_KEY = process.env.JWT_ACCESS_TOKEN_KEY as string
 const JWT_REFRESH_TOKEN_KEY = process.env.JWT_REFRESH_TOKEN_KEY as string
 
 export const findUserByEmail = async (email: string) => {
-  return User.findOne({ email })
+  return prisma.user.findFirst({
+    where: { email }
+  })
 }
 
 export const generateTokens = async (email: string, firstName: string) => {
@@ -50,7 +52,12 @@ export const createUserAndGenerateTokens = async (user: RegistrationUserParams) 
   const salt = await bcrypt.genSalt(10)
   const newPassword = await bcrypt.hash(user.password, salt)
 
-  await User.create({ ...user, password: newPassword })
+  await prisma.user.create({
+    data: {
+      ...user,
+      password: newPassword
+    }
+  })
 
   return generateTokens(user.email, user.firstName)
 }

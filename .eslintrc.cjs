@@ -24,6 +24,7 @@ module.exports = {
         "@typescript-eslint/require-await": "off",
         "import/no-cycle": "off",
         "eslint-comments/no-unlimited-disable": "warn",
+        "@typescript-eslint/no-redundant-type-constituents": "off",
         "promise/always-return": ["error", { ignoreLastCallback: true }]
       }
     }

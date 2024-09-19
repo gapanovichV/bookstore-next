@@ -1,15 +1,12 @@
-import { NextResponse } from "next/server"
+import { type NextRequest, NextResponse } from "next/server"
 
 import { findBookById } from "@/lib/utils/book"
 import { handleError } from "@/lib/utils/error"
-import { getDbAndReqBody } from "@/lib/utils/getDbAndReqBody"
-import type { StatusResponse } from "@/types/response.type"
-import { Status } from "@/types/response.type"
+import { Status,type StatusResponse } from "@/types/response.type"
 
-export async function POST(req: Request): Promise<NextResponse<StatusResponse>> {
+export async function POST(req: NextRequest): Promise<NextResponse<StatusResponse>> {
   try {
-    const { reqBody } = await getDbAndReqBody(req)
-    const { bookId } = reqBody
+    const { bookId } = await req.json()
 
     const foundBook = await findBookById(bookId)
 

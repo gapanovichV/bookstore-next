@@ -1,14 +1,16 @@
-import { NextResponse } from "next/server"
+import { type NextRequest, NextResponse } from "next/server"
 
-import Book from "@/lib/database/models/book.model"
-import { getDbAndReqBody } from "@/lib/utils/getDbAndReqBody"
-import type { StatusResponse } from "@/types/response.type"
-import { Status } from "@/types/response.type"
+import { prisma } from "@/prisma/prisma-client"
+import { Status,type StatusResponse } from "@/types/response.type"
 
-export async function POST(req: Request): Promise<NextResponse<StatusResponse>> {
+export async function POST(req: NextRequest): Promise<NextResponse<StatusResponse>> {
   try {
-    const { reqBody } = await getDbAndReqBody(req)
-    await Book.create({ ...reqBody })
+    const body = await req.json()
+    await prisma.book.create({
+      data: {
+        ...body
+      }
+    })
 
     return NextResponse.json({
       status: Status.Success,
