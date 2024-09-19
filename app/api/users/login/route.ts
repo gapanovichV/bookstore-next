@@ -1,8 +1,8 @@
 import bcrypt from "bcrypt"
 import { type NextRequest, NextResponse } from "next/server"
 
-import { findUserByEmail, generateTokens } from "@/lib/utils/auth"
-import { handleError } from "@/lib/utils/error"
+import { findUserByEmail, generateTokens } from "@/shared/lib/utils/auth"
+import { handleError } from "@/shared/lib/utils/error"
 import { Status, type StatusResponse } from "@/types/response.type"
 import type { LoginUserParams } from "@/types/user.actions.type"
 

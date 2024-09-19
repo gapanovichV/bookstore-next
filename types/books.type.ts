@@ -1,13 +1,13 @@
-import type { Book } from "@prisma/client"
+import type { ProductItem } from "@prisma/client"
 
 import type { Status } from "@/types/response.type"
 
 export interface allGetBooksParams {
   status: Status
-  books: Book[]
+  books: ProductItem[]
 }
 
 export interface oneGetBookParams {
   status: Status
-  book: Book | Record<string, never>
+  book: ProductItem | Record<string, never>
 }

@@ -1,4 +1,4 @@
-import CartPage from "@/components/templates/CartPage/CartPage"
+import CartPage from "@/shared/components/templates/CartPage/CartPage"
 
 const Page = () => {
   return <CartPage />

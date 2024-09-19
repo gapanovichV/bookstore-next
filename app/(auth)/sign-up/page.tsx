@@ -1,5 +1,5 @@
-import { RegistrationForm } from "@/components/modules"
-import AuthPage from "@/components/templates/AuthPage/AuthPage"
+import { RegistrationForm } from "@/shared/components/modules"
+import AuthPage from "@/shared/components/templates/AuthPage/AuthPage"
 
 const SingUpPage = () => {
   return (

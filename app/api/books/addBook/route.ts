@@ -1,12 +1,13 @@
 import { type NextRequest, NextResponse } from "next/server"
 
 import { prisma } from "@/prisma/prisma-client"
-import { Status,type StatusResponse } from "@/types/response.type"
+import { Status, type StatusResponse } from "@/types/response.type"
 
 export async function POST(req: NextRequest): Promise<NextResponse<StatusResponse>> {
   try {
     const body = await req.json()
-    await prisma.book.create({
+
+    await prisma.productItem.create({
       data: {
         ...body
       }
