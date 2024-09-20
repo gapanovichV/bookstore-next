@@ -1,13 +1,11 @@
 import type { ProductItem } from "@prisma/client"
 
-import type { Status } from "@/types/response.type"
-
 export interface allGetBooksParams {
-  status: Status
+  loading: boolean
   books: ProductItem[]
 }
 
 export interface oneGetBookParams {
-  status: Status
+  loading: boolean
   book: ProductItem | Record<string, never>
 }

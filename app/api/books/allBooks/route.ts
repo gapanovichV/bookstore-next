@@ -1,8 +1,6 @@
 import { NextResponse } from "next/server"
 
 import { getAllBook } from "@/shared/lib/utils/book"
-import { handleError } from "@/shared/lib/utils/error"
-import { Status } from "@/types/response.type"
 
 export async function GET() {
   try {
@@ -10,9 +8,9 @@ export async function GET() {
 
     if (!books) return NextResponse.json({ error: "Books not found" }, { status: 500 })
 
-    return NextResponse.json({ status: Status.Success, books }, { status: 200 })
+    return NextResponse.json({ books }, { status: 200 })
   } catch (error) {
-    handleError(error)
+    console.error(`[Books AllBooks] Error:`, error)
     return NextResponse.json({ error: "Server error" }, { status: 500 })
   }
 }

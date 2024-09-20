@@ -2,8 +2,7 @@ import bcrypt from "bcrypt"
 import jwt from "jsonwebtoken"
 
 import { prisma } from "@/prisma/prisma-client"
-import { Status } from "@/types/response.type"
-import type { RegistrationUserParams } from "@/types/user.actions.type"
+import type { FormRegistrationSchema } from "@/shared/components/modules/RegistrationForm/RegistrationForm"
 
 const JWT_ACCESS_TOKEN_KEY = process.env.JWT_ACCESS_TOKEN_KEY as string
 const JWT_REFRESH_TOKEN_KEY = process.env.JWT_REFRESH_TOKEN_KEY as string
@@ -27,9 +26,8 @@ export const isValidAccessToken = async (
 ): Promise<{
   message: string
   error?: { message: string }
-  status: Status
 }> => {
-  const baseError = { message: "Unauthorized", status: Status.Error }
+  const baseError = { message: "Unauthorized" }
 
   let jwtError = null
 
@@ -45,10 +43,10 @@ export const isValidAccessToken = async (
       error: jwtError
     }
   }
-  return { status: Status.Success, message: "Is valid access token" }
+  return { message: "Is valid access token" }
 }
 
-export const createUserAndGenerateTokens = async (user: RegistrationUserParams) => {
+export const createUserAndGenerateTokens = async (user: FormRegistrationSchema) => {
   const salt = await bcrypt.genSalt(10)
   const newPassword = await bcrypt.hash(user.password, salt)
 
