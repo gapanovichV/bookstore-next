@@ -1,6 +1,6 @@
 "use client"
 
-import React, { useEffect } from "react"
+import React from "react"
 import toast from "react-hot-toast"
 import clsx from "clsx"
 import { useRouter } from "next/navigation"
@@ -9,9 +9,6 @@ import { CheckList, Dropdown, PurchaseCard, ReviewCard } from "@/shared/componen
 import { ReviewBookDetail } from "@/shared/components/elements/ReviewBookDetail/ReviewBookDetail"
 import { useUserLogout } from "@/shared/hooks/useUserLogout"
 import { RouteEnum } from "@/types/route.type"
-import api from "@/shared/services/instance"
-import { Status } from "@/types/response.type"
-import { handleError } from "@/shared/lib/utils/error"
 
 const MainPage = () => {
   const router = useRouter()
@@ -40,6 +37,18 @@ const MainPage = () => {
         </div>
         <div className={"test test_col"}>
           <PurchaseCard />
+        </div>
+        <div className={"test"}>
+          <ReviewBookDetail />
+        </div>
+        <div className={"test"}>
+          <ReviewBookDetail />
+        </div>
+        <div className={"test"}>
+          <ReviewBookDetail />
+        </div>
+        <div className={"test"}>
+          <ReviewBookDetail />
         </div>
         <div className={"test"}>
           <ReviewBookDetail />

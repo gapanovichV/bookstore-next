@@ -1,7 +1,6 @@
 import { type NextRequest, NextResponse } from "next/server"
 
 import { prisma } from "@/prisma/prisma-client"
-import { handleError } from "@/shared/lib/utils/error"
 
 export async function POST(req: NextRequest) {
   try {
@@ -15,7 +14,7 @@ export async function POST(req: NextRequest) {
 
     return NextResponse.json({ message: "Add successfully completed" })
   } catch (error) {
-    handleError(error)
+    console.error(`[Books AddBook] Error:`, error)
     NextResponse.json({ error: "Post failed" }, { status: 500 })
   }
 }

@@ -1,13 +1,12 @@
 import bcrypt from "bcrypt"
 import { type NextRequest, NextResponse } from "next/server"
 
+import type { FormLoginSchema } from "@/shared/components/modules/LoginForm/LoginForm"
 import { findUserByEmail, generateTokens } from "@/shared/lib/utils/auth"
-import { handleError } from "@/shared/lib/utils/error"
-import type { LoginUserParams } from "@/types/user.actions.type"
 
 export async function POST(req: NextRequest) {
   try {
-    const user: LoginUserParams = await req.json()
+    const user: FormLoginSchema = await req.json()
     const findUser = await findUserByEmail(user.email)
 
     if (!findUser)
@@ -17,11 +16,11 @@ export async function POST(req: NextRequest) {
 
     if (isMatch) {
       const token = await generateTokens(user.email, findUser.firstName)
-      return NextResponse.json({ user_token: token })
+      return NextResponse.json({ token })
     }
     return NextResponse.json({ error: "Email or password is incorrect!" }, { status: 500 })
   } catch (error) {
-    handleError(error)
+    console.error(`[Users Login] Error:`, error)
     return NextResponse.json({ error: "Error login" }, { status: 500 })
   }
 }

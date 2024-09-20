@@ -5,10 +5,8 @@ import clsx from "clsx"
 
 import { Button, ReviewBookDetail } from "@/shared/components/elements"
 import { BookCover, BookInfo, Summary } from "@/shared/components/modules"
-import { handleError } from "@/shared/lib/utils/error"
 import { Api } from "@/shared/services/api-client"
 import type { oneGetBookParams } from "@/types/books.type"
-import { Status } from "@/types/response.type"
 
 import styles from "./BookDetail.module.scss"
 
@@ -19,7 +17,7 @@ interface BookDetailProps {
 
 export const BookDetail = ({ className, bookId }: BookDetailProps) => {
   const [data, setData] = useState<oneGetBookParams>({
-    status: Status.Loading,
+    loading: true,
     book: {}
   })
 
@@ -27,18 +25,19 @@ export const BookDetail = ({ className, bookId }: BookDetailProps) => {
     const fetchBook = async (bookId: string) => {
       try {
         const data = await Api.products.takeOneBook(Number(bookId))
-        console.log(data)
+        if (!data.loading) {
+          setData(data)
+        }
       } catch (error) {
-        handleError(error)
+        console.error(`[Book Detail] Error:`, error)
       }
     }
     fetchBook(bookId).catch(console.error)
   }, [bookId])
-
   return (
     <div className={clsx(styles.book, className)}>
       <div className={clsx("container", styles.book__container)}>
-        {data.status === Status.Success && (
+        {!data.loading && (
           <>
             <div className={clsx(styles.book__left)}>
               <BookCover imageUrl={data.book.imageUrl} />

@@ -1,7 +1,6 @@
 import { type NextRequest, NextResponse } from "next/server"
 
 import { findBookById } from "@/shared/lib/utils/book"
-import { handleError } from "@/shared/lib/utils/error"
 
 export async function POST(req: NextRequest) {
   try {
@@ -11,9 +10,9 @@ export async function POST(req: NextRequest) {
 
     if (!foundBook) return NextResponse.json({ error: "The book was not found" })
 
-    return NextResponse.json({ book: foundBook })
+    return NextResponse.json({ loading: false, book: foundBook })
   } catch (error) {
-    handleError(error)
+    console.error(`[Books OneBook] Error:`, error)
     return NextResponse.json({ error: "Book search error" }, { status: 500 })
   }
 }

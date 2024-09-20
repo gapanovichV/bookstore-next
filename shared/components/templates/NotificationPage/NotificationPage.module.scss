@@ -1,6 +1,6 @@
 .content {
   width: 100%;
-  height: 100vh;
+  min-height: 80vh;
   display: inline-grid;
   grid-template-columns: 1fr 5fr;
   &__wrapper {

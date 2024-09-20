@@ -6,13 +6,10 @@ import type { ProductItem } from "@prisma/client"
 import clsx from "clsx"
 
 import { Card, Dropdown, InfoIllustration } from "@/shared/components/elements"
-import { handleError } from "@/shared/lib/utils/error"
 import { Api } from "@/shared/services/api-client"
 import type { allGetBooksParams } from "@/types/books.type"
-import { Status } from "@/types/response.type"
 
 import styles from "./DiscoverContent.module.scss"
-import axiosInstance from "@/shared/services/instance"
 
 interface ContentProps {
   className?: string
@@ -20,22 +17,24 @@ interface ContentProps {
 
 export const DiscoverContent = ({ className }: ContentProps) => {
   const [data, setData] = useState<allGetBooksParams>({
-    status: Status.Loading,
+    loading: true,
     books: []
   })
 
   useEffect(() => {
     const fetchBooks = async () => {
       try {
-        const response = await Api.products.getAllBooks()
-        console.log(response)
+        const data = await Api.products.getAllBooks()
+        if (!data.loading) {
+          setData(data)
+        }
       } catch (error) {
-        handleError(error)
+        console.error(`[Discover Content] Error:`, error)
+        setData({ books: [], loading: true })
       }
     }
     fetchBooks().catch(console.error)
   }, [])
-
 
   const books = data.books.map((book: ProductItem) => (
     <Card key={book.id} size="large" book={book} id={book.id} />
@@ -47,22 +46,26 @@ export const DiscoverContent = ({ className }: ContentProps) => {
         Showing 1 - 10 items out of a total of ? million books
         <Dropdown text="Sort By" />
       </div>
-      {data.status === Status.Success ? (
-        books
-      ) : (
+
+      {data.loading ? (
         <div className={clsx(styles.book__info)}>
-          {data.status === Status.Loading ? (
-            <MoonLoader />
-          ) : (
-            <InfoIllustration
-              className={clsx(styles.book__info)}
-              nameImage="empty"
-              btnText="Start Shopping"
-              title="Ups... empty stock!"
-              description="The book you are looking for is still not ready stock!"
-            />
-          )}
+          <MoonLoader />
         </div>
+      ) : (
+        <>
+          {data.books.length > 0 ? (
+            <div className={clsx(styles.book__list)}>{books}</div>
+          ) : (
+            <div className={clsx(styles.book__info)}>
+              <InfoIllustration
+                nameImage="empty"
+                btnText="Start Shopping"
+                title="Ups... empty stock!"
+                description="The book you are looking for is still not ready stock!"
+              />
+            </div>
+          )}
+        </>
       )}
     </div>
   )
