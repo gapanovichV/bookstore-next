@@ -39,8 +39,8 @@ model ProductItem {
   oldPrice      Int?
   isbn          String
   stock         Int
-  cartItems     CartItem[]
-  commentItems  CommentItems[]
+  cart          CartItem[]
+  comments      CommentItems[]
 }
 
 model Cart {
