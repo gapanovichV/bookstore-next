@@ -3,7 +3,7 @@
 import { useEffect, useState } from "react"
 import clsx from "clsx"
 
-import { Button, ReviewBookDetail } from "@/shared/components/elements"
+import { ReviewBookDetail } from "@/shared/components/elements"
 import { BookCover, BookInfo, Summary } from "@/shared/components/modules"
 import { Api } from "@/shared/services/api-client"
 import type { oneGetBookParams } from "@/types/books.type"
@@ -51,9 +51,10 @@ export const BookDetail = ({ className, bookId }: BookDetailProps) => {
                 <div className={clsx(styles.book__review_book)}>
                   <div className={clsx(styles.book__review_book__header)}>
                     <h3>Review</h3>
-                    <Button variant="ghost" size="small">
-                      See all
-                    </Button>
+                    {/* <Button variant="ghost" size="small"> */}
+                    {/*  See all */}
+                    {/* </Button> */}
+                    {/* TODO: page see all is not in the layout  */}
                   </div>
                   <div className={clsx(styles.book__review_book__card)}>{bookReviews}</div>
                 </div>
