@@ -1,13 +1,11 @@
-import type { Comment,CommentItems, ProductItem, User } from "@prisma/client"
+import type { Comment, CommentItems, ProductItem, User } from "@prisma/client"
 
-export type ProductWithRelations = ProductItem & { commentItems: CommentItems[] }
+export type ProductWithRelations = ProductItem & {
+  comments: Array<ArrayCommentAndUser>
+}
 
-
-export type UserWithRelations = User & { comment: CommentWithRelations }
-
-
-export type CommentWithRelations = Comment & { comments: CommentItems[]}
-
-
-
-
+export type ArrayCommentAndUser = CommentItems & {
+  comment: Comment & {
+    user: User
+  }
+}

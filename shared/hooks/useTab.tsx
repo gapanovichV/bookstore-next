@@ -1,9 +1,9 @@
 "use client"
 
-import type { Dispatch, SetStateAction } from "react"
-import { useState } from "react"
+import { type Dispatch, type SetStateAction, useCallback, useState } from "react"
+import { usePathname, useRouter, useSearchParams } from "next/navigation"
 
-import type { ITab } from "@/components/elements/Tab/Tab"
+import type { ITab } from "@/shared/components/elements/Tab/Tab"
 
 export interface useTabResponse {
   currentItem: ITab
@@ -11,11 +11,24 @@ export interface useTabResponse {
 }
 
 export const useTab = (initialTab: number, allTab: ITab[]): useTabResponse => {
+  const router = useRouter()
+  const pathname = usePathname()
+  const searchParams = useSearchParams()
   const [currentIndex, setCurrentIndex] = useState(initialTab)
 
   if (!allTab || !Array.isArray(allTab)) {
     throw new Error("allTab must be an array")
   }
+
+  const createQueryString = useCallback(
+    (name: string, value: string) => {
+      const params = new URLSearchParams(searchParams.toString())
+      params.set(name, value)
+      return params.toString()
+    },
+    [searchParams]
+  )
+
   return {
     currentItem: allTab[currentIndex],
     changeItem: setCurrentIndex
