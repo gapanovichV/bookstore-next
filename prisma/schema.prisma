@@ -17,8 +17,8 @@ model User {
   password  String
   role      Role   @default(USER)
 
-  cart    Cart?
-  comment Comment?
+  cart     Cart?
+  comments Comment[]
 
   createdAt DateTime @default(now())
   updatedAt DateTime @updatedAt
@@ -39,8 +39,8 @@ model ProductItem {
   oldPrice      Int?
   isbn          String
   stock         Int
-  CartItems     CartItem[]
-  CommentItems  CommentItems[]
+  cartItems     CartItem[]
+  commentItems  CommentItems[]
 }
 
 model Cart {
@@ -52,8 +52,6 @@ model Cart {
   items CartItem[]
 
   token String
-
-  totalAmount Int @default(0)
 
   createdAt DateTime @default(now())
   updatedAt DateTime @updatedAt
@@ -82,7 +80,7 @@ model Comment {
 
   comments CommentItems[]
 
-  totalAmount Int @default(0)
+  token String
 
   createdAt DateTime @default(now())
   updatedAt DateTime @updatedAt
@@ -92,7 +90,7 @@ model CommentItems {
   id Int @id @default(autoincrement())
 
   comment   Comment @relation(fields: [commentId], references: [id])
-  commentId Int     @unique
+  commentId Int
 
   productItem   ProductItem @relation(fields: [productItemId], references: [id])
   productItemId Int
