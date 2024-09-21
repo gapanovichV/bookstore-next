@@ -8,15 +8,13 @@ import { findUserCommentOrCreate } from "@/shared/lib/utils/comment"
 
 export async function POST(req: NextRequest) {
   try {
-    let token = req.cookies.get(CART_TOKEN_COOKIES)?.value;
-
-    if (!token) {
-      token = crypto.randomUUID();
-    }
-
-    const userComment = await findUserCommentOrCreate(token, 3)
-
     const data = await req.json()
+
+    let token = req.cookies.get(CART_TOKEN_COOKIES)?.value
+    if (!token) {
+      token = crypto.randomUUID()
+    }
+    const userComment = await findUserCommentOrCreate(token, 4)
 
     const findProductItem = await findBookById(data.productItemId)
 

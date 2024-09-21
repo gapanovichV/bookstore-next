@@ -1,14 +1,11 @@
 import { prisma } from "@/prisma/prisma-client"
 
 export const findUserCommentOrCreate = async (token: string, userId: number) => {
-
   let userComment = await prisma.comment.findFirst({
     where: {
-      userId,
+      userId
     }
   })
-  console.log("@USERCOMMANT", userComment)
-
 
   if (!userComment) {
     userComment = await prisma.comment.create({
@@ -18,7 +15,6 @@ export const findUserCommentOrCreate = async (token: string, userId: number) => 
       }
     })
   }
-
 
   return userComment
 }
