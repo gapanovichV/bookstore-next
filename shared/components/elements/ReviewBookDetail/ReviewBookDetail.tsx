@@ -1,12 +1,14 @@
+import type { CommentItems } from "@prisma/client"
 import clsx from "clsx"
 
 import styles from "./ReviewBookDetail.module.scss"
 
 interface ReviewBookDetailProps {
   className?: string
+  data: CommentItems
 }
 
-export const ReviewBookDetail = ({ className }: ReviewBookDetailProps) => {
+export const ReviewBookDetail = ({ data, className }: ReviewBookDetailProps) => {
   return (
     <div className={clsx(styles.review, className)}>
       <div className={clsx(styles.review__pic)}>
@@ -15,14 +17,11 @@ export const ReviewBookDetail = ({ className }: ReviewBookDetailProps) => {
       <div className={clsx(styles.review__detail)}>
         <div className={clsx(styles.review__detail__star)}>
           <img src="/img/starFill.svg" alt="star" />
-          <p>5.0</p>
+          <p>{data?.estimation}.0</p>
         </div>
         <div className={clsx(styles.review__detail__text)}>
           <p className={clsx(styles.review__detail__text__author)}>Jeremy Zucker</p>
-          <p className={clsx(styles.review__detail__text__review)}>
-            The Stories of Choo Choo is a compilation of drawings created by Citra Marina during her
-            daily train ride on Jakarta Commuter Line.
-          </p>
+          <p className={clsx(styles.review__detail__text__review)}>{data?.commentText}</p>
         </div>
       </div>
     </div>

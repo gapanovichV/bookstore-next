@@ -14,7 +14,7 @@ export async function POST(req: NextRequest) {
     if (!token) {
       token = crypto.randomUUID()
     }
-    const userComment = await findUserCommentOrCreate(token, 4)
+    const userComment = await findUserCommentOrCreate(token, 1)
 
     const findProductItem = await findBookById(data.productItemId)
 

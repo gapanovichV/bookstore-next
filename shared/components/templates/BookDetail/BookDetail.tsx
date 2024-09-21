@@ -34,6 +34,9 @@ export const BookDetail = ({ className, bookId }: BookDetailProps) => {
     }
     fetchBook(bookId).catch(console.error)
   }, [bookId])
+  const bookReviews = data.book.commentItems?.slice(0, 3).map((value) => (
+    <ReviewBookDetail key={value.id} data={value} />
+  ))
   return (
     <div className={clsx(styles.book, className)}>
       <div className={clsx("container", styles.book__container)}>
@@ -42,18 +45,17 @@ export const BookDetail = ({ className, bookId }: BookDetailProps) => {
             <div className={clsx(styles.book__left)}>
               <BookCover imageUrl={data.book.imageUrl} />
               <Summary description={data.book.description} />
-              <div className={clsx(styles.book__review_book)}>
-                <div className={clsx(styles.book__review_book__header)}>
-                  <h3>Review</h3>
-                  <Button variant="ghost" size="small">
-                    See all
-                  </Button>
+              {data.loading || !data.book.commentItems?.length || (
+                <div className={clsx(styles.book__review_book)}>
+                  <div className={clsx(styles.book__review_book__header)}>
+                    <h3>Review</h3>
+                    <Button variant="ghost" size="small">
+                      See all
+                    </Button>
+                  </div>
+                  <div className={clsx(styles.book__review_book__card)}>{bookReviews}</div>
                 </div>
-                <div className={clsx(styles.book__review_book__card)}>
-                  <ReviewBookDetail />
-                  <ReviewBookDetail />
-                </div>
-              </div>
+              )}
             </div>
             <div className={clsx(styles.line)}></div>
             <BookInfo book={data.book} />
