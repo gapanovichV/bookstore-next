@@ -4,7 +4,10 @@ export const findBookById = async (id: number) => {
   return prisma.productItem.findFirst({
     where: { id },
     include: {
-      comments: { where: { productItemId: id } }
+      comments: {
+        where: { productItemId: id },
+        include: { comment: { include: { user: { select: { firstName: true } } } } }
+      }
     }
   })
 }
