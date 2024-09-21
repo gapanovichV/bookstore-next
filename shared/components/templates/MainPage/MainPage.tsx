@@ -6,7 +6,6 @@ import clsx from "clsx"
 import { useRouter } from "next/navigation"
 
 import { CheckList, Dropdown, PurchaseCard, ReviewCard } from "@/shared/components/elements"
-import { ReviewBookDetail } from "@/shared/components/elements/ReviewBookDetail/ReviewBookDetail"
 import { useUserLogout } from "@/shared/hooks/useUserLogout"
 import { RouteEnum } from "@/types/route.type"
 
@@ -37,21 +36,6 @@ const MainPage = () => {
         </div>
         <div className={"test test_col"}>
           <PurchaseCard />
-        </div>
-        <div className={"test"}>
-          <ReviewBookDetail />
-        </div>
-        <div className={"test"}>
-          <ReviewBookDetail />
-        </div>
-        <div className={"test"}>
-          <ReviewBookDetail />
-        </div>
-        <div className={"test"}>
-          <ReviewBookDetail />
-        </div>
-        <div className={"test"}>
-          <ReviewBookDetail />
         </div>
       </div>
     </main>

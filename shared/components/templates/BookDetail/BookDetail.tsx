@@ -35,10 +35,10 @@ export const BookDetail = ({ className, bookId }: BookDetailProps) => {
     fetchBook(bookId).catch(console.error)
   }, [bookId])
 
-  console.log(data.book)
   const bookReviews = data.book.comments
-    ?.slice(0, 3)
+    ?.slice(-3)
     .map((value) => <ReviewBookDetail key={value.id} data={value} />)
+
   return (
     <div className={clsx(styles.book, className)}>
       <div className={clsx("container", styles.book__container)}>

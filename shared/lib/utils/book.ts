@@ -6,7 +6,7 @@ export const findBookById = async (id: number) => {
     include: {
       comments: {
         where: { productItemId: id },
-        include: { comment: { include: { user: { select: { firstName: true } } } } }
+        include: { comment: { include: { user: { select: { firstName: true, lastName: true } } } } }
       }
     }
   })
