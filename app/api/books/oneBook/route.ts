@@ -6,11 +6,11 @@ export async function POST(req: NextRequest) {
   try {
     const body = await req.json()
 
-    const foundBook = await findBookById(body.id)
+    const book = await findBookById(body.id)
 
-    if (!foundBook) return NextResponse.json({ error: "The book was not found" })
+    if (!book) return NextResponse.json({ error: "The book was not found" })
 
-    return NextResponse.json({ loading: false, book: foundBook })
+    return NextResponse.json({ loading: false, book })
   } catch (error) {
     console.error(`[Books OneBook] Error:`, error)
     return NextResponse.json({ error: "Book search error" }, { status: 500 })
