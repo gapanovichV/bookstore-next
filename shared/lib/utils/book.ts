@@ -4,7 +4,7 @@ export const findBookById = async (id: number) => {
   return prisma.productItem.findFirst({
     where: { id },
     include: {
-      commentItems: { where: { productItemId: id } }
+      comments: { where: { productItemId: id } }
     }
   })
 }

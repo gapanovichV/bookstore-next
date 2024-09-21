@@ -6,7 +6,6 @@ export const findUserCommentOrCreate = async (token: string, userId: number) => 
       userId
     }
   })
-
   if (!userComment) {
     userComment = await prisma.comment.create({
       data: {
@@ -15,6 +14,5 @@ export const findUserCommentOrCreate = async (token: string, userId: number) => 
       }
     })
   }
-
   return userComment
 }

@@ -34,9 +34,11 @@ export const BookDetail = ({ className, bookId }: BookDetailProps) => {
     }
     fetchBook(bookId).catch(console.error)
   }, [bookId])
-  const bookReviews = data.book.commentItems?.slice(0, 3).map((value) => (
-    <ReviewBookDetail key={value.id} data={value} />
-  ))
+
+  console.log(data.book)
+  const bookReviews = data.book.comments
+    ?.slice(0, 3)
+    .map((value) => <ReviewBookDetail key={value.id} data={value} />)
   return (
     <div className={clsx(styles.book, className)}>
       <div className={clsx("container", styles.book__container)}>
@@ -45,7 +47,7 @@ export const BookDetail = ({ className, bookId }: BookDetailProps) => {
             <div className={clsx(styles.book__left)}>
               <BookCover imageUrl={data.book.imageUrl} />
               <Summary description={data.book.description} />
-              {data.loading || !data.book.commentItems?.length || (
+              {data.loading || !data.book.comments?.length || (
                 <div className={clsx(styles.book__review_book)}>
                   <div className={clsx(styles.book__review_book__header)}>
                     <h3>Review</h3>
