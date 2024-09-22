@@ -15,20 +15,24 @@
     gap: 32px;
   }
   &__logo {
+    padding-right: 20px;
     &__small {
       display: none;
     }
   }
   &__btn {
+   padding-left: 20px;
     margin-right: 10px;
   }
   &__search {
-    padding: 0 20px;
   }
   @media (max-width: 660px) {
     .header {
       &__logo {
         display: none;
+        &__small {
+          padding-right: 10px;
+        }
         &__small {
           display: block;
         }
@@ -40,12 +44,19 @@
       &__container {
         flex-flow: wrap;
       }
+      &__logo {
+        &__small {
+          padding: 0;
+        }
+      }
+      &__btn {
+        padding: 0;
+      }
       &__search {
         display: block;
         width: 100%;
         margin-top: 16px;
         order: 2;
-        padding: 0 ;
       }
     }
   }
