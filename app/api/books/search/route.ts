@@ -12,7 +12,7 @@ export async function GET(req: NextRequest) {
         mode: "insensitive"
       }
     },
-    take: 4
+    take: 5
   })
 
   return NextResponse.json(products)

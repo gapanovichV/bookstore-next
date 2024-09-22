@@ -9,7 +9,13 @@
     max-width: 1200px;
     width: 100%;
     top: 56px;
+
     background-color: var(--color-style-primary-100);
     border: var(--border-line);
+
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    padding: 16px 0;
   }
 }
