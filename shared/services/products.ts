@@ -6,5 +6,9 @@ export const getAllBooks = async (): Promise<allGetBooksParams> => {
 }
 
 export const takeOneBook = async (id: number) => {
-  return (await axiosInstance.post(`/books/oneBook/`, { id })).data
+  return (await axiosInstance.post(`/books/oneBook`, { id })).data
+}
+
+export const searchInput = async (query: string) => {
+  return (await axiosInstance.get("/books/search", { params: { query } })).data
 }

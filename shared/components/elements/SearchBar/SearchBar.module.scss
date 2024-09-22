@@ -1,6 +1,15 @@
 .results {
   &__container {
+    position: relative;
     width: 100%;
     max-width: 1200px;
+  }
+  &__dropdown {
+    position: absolute;
+    max-width: 1200px;
+    width: 100%;
+    top: 56px;
+    background-color: var(--color-style-primary-100);
+    border: var(--border-line);
   }
 }

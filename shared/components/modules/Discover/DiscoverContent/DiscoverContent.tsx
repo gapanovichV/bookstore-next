@@ -10,6 +10,7 @@ import { Api } from "@/shared/services/api-client"
 import type { allGetBooksParams } from "@/types/books.type"
 
 import styles from "./DiscoverContent.module.scss"
+import Link from "next/link"
 
 interface ContentProps {
   className?: string
@@ -37,7 +38,9 @@ export const DiscoverContent = ({ className }: ContentProps) => {
   }, [])
 
   const books = data.books.map((book: ProductItem) => (
-    <Card key={book.id} size="large" book={book} id={book.id} />
+    <Link href={`/catalog/book/${book.id}`} key={book.id}>
+      <Card key={book.id} size="large" book={book} />
+    </Link>
   ))
 
   return (
