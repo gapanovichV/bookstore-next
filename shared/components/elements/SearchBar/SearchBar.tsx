@@ -58,17 +58,14 @@ export const SearchBar = ({ className }: SearchBarProps) => {
         />
         {products.length > 0 && (
           <div className={clsx(styles.results__dropdown, className)}>
-            <>
-              {products.map((book: ProductItem) => (
-                <Link onClick={onClickItem} href={`/catalog/book/${book.id}`} key={book.id}>
-                  <Card key={book.id} size="small" book={book} />
-                </Link>
-              ))}
-            </>
+            {products.map((book: ProductItem) => (
+              <Link onClick={onClickItem} href={`/catalog/book/${book.id}`} key={book.id}>
+                <Card key={book.id} size="small" book={book} />
+              </Link>
+            ))}
           </div>
         )}
       </div>
     </>
-
   )
 }
