@@ -7,7 +7,7 @@ import type { CreateCartItemValues } from "@/types/prisma"
 export async function POST(req: NextRequest) {
   try {
     const data = (await req.json()) as CreateCartItemValues
-    
+
     const userCart = await findUserCartOrCreate(1)
 
     const findCartItem = await prisma.cartItem.findFirst({
@@ -32,12 +32,10 @@ export async function POST(req: NextRequest) {
         data: {
           cartId: userCart.id,
           productItemId: data.productItemId,
-          quantity: data.quantityBook,
+          quantity: data.quantityBook
         }
       })
     }
-
-
   } catch (error) {
     console.error(`[Cart POST] Error:`, error)
     return NextResponse.json({ error: "ERROR" }, { status: 500 })

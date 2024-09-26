@@ -1,7 +1,6 @@
 import { prisma } from "@/prisma/prisma-client"
 
 export const findUserCartOrCreate = async (userId: number) => {
-  
   let userCart = await prisma.comment.findFirst({
     where: {
       userId
