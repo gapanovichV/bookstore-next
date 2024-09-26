@@ -9,3 +9,17 @@ export type ArrayCommentAndUser = CommentItems & {
     user: User
   }
 }
+
+export interface CreateItemValue {
+  userId: number
+  productItemId: number
+}
+
+export interface CreateCommentValues extends CreateItemValue {
+  commentText: string
+  estimation: number
+}
+
+export interface CreateCartItemValues extends CreateItemValue{
+  quantityBook: number
+}

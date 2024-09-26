@@ -1,20 +1,15 @@
-import crypto from "crypto"
 import { type NextRequest, NextResponse } from "next/server"
 
 import { prisma } from "@/prisma/prisma-client"
-import { CART_TOKEN_COOKIES } from "@/shared/constants"
 import { findBookById } from "@/shared/lib/utils/book"
 import { findUserCommentOrCreate } from "@/shared/lib/utils/comment"
+import type { CreateCommentValues } from "@/types/prisma"
 
 export async function POST(req: NextRequest) {
   try {
-    const data = await req.json()
+    const data = (await req.json()) as CreateCommentValues
 
-    let token = req.cookies.get(CART_TOKEN_COOKIES)?.value
-    if (!token) {
-      token = crypto.randomUUID()
-    }
-    const userComment = await findUserCommentOrCreate(token, 1)
+    const userComment = await findUserCommentOrCreate( 1)
 
     const findProductItem = await findBookById(data.productItemId)
 
