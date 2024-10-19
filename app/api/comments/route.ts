@@ -9,7 +9,7 @@ export async function POST(req: NextRequest) {
   try {
     const data = (await req.json()) as CreateCommentValues
 
-    const userComment = await findUserCommentOrCreate( 1)
+    const userComment = await findUserCommentOrCreate(1)
 
     const findProductItem = await findBookById(data.productItemId)
 

@@ -20,6 +20,6 @@ export interface CreateCommentValues extends CreateItemValue {
   estimation: number
 }
 
-export interface CreateCartItemValues extends CreateItemValue{
+export interface CreateCartItemValues extends CreateItemValue {
   quantityBook: number
 }
