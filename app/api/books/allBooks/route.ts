@@ -1,8 +1,8 @@
-import { NextResponse } from "next/server"
+import { type NextRequest, NextResponse } from "next/server"
 
 import { getAllBook } from "@/shared/lib/utils/book"
 
-export async function GET() {
+export async function GET(req: NextRequest) {
   try {
     const books = await getAllBook()
 

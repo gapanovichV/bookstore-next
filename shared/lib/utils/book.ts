@@ -12,6 +12,16 @@ export const findBookById = async (id: number) => {
   })
 }
 
+export const getAllBookByCategory = async (category: string) => {
+  return prisma.productItem.findMany({
+    where: {
+      categories: {
+        has: category
+      }
+    }
+  })
+}
+
 export const getAllBook = async () => {
   return prisma.productItem.findMany()
 }

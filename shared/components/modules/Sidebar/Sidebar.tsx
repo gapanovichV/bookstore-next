@@ -1,29 +1,36 @@
-import React, { type Dispatch, type SetStateAction } from "react"
-import clsx from "clsx"
+"use client"
 
-import type { ITab } from "@/shared/components/elements/Tab/Tab"
-import { Tab } from "@/shared/components/elements/Tab/Tab"
+import React from "react"
+import clsx from "clsx"
+import { useSearchParams } from "next/navigation"
+
+import { Filter } from "@/shared/components/elements/Filter/Filter"
+import {
+  CategoriesEnum,
+  searchParamsName
+} from "@/shared/components/elements/Filter/FilterConstants"
 
 import styles from "./Sidebar.module.scss"
 
-interface SidebarProps {
-  className?: string
-  tabs: ITab[]
-  currentItem: ITab
-  changeItem: Dispatch<SetStateAction<number>>
-}
+export const Sidebar = () => {
+  const searchParams = useSearchParams()
 
-export const Sidebar = ({ className, tabs, currentItem, changeItem }: SidebarProps) => {
+  function convertToCategory(str: string | null): CategoriesEnum | null {
+    if (Object.values(CategoriesEnum).includes(str as CategoriesEnum)) {
+      return str as CategoriesEnum
+    }
+    return null
+  }
   return (
     <>
-      <div className={clsx(styles.sidebar, className)}>
-        <Tab
-          tabs={tabs}
-          currentItem={currentItem}
-          changeItem={changeItem}
-          position={"vertical"}
-          visibleLine={false}
+      <div className={clsx(styles.sidebar)}>
+        <Filter
+          bookCategory={
+            convertToCategory(searchParams.get(searchParamsName.CATEGORY)) ??
+            CategoriesEnum.COMPUTERS
+          }
         />
+        <button>DEL</button>
       </div>
     </>
   )
