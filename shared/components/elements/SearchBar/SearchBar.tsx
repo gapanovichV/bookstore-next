@@ -16,10 +16,10 @@ interface SearchBarProps {
   className?: string
 }
 export const SearchBar = ({ className }: SearchBarProps) => {
-  const [searchQuery, setSearchQuery] = useState('');
-  const [focused, setFocused] = useState(false);
-  const [products, setProducts] = useState<ProductItem[]>([]);
-  const ref = useRef(null);
+  const [searchQuery, setSearchQuery] = useState("")
+  const [focused, setFocused] = useState(false)
+  const [products, setProducts] = useState<ProductItem[]>([])
+  const ref = useRef(null)
 
   useClickAway(ref, () => {
     setFocused(false)
@@ -56,8 +56,8 @@ export const SearchBar = ({ className }: SearchBarProps) => {
           onFocus={() => setFocused(true)}
           setValue={setSearchQuery}
         />
-        {searchQuery.length > 0 && products.length > 0 &&  (
-          <div className={clsx(styles.results__dropdown,{[styles.focused]: focused}, className)}>
+        {searchQuery.length > 0 && products.length > 0 && (
+          <div className={clsx(styles.results__dropdown, { [styles.focused]: focused }, className)}>
             {products.map((book: ProductItem) => (
               <Link onClick={onClickItem} href={`/catalog/book/${book.id}`} key={book.id}>
                 <Card key={book.id} size="small" book={book} />

@@ -4,13 +4,15 @@ import React, { useEffect, useState } from "react"
 import { MoonLoader } from "react-spinners"
 import type { ProductItem } from "@prisma/client"
 import clsx from "clsx"
+import Link from "next/link"
+import { useSearchParams } from "next/navigation"
 
 import { Card, Dropdown, InfoIllustration } from "@/shared/components/elements"
+import { searchParamsName } from "@/shared/components/elements/Filter/FilterConstants"
 import { Api } from "@/shared/services/api-client"
 import type { allGetBooksParams } from "@/types/books.type"
 
 import styles from "./DiscoverContent.module.scss"
-import Link from "next/link"
 
 interface ContentProps {
   className?: string

@@ -36,7 +36,8 @@ export const BookDetail = ({ className, bookId }: BookDetailProps) => {
   }, [bookId])
 
   const bookReviews = data.book.comments
-    ?.slice(-3).reverse()
+    ?.slice(-3)
+    .reverse()
     .map((value) => <ReviewBookDetail key={value.id} data={value} />)
 
   return (
