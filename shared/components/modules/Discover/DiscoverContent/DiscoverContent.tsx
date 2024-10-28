@@ -23,12 +23,10 @@ export const DiscoverContent = ({ className, searchParams }: ContentProps) => {
     books: []
   })
 
-  console.log(searchParams.category)
-
   useEffect(() => {
     const fetchBooks = async () => {
       try {
-        const data = await Api.products.getAllBooks()
+        const data = await Api.products.getBooks(searchParams.category)
         if (!data.loading) {
           setData(data)
         }
@@ -38,7 +36,7 @@ export const DiscoverContent = ({ className, searchParams }: ContentProps) => {
       }
     }
     fetchBooks().catch(console.error)
-  }, [])
+  }, [searchParams.category])
 
   const books = data.books.map((book: ProductItem) => (
     <Link href={`/catalog/book/${book.id}`} key={book.id}>
