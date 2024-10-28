@@ -12,7 +12,7 @@ import { Api } from "@/shared/services/api-client"
 import type { oneGetBookParams } from "@/types/books.type"
 import { RouteEnum } from "@/types/route.type"
 
-import styles from "@/shared/components/templates/BookDetail/BookDetail.module.scss"
+import styles from "@/app/(root)/catalog/book/[bookId]/BookDetail.module.scss"
 
 const MainPage = () => {
   const router = useRouter()
