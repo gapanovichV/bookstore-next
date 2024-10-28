@@ -1,10 +1,17 @@
 import { type NextRequest, NextResponse } from "next/server"
 
-import { getAllBook } from "@/shared/lib/utils/book"
+import { findBooksByCategory, getAllBook } from "@/shared/lib/utils/book"
 
-export async function GET(req: NextRequest) {
+export async function POST(req: NextRequest) {
+  const data = await req.json()
   try {
-    const books = await getAllBook()
+    let books
+
+    if (Object.keys(data).length === 0) {
+      books = await getAllBook()
+    } else {
+      books = await findBooksByCategory(data)
+    }
 
     if (!books) return NextResponse.json({ error: "Books not found" }, { status: 500 })
 

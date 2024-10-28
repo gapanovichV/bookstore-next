@@ -30,7 +30,6 @@ export const Sidebar = () => {
             CategoriesEnum.COMPUTERS
           }
         />
-        <button>DEL</button>
       </div>
     </>
   )

@@ -3,8 +3,10 @@ import type { ProductItem } from "@prisma/client"
 import axiosInstance from "@/shared/services/instance"
 import type { allGetBooksParams, oneGetBookParams } from "@/types/books.type"
 
-export const getAllBooks = async (): Promise<allGetBooksParams> => {
-  return (await axiosInstance.get<allGetBooksParams>("/books/allBooks")).data
+export const getBooks = async (
+  category: string | string[] | undefined
+): Promise<allGetBooksParams> => {
+  return (await axiosInstance.post<allGetBooksParams>("/books/allBooks", { category })).data
 }
 
 export const takeOneBook = async (id: number): Promise<oneGetBookParams> => {
