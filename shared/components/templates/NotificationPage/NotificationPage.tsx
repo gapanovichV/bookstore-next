@@ -4,8 +4,8 @@ import type { ReactElement } from "react"
 import React from "react"
 import clsx from "clsx"
 
-import type { ITab } from "@/shared/components/elements/Tab/Tab"
-import { NotificationContent, PurchaseContent, Sidebar } from "@/shared/components/modules"
+import { type ITab, Tab } from "@/shared/components/elements/Tab/Tab"
+import { NotificationContent, PurchaseContent } from "@/shared/components/modules"
 import { useTab } from "@/shared/hooks/useTab"
 
 import styles from "./NotificationPage.module.scss"
@@ -39,7 +39,15 @@ const NotificationPage = ({ className }: NotificationPageProps) => {
       <main className={clsx(className)}>
         <div className={clsx("container")}>
           <div className={clsx(styles.content)}>
-            <Sidebar currentItem={currentItem} changeItem={changeItem} tabs={SidebarTabs} />
+            <div className={clsx(styles.sidebar)}>
+              <Tab
+                tabs={SidebarTabs}
+                currentItem={currentItem}
+                changeItem={changeItem}
+                position={"vertical"}
+                visibleLine={false}
+              />
+            </div>
             <div className={clsx(styles.content__wrapper)}>{content()}</div>
           </div>
         </div>
