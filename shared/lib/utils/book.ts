@@ -1,18 +1,5 @@
 import { prisma } from "@/prisma/prisma-client"
 
-export const findBooksByCategory = async (category: string | string[] | undefined) => {
-  return prisma.productItem.findMany({
-    orderBy: {
-      id: "desc"
-    },
-    where: {
-      categories: {
-        hasSome: (category as string).split(",")
-      }
-    }
-  })
-}
-
 export const findBookById = async (id: number) => {
   return prisma.productItem.findFirst({
     where: { id },
@@ -25,10 +12,17 @@ export const findBookById = async (id: number) => {
   })
 }
 
-export const getAllBook = async () => {
-  return prisma.productItem.findMany()
-}
-
 export const getBooksQuantity = async () => {
   return prisma.productItem.count()
 }
+
+export const getBooks = async (category?: string | string[], sortByIdAscDesc: "asc" | "desc" = "asc") => {
+  return prisma.productItem.findMany({
+    orderBy: { id: sortByIdAscDesc },
+    where: category ? {
+      categories: {
+        hasSome: Array.isArray(category) ? category : category.split(",")
+      }
+    } : undefined
+  });
+};

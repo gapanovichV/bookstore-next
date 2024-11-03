@@ -1,4 +1,4 @@
-import type { Comment, CommentItems, ProductItem, User } from "@prisma/client";
+import type { Comment, CommentItems, ProductItem, User } from "@prisma/client"
 
 export type ProductWithRelations = ProductItem & {
   comments?: Array<ArrayCommentAndUser>
@@ -6,10 +6,9 @@ export type ProductWithRelations = ProductItem & {
 
 export type ArrayCommentAndUser = CommentItems & {
   comment: Comment & {
-    user: Pick<User, "lastName" | 'firstName'>
+    user: Pick<User, "lastName" | "firstName">
   }
 }
-
 
 export interface CreateItemValue {
   userId: number

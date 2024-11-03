@@ -14,7 +14,7 @@ interface BookDetailPageProps {
 const fetchBook = async (bookId: string): Promise<oneGetBookParams> => {
   try {
     const book = await findBookById(Number(bookId))
-    return { loading: false, book: book || null, }
+    return { loading: false, book: book || null }
   } catch (error) {
     console.error(`[Book Detail] Error:`, error)
     return { loading: false, book: null }
@@ -22,20 +22,20 @@ const fetchBook = async (bookId: string): Promise<oneGetBookParams> => {
 }
 
 const BookDetailPage = async ({ params: { bookId } }: BookDetailPageProps) => {
-  const data: oneGetBookParams = await fetchBook(bookId)
+  const data = await fetchBook(bookId)
 
   if (data.loading) {
-    return <div className={clsx(styles.loading)}>Loading...</div>;
+    return <div className={clsx(styles.loading)}>Loading...</div>
   }
 
   if (!data.book) {
-    return <div className={clsx(styles.error)}>Book not found.</div>;
+    return <div className={clsx(styles.error)}>Book not found.</div>
   }
 
   const bookReviews = (data.book.comments || [])
     .slice(-3)
     .reverse()
-    .map((value) => <ReviewBookDetail key={value.id} data={value} />);
+    .map((value) => <ReviewBookDetail key={value.id} data={value} />)
 
   return (
     <div className={clsx(styles.book)}>
@@ -50,9 +50,7 @@ const BookDetailPage = async ({ params: { bookId } }: BookDetailPageProps) => {
                   <h3>Review</h3>
                   {/* <Button variant="ghost" size="small">See all</Button> */}
                 </div>
-                <div className={clsx(styles.book__review_book__card)}>
-                  {bookReviews}
-                </div>
+                <div className={clsx(styles.book__review_book__card)}>{bookReviews}</div>
               </div>
             )}
           </div>
@@ -61,7 +59,7 @@ const BookDetailPage = async ({ params: { bookId } }: BookDetailPageProps) => {
         </>
       </div>
     </div>
-  );
+  )
 }
 
 export default BookDetailPage
