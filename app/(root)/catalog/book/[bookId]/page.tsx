@@ -1,11 +1,8 @@
-"use client"
-
-import { useEffect, useState } from "react"
 import clsx from "clsx"
 
 import { ReviewBookDetail } from "@/shared/components/elements"
 import { BookCover, BookInfo, Summary } from "@/shared/components/modules"
-import { Api } from "@/shared/services/api-client"
+import { findBookById } from "@/shared/lib/utils/book"
 import type { oneGetBookParams } from "@/types/books.type"
 
 import styles from "./BookDetail.module.scss"
@@ -13,59 +10,58 @@ import styles from "./BookDetail.module.scss"
 interface BookDetailPageProps {
   params: { bookId: string }
 }
-const BookDetailPage = ({ params: { bookId } }: BookDetailPageProps) => {
-  const [data, setData] = useState<oneGetBookParams>({
-    loading: true,
-    book: {}
-  })
 
-  useEffect(() => {
-    const fetchBook = async (bookId: string) => {
-      try {
-        const data = await Api.products.takeOneBook(Number(bookId))
-        if (!data.loading) {
-          setData(data)
-        }
-      } catch (error) {
-        console.error(`[Book Detail] Error:`, error)
-      }
-    }
-    fetchBook(bookId).catch(console.error)
-  }, [bookId])
+const fetchBook = async (bookId: string): Promise<oneGetBookParams> => {
+  try {
+    const book = await findBookById(Number(bookId))
+    return { loading: false, book: book || null, }
+  } catch (error) {
+    console.error(`[Book Detail] Error:`, error)
+    return { loading: false, book: null }
+  }
+}
 
-  const bookReviews = data.book.comments
-    ?.slice(-3)
+const BookDetailPage = async ({ params: { bookId } }: BookDetailPageProps) => {
+  const data: oneGetBookParams = await fetchBook(bookId)
+
+  if (data.loading) {
+    return <div className={clsx(styles.loading)}>Loading...</div>;
+  }
+
+  if (!data.book) {
+    return <div className={clsx(styles.error)}>Book not found.</div>;
+  }
+
+  const bookReviews = (data.book.comments || [])
+    .slice(-3)
     .reverse()
-    .map((value) => <ReviewBookDetail key={value.id} data={value} />)
+    .map((value) => <ReviewBookDetail key={value.id} data={value} />);
 
   return (
     <div className={clsx(styles.book)}>
       <div className={clsx("container", styles.book__container)}>
-        {!data.loading && (
-          <>
-            <div className={clsx(styles.book__left)}>
-              <BookCover imageUrl={data.book.imageUrl} />
-              <Summary description={data.book.description} />
-              {data.loading || !data.book.comments?.length || (
-                <div className={clsx(styles.book__review_book)}>
-                  <div className={clsx(styles.book__review_book__header)}>
-                    <h3>Review</h3>
-                    {/* <Button variant="ghost" size="small"> */}
-                    {/*  See all */}
-                    {/* </Button> */}
-                    {/* TODO: page see all is not in the layout  */}
-                  </div>
-                  <div className={clsx(styles.book__review_book__card)}>{bookReviews}</div>
+        <>
+          <div className={clsx(styles.book__left)}>
+            <BookCover imageUrl={data.book.imageUrl} />
+            <Summary description={data.book.description} />
+            {bookReviews.length > 0 && (
+              <div className={clsx(styles.book__review_book)}>
+                <div className={clsx(styles.book__review_book__header)}>
+                  <h3>Review</h3>
+                  {/* <Button variant="ghost" size="small">See all</Button> */}
                 </div>
-              )}
-            </div>
-            <div className={clsx(styles.line)}></div>
-            <BookInfo book={data.book} />
-          </>
-        )}
+                <div className={clsx(styles.book__review_book__card)}>
+                  {bookReviews}
+                </div>
+              </div>
+            )}
+          </div>
+          <div className={clsx(styles.line)}></div>
+          <BookInfo book={data.book} />
+        </>
       </div>
     </div>
-  )
+  );
 }
 
 export default BookDetailPage

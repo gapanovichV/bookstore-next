@@ -9,5 +9,5 @@ export interface allGetBooksParams {
 
 export interface oneGetBookParams {
   loading: boolean
-  book: ProductWithRelations | Record<string, never>
+  book: ProductWithRelations | null
 }
