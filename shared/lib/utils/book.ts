@@ -1,17 +1,13 @@
 import { prisma } from "@/prisma/prisma-client"
 
-export interface searchParams {
-  category: string | string[] | undefined
-}
-
-export const findBooksByCategory = async (params: searchParams) => {
+export const findBooksByCategory = async (category: string | string[] | undefined) => {
   return prisma.productItem.findMany({
     orderBy: {
       id: "desc"
     },
     where: {
       categories: {
-        hasSome: (params.category as string).split(",")
+        hasSome: (category as string).split(",")
       }
     }
   })
@@ -31,4 +27,8 @@ export const findBookById = async (id: number) => {
 
 export const getAllBook = async () => {
   return prisma.productItem.findMany()
+}
+
+export const getBooksQuantity = async () => {
+  return prisma.productItem.count()
 }
