@@ -16,13 +16,24 @@ export const getBooksQuantity = async () => {
   return prisma.productItem.count()
 }
 
-export const getBooks = async (category?: string | string[], sortByIdAscDesc: "asc" | "desc" = "asc") => {
-  return prisma.productItem.findMany({
+export const getBooks = async (
+  category?: string | string[],
+  sortByIdAscDesc: "asc" | "desc" = "asc"
+) => {
+  const quantity = await prisma.productItem.count()
+  const books = await prisma.productItem.findMany({
     orderBy: { id: sortByIdAscDesc },
-    where: category ? {
-      categories: {
-        hasSome: Array.isArray(category) ? category : category.split(",")
-      }
-    } : undefined
-  });
-};
+    where: category
+      ? {
+          categories: {
+            hasSome: Array.isArray(category) ? category : category.split(",")
+          }
+        }
+      : undefined
+  })
+
+  return {
+    quantity,
+    books
+  }
+}

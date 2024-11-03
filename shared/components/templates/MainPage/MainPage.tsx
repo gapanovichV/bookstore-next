@@ -1,18 +1,13 @@
 "use client"
 
-import React, { useEffect, useState } from "react"
+import React from "react"
 import toast from "react-hot-toast"
 import clsx from "clsx"
 import { useRouter } from "next/navigation"
 
-import { Button, CheckList, Dropdown, PurchaseCard, ReviewCard } from "@/shared/components/elements"
-import { ReviewBookDetail } from "@/shared/components/elements/ReviewBookDetail/ReviewBookDetail"
+import { CheckList } from "@/shared/components/elements"
 import { useUserLogout } from "@/shared/hooks/useUserLogout"
-import { Api } from "@/shared/services/api-client"
-import type { oneGetBookParams } from "@/types/books.type"
 import { RouteEnum } from "@/types/route.type"
-
-import styles from "@/app/(root)/catalog/book/[bookId]/BookDetail.module.scss"
 
 const MainPage = () => {
   const router = useRouter()
