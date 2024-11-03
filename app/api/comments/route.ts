@@ -9,7 +9,7 @@ export async function POST(req: NextRequest) {
   try {
     const data = (await req.json()) as CreateCommentValues
 
-    const userId = 1;
+    const userId = 1
     const userComment = await findUserCommentOrCreate(userId)
 
     const findProductItem = await findBookById(data.productItemId)
@@ -20,12 +20,15 @@ export async function POST(req: NextRequest) {
           comment: {
             userId
           },
-          productItemId: data.productItemId,
-        },
-      });
+          productItemId: data.productItemId
+        }
+      })
 
       if (existingComment) {
-        return NextResponse.json({ error: "Вы уже оставили комментарий к этому продукту." }, { status: 400 });
+        return NextResponse.json(
+          { error: "You have already left a comment on this product." },
+          { status: 400 }
+        )
       }
 
       await prisma.commentItems.create({
@@ -33,14 +36,12 @@ export async function POST(req: NextRequest) {
           commentId: userComment.id,
           productItemId: data.productItemId,
           commentText: data.commentText,
-          estimation: data.estimation,
-        },
-      });
+          estimation: data.estimation
+        }
+      })
 
-      return NextResponse.json({ message: "Комментарий успешно добавлен" });
+      return NextResponse.json({ message: "Successfully comment added" })
     }
-
-    return NextResponse.json({ message: "Successfully comment added" })
   } catch (error) {
     console.error(`[Comments POST] Error:`, error)
     return NextResponse.json({ error: "ERROR" }, { status: 500 })

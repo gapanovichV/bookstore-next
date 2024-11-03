@@ -5,7 +5,7 @@ import clsx from "clsx"
 import Link from "next/link"
 
 import { Card, Dropdown, InfoIllustration } from "@/shared/components/elements"
-import { findBooksByCategory, getAllBook } from "@/shared/lib/utils/book"
+import { getBooks } from "@/shared/lib/utils/book"
 import type { allGetBooksParams } from "@/types/books.type"
 
 import styles from "./DiscoverContent.module.scss"
@@ -15,13 +15,9 @@ interface ContentProps {
   searchParams: { category?: string | string[] }
 }
 
-const fetchBooks = async (category: string | string[] | undefined) => {
+const fetchBooks = async (category: string | string[] | undefined): Promise<allGetBooksParams> => {
   try {
-    const books =
-      category && Object.keys(category).length > 0
-        ? await findBooksByCategory(category)
-        : await getAllBook()
-
+    const books = await getBooks(category)
     return { loading: false, books }
   } catch (error) {
     console.error(`[Discover Content] Error:`, error)
@@ -30,9 +26,8 @@ const fetchBooks = async (category: string | string[] | undefined) => {
 }
 
 export const DiscoverContent = async ({ className, searchParams }: ContentProps) => {
-  const data: allGetBooksParams = await fetchBooks(searchParams.category)
+  const data = await fetchBooks(searchParams.category)
 
-  data.books
   const renderBooks = () => {
     if (data.books.length > 0) {
       return (
