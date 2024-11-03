@@ -1,18 +1,15 @@
 "use client"
 
 import { Controller, type SubmitHandler, useForm } from "react-hook-form"
-import toast from "react-hot-toast"
 import { zodResolver } from "@hookform/resolvers/zod"
-import { AxiosError } from "axios"
 import clsx from "clsx"
 import Link from "next/link"
 import { useRouter } from "next/navigation"
 import type { z } from "zod"
 
 import { Button, ErrorMessage, Input } from "@/shared/components/elements"
+import { LoginAndRegistrationSubmit } from "@/shared/components/elements/LoginAndRegistrationSubmit/LoginAndRegistrationSubmit"
 import { loginDefaultValue } from "@/shared/components/modules/LoginForm/loginForm.data"
-import { LOCAL_STORAGE_KEY } from "@/shared/constants"
-import { storeToken } from "@/shared/lib/storeToken"
 import { Api } from "@/shared/services/api-client"
 import { RouteEnum } from "@/types/route.type"
 import { userLoginFormScheme } from "@/types/z.type"
@@ -29,23 +26,7 @@ export const LoginForm = () => {
   })
 
   const onSubmit: SubmitHandler<FormLoginSchema> = async (value) => {
-    try {
-      const data = await Api.auth.loginUser(value)
-      if (data) {
-        toast.success("Success!")
-        await storeToken(data.token)
-        localStorage.setItem(LOCAL_STORAGE_KEY, JSON.stringify(data.token))
-        router.push(RouteEnum.MAIN)
-      }
-      form.reset()
-    } catch (error) {
-      let errorMessage = "Error!"
-      if (error instanceof AxiosError) {
-        errorMessage = error?.response?.data.error
-      }
-      toast.error(errorMessage)
-      form.reset()
-    }
+    await LoginAndRegistrationSubmit(form, Api.auth.loginUser, value, "Success!", router)
   }
 
   return (

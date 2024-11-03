@@ -4,6 +4,7 @@ import type { ProductWithRelations } from "@/types/prisma"
 
 export interface allGetBooksParams {
   loading: boolean
+  quantity: number
   books: ProductItem[]
 }
 

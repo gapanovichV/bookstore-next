@@ -17,11 +17,11 @@ interface ContentProps {
 
 const fetchBooks = async (category: string | string[] | undefined): Promise<allGetBooksParams> => {
   try {
-    const books = await getBooks(category)
-    return { loading: false, books }
+    const data = await getBooks(category)
+    return { loading: false, quantity: data.quantity, books: data.books }
   } catch (error) {
     console.error(`[Discover Content] Error:`, error)
-    return { loading: false, books: [] }
+    return { loading: false, quantity: 0, books: [] }
   }
 }
 
@@ -56,7 +56,7 @@ export const DiscoverContent = async ({ className, searchParams }: ContentProps)
   return (
     <div className={clsx(styles.content, className)}>
       <div className={clsx(styles.header)}>
-        Showing 1 - 10 items out of a total of ? million books
+        Showing 1 - 10 items out of a total of {data.quantity} books
         <Dropdown text="Sort By" />
       </div>
 
