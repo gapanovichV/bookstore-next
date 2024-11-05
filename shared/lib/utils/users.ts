@@ -1,7 +1,7 @@
 import { prisma } from "@/prisma/prisma-client"
 
 export const findByUser = async (userId: number) => {
-  return prisma.user.findFirst({
+  return prisma.user.findUnique({
     where: { id: userId },
     include: {
       comment: {

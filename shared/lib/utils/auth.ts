@@ -1,5 +1,5 @@
 import bcrypt from "bcrypt"
-import jwt from "jsonwebtoken"
+import jwt  from "jsonwebtoken"
 
 import { prisma } from "@/prisma/prisma-client"
 import type { FormRegistrationSchema } from "@/shared/components/modules/RegistrationForm/RegistrationForm"
@@ -24,26 +24,25 @@ export const generateTokens = async (email: string, firstName: string) => {
 export const isValidAccessToken = async (
   token: string | undefined
 ): Promise<{
+  status?: number
   message: string
   error?: { message: string }
 }> => {
   const baseError = { message: "Unauthorized" }
 
-  let jwtError = null
-
   if (!token) {
-    return { ...baseError, error: { message: "jwt is required" } }
+    return { ...baseError, error: { message: "JWT is required" } }
   }
-  await jwt.verify(token, JWT_ACCESS_TOKEN_KEY, (error: null) => {
-    if (error) jwtError = error
-  })
-  if (jwtError) {
+
+  try {
+    await jwt.verify(token, JWT_ACCESS_TOKEN_KEY)
+    return { message: "Valid access token" }
+  } catch (error) {
     return {
       ...baseError,
-      error: jwtError
+      error: { message: error instanceof Error ? error.message : 'Invalid token' }
     }
   }
-  return { message: "Is valid access token" }
 }
 
 export const createUserAndGenerateTokens = async (user: FormRegistrationSchema) => {
@@ -58,4 +57,12 @@ export const createUserAndGenerateTokens = async (user: FormRegistrationSchema) 
   })
 
   return generateTokens(user.email, user.firstName)
+}
+
+export const parseJwt = (token: string) => {
+  try {
+    return JSON.parse(Buffer.from(token.split('.')[1], 'base64').toString())
+  } catch (error) {
+    throw new Error("Invalid JWT token")
+  }
 }

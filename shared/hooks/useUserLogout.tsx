@@ -12,7 +12,7 @@ export const useUserLogout = () => {
   return async () => {
     localStorage.removeItem(LOCAL_STORAGE_KEY)
     await deleteToken()
-    setAuth(true)
+    setAuth(false)
     router.push("/")
     window.location.reload()
   }
