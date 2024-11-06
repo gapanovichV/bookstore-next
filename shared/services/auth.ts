@@ -9,3 +9,7 @@ export const loginUser = async (value: FormLoginSchema) => {
 export const registrationUser = async (value: FormRegistrationSchema) => {
   return (await axiosInstance.post("/users/signup", value)).data
 }
+
+export const loginCheck = async (token: string) => {
+  return (await axiosInstance.post("/users/login-check", token)).data
+}

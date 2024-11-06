@@ -1,4 +1,4 @@
-import React from "react"
+import React, { Suspense } from "react"
 import { Toaster } from "react-hot-toast"
 import type { Metadata } from "next"
 
@@ -19,10 +19,12 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body suppressHydrationWarning={true}>
+      <Suspense>
         <AuthProvider>
           {children}
           <Toaster position="top-center" reverseOrder={false} />
         </AuthProvider>
+      </Suspense>
       </body>
     </html>
   )

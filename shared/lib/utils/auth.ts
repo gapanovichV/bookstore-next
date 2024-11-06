@@ -3,13 +3,21 @@ import jwt  from "jsonwebtoken"
 
 import { prisma } from "@/prisma/prisma-client"
 import type { FormRegistrationSchema } from "@/shared/components/modules/RegistrationForm/RegistrationForm"
+import type { UserWithRelations } from "@/types/prisma"
 
 const JWT_ACCESS_TOKEN_KEY = process.env.JWT_ACCESS_TOKEN_KEY as string
 const JWT_REFRESH_TOKEN_KEY = process.env.JWT_REFRESH_TOKEN_KEY as string
 
-export const findUserByEmail = async (email: string) => {
-  return prisma.user.findFirst({
-    where: { email }
+export const findUserByEmail = async (email: string): Promise<UserWithRelations | null> => {
+  return prisma.user.findUnique({
+    where: { email },
+    include: {
+      comment: {
+        include: {
+          comments: true
+        }
+      }
+    }
   })
 }
 
@@ -60,9 +68,5 @@ export const createUserAndGenerateTokens = async (user: FormRegistrationSchema) 
 }
 
 export const parseJwt = (token: string) => {
-  try {
-    return JSON.parse(Buffer.from(token.split('.')[1], 'base64').toString())
-  } catch (error) {
-    throw new Error("Invalid JWT token")
-  }
+  return JSON.parse(Buffer.from(token.split('.')[1], 'base64').toString())
 }

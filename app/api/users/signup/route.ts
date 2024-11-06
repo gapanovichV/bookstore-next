@@ -16,6 +16,6 @@ export async function POST(req: NextRequest) {
     return NextResponse.json({ token })
   } catch (error) {
     console.error(`[Users SignUp] Error:`, error)
-    return NextResponse.json({ error: "User is not created" }, { status: 500 })
+    return NextResponse.json({ error: "User is not created" })
   }
 }

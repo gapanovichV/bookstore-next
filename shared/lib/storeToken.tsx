@@ -2,14 +2,11 @@
 
 import { cookies } from "next/headers"
 
+import { Token } from "@/shared/constants"
+
 interface StoreTokenRequest {
   accessToken: string
   refreshToken: string
-}
-
-enum Token {
-  ACCESS_TOKEN = "accessToken",
-  REFRESH_TOKEN = "refreshToken"
 }
 
 export const storeToken = async (request: StoreTokenRequest) => {

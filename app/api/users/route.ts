@@ -11,6 +11,6 @@ export async function POST(req: NextRequest) {
     return NextResponse.json({ user })
   } catch (error) {
     console.error(`[USERS POST] Error:`, error)
-    return NextResponse.json({ error: "ERROR" }, { status: 500 })
+    return NextResponse.json({ error: "[USERS POST] Error" })
   }
 }

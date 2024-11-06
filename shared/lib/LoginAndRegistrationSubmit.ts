@@ -24,7 +24,7 @@ export const LoginAndRegistrationSubmit = async <T extends FormValues>(
     toast.success(successMessage)
     await storeToken({ accessToken: token.accessToken, refreshToken: token.refreshToken })
     localStorage.setItem(LOCAL_STORAGE_KEY, JSON.stringify(token))
-    router.push(RouteEnum.MAIN)
+    router.replace(RouteEnum.MAIN)
   } catch (error) {
     let errorMessage = "Error!"
 
