@@ -19,12 +19,12 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body suppressHydrationWarning={true}>
-      <Suspense>
-        <AuthProvider>
-          {children}
-          <Toaster position="top-center" reverseOrder={false} />
-        </AuthProvider>
-      </Suspense>
+        <Suspense>
+          <AuthProvider>
+            {children}
+            <Toaster position="top-center" reverseOrder={false} />
+          </AuthProvider>
+        </Suspense>
       </body>
     </html>
   )

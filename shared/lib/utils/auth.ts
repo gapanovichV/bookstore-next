@@ -1,5 +1,5 @@
 import bcrypt from "bcrypt"
-import jwt  from "jsonwebtoken"
+import jwt from "jsonwebtoken"
 
 import { prisma } from "@/prisma/prisma-client"
 import type { FormRegistrationSchema } from "@/shared/components/modules/RegistrationForm/RegistrationForm"
@@ -44,11 +44,11 @@ export const isValidAccessToken = async (
 
   try {
     await jwt.verify(token, JWT_ACCESS_TOKEN_KEY)
-    return { message: "Valid access token" }
+    return { message: "Valid access token", status: 200 }
   } catch (error) {
     return {
       ...baseError,
-      error: { message: error instanceof Error ? error.message : 'Invalid token' }
+      error: { message: error instanceof Error ? error.message : "Invalid token" }
     }
   }
 }
@@ -68,5 +68,5 @@ export const createUserAndGenerateTokens = async (user: FormRegistrationSchema) 
 }
 
 export const parseJwt = (token: string) => {
-  return JSON.parse(Buffer.from(token.split('.')[1], 'base64').toString())
+  return JSON.parse(Buffer.from(token.split(".")[1], "base64").toString())
 }

@@ -11,7 +11,6 @@ import { RouteEnum } from "@/types/route.type"
 
 type FormValues = FormLoginSchema | FormRegistrationSchema
 
-
 export const LoginAndRegistrationSubmit = async <T extends FormValues>(
   form: UseFormReturn<T>,
   apiFunction: (value: T) => Promise<{ token: { accessToken: string; refreshToken: string } }>,

@@ -50,5 +50,3 @@ export const getTokenFromCookies = async () => {
   await getAccessTokenFromCookies()
   await getRefreshTokenFromCookies()
 }
-
-

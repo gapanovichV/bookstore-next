@@ -5,8 +5,7 @@ import type { UserWithRelations } from "@/types/prisma"
 
 export async function POST(req: NextRequest) {
   try {
-    const {token}: {token: string} = await req.json()
-
+    const token = await req.text()
     const validatedTokenResult = await isValidAccessToken(token)
 
     if (validatedTokenResult.status !== 200) {
@@ -14,10 +13,11 @@ export async function POST(req: NextRequest) {
     }
 
     const userEmail = parseJwt(token).email
-    const user: UserWithRelations | null = await findUserByEmail(userEmail);
+    const user: UserWithRelations | null = await findUserByEmail(userEmail)
+
 
     if (user === null) {
-      return NextResponse.json({ message: "User not found" });
+      return NextResponse.json({ message: "User not found" })
     }
 
     return NextResponse.json({
@@ -27,14 +27,13 @@ export async function POST(req: NextRequest) {
         id: user.id,
         lastName: user.lastName,
         firstName: user.firstName,
-        email: user.email,
+        email: user.email
       }
     })
-
   } catch (error) {
     console.error(`[USERS LOGIN-CHECK POST] Error:`, error)
     return NextResponse.json({ error: "[USERS LOGIN-CHECK POST] Error" })
   }
 }
 
-export const dynamic = 'force-dynamic'
+export const dynamic = "force-dynamic"

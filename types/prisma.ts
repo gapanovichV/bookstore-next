@@ -10,11 +10,15 @@ export type ArrayCommentAndUser = CommentItems & {
   }
 }
 
-export type UserWithRelations = User & {
-  comment?: Comment & {
-    comments?: CommentItems[] | null; // Это массив комментариев, который может быть null
-  } | null; // Комментарий может быть null
-} | null; // Сам пользователь может быть null
+export type UserWithRelations =
+  | (User & {
+      comment?:
+        | (Comment & {
+            comments?: CommentItems[] | null // Это массив комментариев, который может быть null
+          })
+        | null // Комментарий может быть null
+    })
+  | null // Сам пользователь может быть null
 
 export interface CreateItemValue {
   userId: number
