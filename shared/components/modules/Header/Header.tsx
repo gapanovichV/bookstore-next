@@ -1,10 +1,11 @@
 "use client"
 
-import { useState } from "react"
+import { useContext } from "react"
 import clsx from "clsx"
 import Link from "next/link"
 import { usePathname, useRouter } from "next/navigation"
 
+import AuthContext from "@/context/AuthProvider"
 import { NotificationButton } from "@/shared/components/elements"
 import { Button } from "@/shared/components/elements/Button/Button"
 import { ProfilePicture } from "@/shared/components/elements/ProfilePicture/ProfilePicture"
@@ -16,7 +17,7 @@ import styles from "./Header.module.scss"
 export const Header = () => {
   const router = useRouter()
   const pathName = usePathname()
-  const [isLogin, setIsLogin] = useState(true)
+  const { auth } = useContext(AuthContext)
   return (
     <header className={clsx(styles.header)}>
       <div className={clsx("container", styles.header__container)}>
@@ -40,7 +41,7 @@ export const Header = () => {
             Discover
           </Button>
         )}
-        {!isLogin ? (
+        {!auth ? (
           <>
             <Button
               type="button"

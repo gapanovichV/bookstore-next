@@ -41,7 +41,6 @@ export const AuthProvider = ({ children }: Readonly<{ children: React.ReactNode 
     fetchUser().catch((r) => console.error(r))
   }, [])
 
-  console.log("AuthProvider", auth, user)
   return (
     <AuthContext.Provider value={{ auth, setAuth, user, setUser }}>{children}</AuthContext.Provider>
   )

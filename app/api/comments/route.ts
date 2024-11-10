@@ -9,8 +9,7 @@ export async function POST(req: NextRequest) {
   try {
     const data = (await req.json()) as CreateCommentValues
 
-    const userId = 1
-    const userComment = await findUserCommentOrCreate(userId)
+    const userComment = await findUserCommentOrCreate(data.userId)
 
     const findProductItem = await findBookById(data.productItemId)
 
@@ -18,7 +17,7 @@ export async function POST(req: NextRequest) {
       const existingComment = await prisma.commentItems.findFirst({
         where: {
           comment: {
-            userId
+            userId: data.userId,
           },
           productItemId: data.productItemId
         }
